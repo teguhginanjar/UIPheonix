@@ -42,7 +42,7 @@ class SimpleCounterModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mValue = dictionary["value"] as! Int
 
@@ -83,8 +83,8 @@ class SimpleCounterModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mValue":mValue,
-            "mNotificationId":mNotificationId
+            "value":mValue,
+            "notificationId":mNotificationId
         ]
     }
 }

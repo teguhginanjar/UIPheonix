@@ -33,6 +33,6 @@ protocol UIPBaseCVCellProtocol:class
 {
     static func nibNameStatic() -> String
 
-    func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt) -> UIPCellSize
+    func update(with model:Any, delegate:Any, for indexPath:IndexPath) -> UIPCellSize
 }
 

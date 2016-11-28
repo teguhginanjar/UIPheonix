@@ -60,11 +60,11 @@ final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleTextFieldModel:SimpleTextFieldModel = objectModel as! SimpleTextFieldModel
+        let simpleTextFieldModel:SimpleTextFieldModel = model as! SimpleTextFieldModel
 
         #if os(iOS) || os(tvOS)
             ibTextField.text = simpleTextFieldModel.mText
@@ -73,11 +73,10 @@ final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
         #endif
 
         // keep a reference to the model
-        mSimpleTextFieldModelReference = objectModel as? SimpleTextFieldModel
+        mSimpleTextFieldModelReference = model as? SimpleTextFieldModel
 
         // return view size
-        return UIPCellSize(absoluteWidth:false, width:0,
-                           absoluteHeight:false, height:0)
+        return UIPCellSizeUnmodified
     }
 
 

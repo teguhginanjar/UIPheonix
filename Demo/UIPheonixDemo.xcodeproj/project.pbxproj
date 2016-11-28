@@ -553,7 +553,7 @@
 			attributes = {
 				CLASSPREFIX = UIP;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = "Mohsan Khan";
 				TargetAttributes = {
 					4D5439C61CA75C4500AA882D = {
@@ -849,6 +849,7 @@
 			baseConfigurationReference = 4D3E212D1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = macOS/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mohsankhan.UIPheonixDemo-macOS";
@@ -862,6 +863,7 @@
 			baseConfigurationReference = 4D3E212C1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = macOS/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mohsankhan.UIPheonixDemo-macOS";

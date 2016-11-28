@@ -1,0 +1,19 @@
+{
+    "UIPCVModelViewRelationships":
+    {
+        "SimpleLabelModel":"SimpleLabelModelCVCell"
+    },
+
+    "UIPCVCellModels":
+    [
+        {
+            "type":"SimpleLabelModel",
+            "text":"EXAMPLES",
+            "size":20,
+            "alignment":"center",
+            "style":"bold",
+            "backgroundColorHue":0.25
+        }
+    ]
+}
+

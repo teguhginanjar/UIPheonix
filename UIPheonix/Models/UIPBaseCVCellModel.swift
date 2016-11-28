@@ -37,7 +37,7 @@ class UIPBaseCVCellModel:UIPInstantiatable
     }
 
 
-    func setContents(with dictionary:Dictionary<String, AnyObject>)
+    func setContents(with dictionary:Dictionary<String, Any>)
     {
         fatalError("You must override \(#function) in your subclass!")
     }

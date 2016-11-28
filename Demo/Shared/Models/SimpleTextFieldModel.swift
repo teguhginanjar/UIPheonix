@@ -41,7 +41,7 @@ class SimpleTextFieldModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mText = dictionary["text"] as! String
     }
@@ -79,7 +79,7 @@ class SimpleTextFieldModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mText":mText
+            "text":mText
         ]
     }
 }

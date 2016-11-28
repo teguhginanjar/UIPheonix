@@ -60,17 +60,16 @@ final class SimpleViewAnimationModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any,for  indexPath:IndexPath)
     -> UIPCellSize
     {
         // save model for later
-        mSimpleViewAnimationModel = objectModel as! SimpleViewAnimationModel
+        mSimpleViewAnimationModel = model as! SimpleViewAnimationModel
 
         animateUI()
 
         // return view size
-        return UIPCellSize(absoluteWidth:false, width:0,
-                           absoluteHeight:false, height:0)
+        return UIPCellSizeUnmodified
     }
 
 

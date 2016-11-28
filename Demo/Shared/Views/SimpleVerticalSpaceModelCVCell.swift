@@ -25,6 +25,7 @@
 //  limitations under the License.
 //
 
+import Foundation
 import CoreGraphics
 
 
@@ -49,11 +50,11 @@ final class SimpleVerticalSpaceModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleVerticalSpaceModel:SimpleVerticalSpaceModel = objectModel as! SimpleVerticalSpaceModel
+        let simpleVerticalSpaceModel:SimpleVerticalSpaceModel = model as! SimpleVerticalSpaceModel
 
         // return view size
         return UIPCellSize(absoluteWidth:false, width:0,

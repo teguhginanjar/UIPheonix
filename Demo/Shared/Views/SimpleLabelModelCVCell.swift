@@ -64,11 +64,11 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleLabelModel:SimpleLabelModel = objectModel as! SimpleLabelModel
+        let simpleLabelModel:SimpleLabelModel = model as! SimpleLabelModel
 
         #if os(iOS) || os(tvOS)
             ibLabel.text = simpleLabelModel.mText

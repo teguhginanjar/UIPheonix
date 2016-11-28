@@ -53,19 +53,18 @@ final class SimpleCounterModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleCounterModel:SimpleCounterModel = objectModel as! SimpleCounterModel
+        let simpleCounterModel:SimpleCounterModel = model as! SimpleCounterModel
 
         // store for later
         mCounterValue = Double(simpleCounterModel.mValue)
         mNotificationId = simpleCounterModel.mNotificationId
 
         // return view size
-        return UIPCellSize(absoluteWidth:false, width:0,
-                           absoluteHeight:false, height:0)
+        return UIPCellSizeUnmodified
     }
 
 

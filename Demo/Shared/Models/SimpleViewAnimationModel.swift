@@ -41,7 +41,7 @@ class SimpleViewAnimationModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mAnimationState = dictionary["animationState"] as! Bool
     }
@@ -79,7 +79,7 @@ class SimpleViewAnimationModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mAnimationState":mAnimationState
+            "animationState":mAnimationState
         ]
     }
 }

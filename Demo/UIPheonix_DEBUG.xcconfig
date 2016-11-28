@@ -1,8 +1,8 @@
 //
 // Debug
 //
-//   Last Update: 1 Nov 2016, version 7
-// Xcode Version: 8 GM (8A218a)
+//   Last Update: 25 Nov 2016, version 8
+// Xcode Version: 8.1 (8B62)
 // Swift Version: 3.0
 //
 // https://developer.apple.com/library/mac/documentation/DeveloperTools/Reference/XcodeBuildSettingRef/1-Build_Setting_Reference/build_setting_ref.html
@@ -48,7 +48,7 @@ COMBINE_HIDPI_IMAGES = YES
 LD_NO_PIE = NO
 GCC_DYNAMIC_NO_PIC = YES
 
-GCC_NO_COMMON_BLOCKS = NO
+GCC_NO_COMMON_BLOCKS = YES;
 
 GCC_UNROLL_LOOPS = YES
 
@@ -63,7 +63,7 @@ CLANG_ENABLE_MODULES = YES
 
 CLANG_ENABLE_OBJC_ARC = YES
 
-ENABLE_STRICT_OBJC_MSGSEND = NO
+ENABLE_STRICT_OBJC_MSGSEND = YES;
 
 CLANG_WARN_SUSPICIOUS_MOVE = YES
 
@@ -130,6 +130,8 @@ ENABLE_TESTABILITY = YES
 ASSETCATALOG_COMPILER_OPTIMIZATION = time
 
 EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO
+
+MTL_ENABLE_DEBUG_INFO = YES;
 
 
 //

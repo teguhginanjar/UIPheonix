@@ -1,5 +1,28 @@
 //
-// Template
+//  UIPheonix
+//  Copyright © 2016 Mohsan Khan. All rights reserved.
+//
+
+//
+//  https://github.com/MKGitHub/UIPheonix
+//  http://www.xybernic.com
+//  http://www.khanofsweden.com
+//
+
+//
+//  Copyright 2016 Mohsan Khan
+//
+//  Licensed under the Apache License, Version 2.0 (the "License");
+//  you may not use this file except in compliance with the License.
+//  You may obtain a copy of the License at
+//
+//  http://www.apache.org/licenses/LICENSE-2.0
+//
+//  Unless required by applicable law or agreed to in writing, software
+//  distributed under the License is distributed on an "AS IS" BASIS,
+//  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//  See the License for the specific language governing permissions and
+//  limitations under the License.
 //
 
 import CoreGraphics
@@ -11,7 +34,7 @@ import CoreGraphics
 #endif
 
 
-class TemplateModel:UIPBaseCVCellModel
+class SimpleLabelModel:UIPBaseCVCellModel
 {
     // MARK: Public Members
     public var mText:String!
@@ -19,6 +42,7 @@ class TemplateModel:UIPBaseCVCellModel
     public var mAlignment:String!
     public var mStyle:String!
     public var mBackgroundColorHue:CGFloat!
+    public var mNotificationId:String!
 
 
     // MARK: UIPInstantiatable
@@ -30,7 +54,7 @@ class TemplateModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mText = dictionary["text"] as! String
 
@@ -47,13 +71,15 @@ class TemplateModel:UIPBaseCVCellModel
         mStyle = (dictionary["style"] as? String) ?? "regular"               // fallback to default value
 
         mBackgroundColorHue = dictionary["backgroundColorHue"] as! CGFloat
+
+        mNotificationId = (dictionary["notificationId"] as? String) ?? nil   // fallback to default value
     }
 
 
     // MARK: Life Cycle
 
 
-    init(text:String, size:CGFloat, alignment:String, backgroundColorHue:CGFloat)
+    init(text:String, size:CGFloat, alignment:String, backgroundColorHue:CGFloat, notificationId:String)
     {
         super.init()
 
@@ -61,6 +87,7 @@ class TemplateModel:UIPBaseCVCellModel
         mSize = size
         mAlignment = alignment
         mBackgroundColorHue = backgroundColorHue
+        mNotificationId = notificationId
     }
 
 
@@ -85,10 +112,11 @@ class TemplateModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mText":mText,
-            "mSize":mSize,
-            "mAlignment":mAlignment,
-            "mBackgroundColorHue":CGFloat(mBackgroundColorHue)
+            "text":mText,
+            "size":mSize,
+            "alignment":mAlignment,
+            "backgroundColorHue":CGFloat(mBackgroundColorHue),
+            "notificationId":mNotificationId
         ]
     }
 }

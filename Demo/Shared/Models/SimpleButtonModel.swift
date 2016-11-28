@@ -50,7 +50,7 @@ class SimpleButtonModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mButtonId = dictionary["id"] as! Int
         mButtonTitle = dictionary["title"] as! String
@@ -121,15 +121,15 @@ class SimpleButtonModel:UIPBaseCVCellModel
     {
         var dict:Dictionary<String, Any> = Dictionary<String, Any>(minimumCapacity:3)
 
-        dict["mButtonId"] = mButtonId
-        dict["mButtonTitle"] = mButtonTitle
+        dict["buttonId"] = mButtonId
+        dict["buttonTitle"] = mButtonTitle
 
         #if os(macOS)
-            dict["mAlignment"] = mAlignment
+            dict["alignment"] = mAlignment
         #endif
 
         #if os(tvOS)
-            dict["mButtonFocus"] = mButtonFocus
+            dict["buttonFocus"] = mButtonFocus
         #endif
 
         return dict

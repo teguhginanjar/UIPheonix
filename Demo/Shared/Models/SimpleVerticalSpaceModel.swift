@@ -43,7 +43,7 @@ class SimpleVerticalSpaceModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mSize = dictionary["size"] as! CGFloat
     }
@@ -81,7 +81,7 @@ class SimpleVerticalSpaceModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mSize":mSize
+            "size":mSize
         ]
     }
 }

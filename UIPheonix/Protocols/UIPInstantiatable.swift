@@ -32,6 +32,6 @@ protocol UIPInstantiatable:class
 {
     init()
 
-    func setContents(with dictionary:Dictionary<String, AnyObject>)
+    func setContents(with dictionary:Dictionary<String, Any>)
 }
 

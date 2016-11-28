@@ -39,7 +39,6 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
     @IBOutlet fileprivate weak var ibCenterConstraint:NSLayoutConstraint!
 
     // MARK: Private Members
-
     fileprivate weak var mDelegate:UIPButtonDelegate?
     fileprivate var mButtonId:Int!
 
@@ -71,11 +70,11 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
     }
 
 
-    override func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleButtonModel:SimpleButtonModel = objectModel as! SimpleButtonModel
+        let simpleButtonModel:SimpleButtonModel = model as! SimpleButtonModel
 
         #if os(iOS) || os(tvOS)
             UIView.performWithoutAnimation(
@@ -96,8 +95,7 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
         mButtonId = simpleButtonModel.mButtonId
 
         // return view size
-        return UIPCellSize(absoluteWidth:false, width:0,
-                           absoluteHeight:false, height:0)
+        return UIPCellSizeUnmodified
     }
 
 

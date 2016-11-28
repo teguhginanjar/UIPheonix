@@ -85,7 +85,7 @@ class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCVCellProtocol
     }
 
 
-    func updateWithModel(_ objectModel:AnyObject, delegate:AnyObject, index:UInt)
+    func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         fatalError("You must override \(#function) in your subclass!")

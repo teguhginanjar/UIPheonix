@@ -54,7 +54,7 @@ class SimpleLabelModel:UIPBaseCVCellModel
     }
 
 
-    override func setContents(with dictionary:Dictionary<String, AnyObject>)
+    override func setContents(with dictionary:Dictionary<String, Any>)
     {
         mText = dictionary["text"] as! String
 
@@ -112,11 +112,11 @@ class SimpleLabelModel:UIPBaseCVCellModel
     -> Dictionary<String, Any>
     {
         return [
-            "mText":mText,
-            "mSize":mSize,
-            "mAlignment":mAlignment,
-            "mBackgroundColorHue":CGFloat(mBackgroundColorHue),
-            "mNotificationId":mNotificationId
+            "text":mText,
+            "size":mSize,
+            "alignment":mAlignment,
+            "backgroundColorHue":CGFloat(mBackgroundColorHue),
+            "notificationId":mNotificationId
         ]
     }
 }

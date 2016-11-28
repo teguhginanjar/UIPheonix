@@ -49,7 +49,7 @@ final class UIPheonix
     fileprivate var mUIPDelegateViewType:UIPDelegateViewType!
 
     // (initialized as empty for convenience)
-    fileprivate var mDisplayDictionary:Dictionary<String, AnyObject> = Dictionary<String, AnyObject>()
+    fileprivate var mDisplayDictionary:Dictionary<String, Any> = Dictionary<String, Any>()
     fileprivate var mViewReuseIds:Dictionary<String, Any> = Dictionary<String, Any>()
     fileprivate var mUIDisplayList:Array<UIPInstantiatable> = Array<UIPInstantiatable>()
 
@@ -64,7 +64,7 @@ final class UIPheonix
     ///
     /// Init for UICollectionView.
     ///
-    init(delegate:UIPDelegate?, collectionView:UIPPlatformCollectionView?, displayDictionary:Dictionary<String, AnyObject>)
+    init(delegate:UIPDelegate?, collectionView:UIPPlatformCollectionView?, displayDictionary:Dictionary<String, Any>)
     {
         // init members
         mUIPDelegateViewType = UIPDelegateViewType.collection
@@ -87,7 +87,7 @@ final class UIPheonix
     /// Convenience JSON file loader.
     ///
     class func loadJSONFile(_ filePath:String)
-    -> Dictionary<String, AnyObject>?
+    -> Dictionary<String, Any>?
     {
         if let jsonFilePath:String = Bundle.main.path(forResource:filePath, ofType:"json")
         {
@@ -95,7 +95,7 @@ final class UIPheonix
             {
                 let fileUrl:URL = URL(fileURLWithPath:jsonFilePath)
                 let jsonData:Data = try Data(contentsOf:fileUrl, options:NSData.ReadingOptions.uncached)
-                let jsonDictionary:Dictionary<String, AnyObject> = try JSONSerialization.jsonObject(with:jsonData, options:JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, AnyObject>
+                let jsonDictionary:Dictionary<String, Any> = try JSONSerialization.jsonObject(with:jsonData, options:JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, Any>
 
                 return jsonDictionary
             }
@@ -116,7 +116,7 @@ final class UIPheonix
     // MARK:- Display List
 
 
-    func setDisplayList(_ displayDictionary:Dictionary<String, AnyObject>, append:Bool=false)
+    func setDisplayList(_ displayDictionary:Dictionary<String, Any>, append:Bool=false)
     {
         guard (mDelegate != nil) else {
             fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
@@ -151,45 +151,132 @@ final class UIPheonix
     }
 
 
+    ///
+    /// The number of RUIC's in the display list.
+    ///
+    func count()
+    -> Int
+    {
+        return mUIDisplayList.count
+    }
+
+
+    ///
+    /// Get RUIC model.
+    ///
+    func model(at index:Int)
+    -> UIPBaseCVCellModel?
+    {
+        if let cellModel:UIPBaseCVCellModel = mUIDisplayList[index] as? UIPBaseCVCellModel
+        {
+            return cellModel
+        }
+
+        return nil
+    }
+
+
+    ///
+    /// Dequeue reusable cell view.
+    ///
+    func view(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
+    -> UIPBaseCVCellView?
+    {
+        guard (mDelegateCollectionView != nil) else {
+            fatalError("[UIPheonix] `view for reuseIdentifier` failed, `delegateCollectionView` is nil!")
+        }
+
+        #if os(iOS) || os(tvOS)
+            if let cellView:UIPBaseCVCellView = mDelegateCollectionView!.dequeueReusableCell(withReuseIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCVCellView
+            {
+                return cellView
+            }
+        #elseif os(macOS)
+            if let cellView:UIPBaseCVCellView = mDelegateCollectionView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCVCellView
+            {
+                return cellView
+            }
+        #endif
+
+        return nil
+    }
+
+
     // MARK:- UICollectionView
 
 
+    ///
+    /// Call this after setting content on the cell to have a fitting layout size returned.
+    /// **Note!** The cell's size is determined using Auto Layout & constraints.
+    ///
     class func calculateLayoutSizeForCell(_ cell:UIPPlatformCollectionViewCell, preferredWidth:CGFloat)
     -> CGSize
     {
         var size:CGSize
 
-        // The cell's size is determined in the nib.
-        // We need to set it's width (in this case), and inside the cell view use its width
-        // to set any label's `preferredMaxLayoutWidth`, thus, the height can be determined.
         #if os(iOS) || os(tvOS)
+            // set bounds, and match with the `contentView`
             cell.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.bounds.size.height)
             cell.contentView.bounds = cell.bounds
 
-            // layout subviews, this will let labels on this cell to set `preferredMaxLayoutWidth`
+            // layout subviews
             cell.setNeedsLayout()
             cell.layoutIfNeeded()
 
-            // we only need the fitting height
+            // we use the `preferredWidth`
+            // and the fitting height because of the layout pass done above
             size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
             size.width = preferredWidth
-            size.height = CGFloat(ceilf(Float(size.height)))
+            //size.height = CGFloat(ceilf(Float(size.height)))    // don't need to do this as per Apple's advice
         #elseif os(macOS)
             cell.view.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.view.bounds.size.height)
 
             // layout subviews
             cell.view.layoutSubtreeIfNeeded()
 
-            // use size
+            // we use the `preferredWidth`
+            // and the height from the layout pass done above
             size = cell.view.bounds.size
-            size.width = preferredWidth    // TODO: is this really needed?
+            size.width = preferredWidth
         #endif
 
         return size
     }
 
 
-    func viewForModel(with viewReuseId:String)
+    class func viewSize(with baseSize:CGSize, addedSize:UIPCellSize)
+    -> CGSize
+    {
+        // by default, we use the cells layout size
+        var finalSize:CGSize = baseSize
+
+        // Replace or add/subtract size. //
+
+        // width
+        if (addedSize.absoluteWidth)
+        {
+            finalSize.width = addedSize.width
+        }
+        else
+        {
+            finalSize.width += addedSize.width
+        }
+
+        // height
+        if (addedSize.absoluteHeight)
+        {
+            finalSize.height = addedSize.height
+        }
+        else
+        {
+            finalSize.height += addedSize.height
+        }
+
+        return finalSize
+    }
+
+
+    func view(forReuseIdentifier viewReuseId:String)
     -> UIPBaseCVCellView?
     {
         return mViewReuseIds[viewReuseId] as? UIPBaseCVCellView
@@ -305,7 +392,7 @@ final class UIPheonix
     fileprivate func createDisplayList(append:Bool)
     {
         // read models
-        let uipCVCellModelsArray:Array<AnyObject> = mDisplayDictionary["UIPCVCellModels"] as! Array<AnyObject>
+        let uipCVCellModelsArray:Array<Any> = mDisplayDictionary["UIPCVCellModels"] as! Array<Any>
 
         guard (uipCVCellModelsArray.count != 0) else {
             fatalError("[UIPheonix] The key `UIPCVCellModels` could not be found in the display dictionary!")
@@ -320,9 +407,9 @@ final class UIPheonix
 
         // instantiate model classes with their data in the display dictionary
         // add the models to the display list
-        for aModelType:AnyObject in uipCVCellModelsArray
+        for aModelType:Any in uipCVCellModelsArray
         {
-            let modelDict:Dictionary<String, AnyObject> = aModelType as! Dictionary<String, AnyObject>
+            let modelDict:Dictionary<String, Any> = aModelType as! Dictionary<String, Any>
             let modelTypeName:String? = modelDict["type"] as? String
 
             // `type` field does not exist

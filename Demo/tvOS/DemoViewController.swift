@@ -91,17 +91,17 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView:UICollectionView, numberOfItemsInSection section:Int)
     -> Int
     {
-        return mUIPheonix.displayList().count
+        return mUIPheonix.count()
     }
 
 
     func collectionView(_ collectionView:UICollectionView, cellForItemAt indexPath:IndexPath)
     -> UICollectionViewCell
     {
-        let cellModel:UIPBaseCVCellModel = mUIPheonix.displayList()[indexPath.item] as! UIPBaseCVCellModel
-        let cellView:UIPBaseCVCellView = ibCollectionView.dequeueReusableCell(withReuseIdentifier:cellModel.viewReuseId(), for:indexPath) as! UIPBaseCVCellView
+        let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.viewReuseId(), for:indexPath)!
 
-        let _:UIPCellSize = cellView.updateWithModel(cellModel, delegate:self, index:UInt(indexPath.item))
+        let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
         cellView.layoutIfNeeded()
 
@@ -140,36 +140,16 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, sizeForItemAt indexPath:IndexPath)
     -> CGSize
     {
-        let cellModel:UIPBaseCVCellModel = mUIPheonix.displayList()[indexPath.item] as! UIPBaseCVCellModel
-
-        guard let cellView:UIPBaseCVCellView = mUIPheonix.viewForModel(with:cellModel.viewReuseId()) else {
-            fatalError("[UIPheonix] Could not find cell-view for cell-model: \(cellModel.viewReuseId())")
-        }
+        let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.viewReuseId())!
 
         // default: full width, no margins
         let defaultCellWidth:CGFloat = collectionView.bounds.size.width - 0 - 0
 
-        let modelCellSize:UIPCellSize = cellView.updateWithModel(cellModel, delegate:self, index:UInt(indexPath.item))
+        let modelCellSize:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
         let layoutCellSize:CGSize = UIPheonix.calculateLayoutSizeForCell(cellView, preferredWidth:defaultCellWidth)
 
-        var sizeToUse:CGSize = layoutCellSize    // by default, we use the cells layout size
-
-        // replace or add/subtract size
-        if (modelCellSize.absoluteWidth) {
-            sizeToUse.width = modelCellSize.width
-        }
-        else {
-            sizeToUse.width += modelCellSize.width
-        }
-
-        if (modelCellSize.absoluteHeight) {
-            sizeToUse.height = modelCellSize.height
-        }
-        else {
-            sizeToUse.height += modelCellSize.height
-        }
-
-        return sizeToUse
+        return UIPheonix.viewSize(with:layoutCellSize, addedSize:modelCellSize)
     }
 
 
@@ -313,7 +293,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
         // load JSON file
         let jsonFileName:String = mCurrentDisplayState.rawValue
 
-        if let displayDictionary:Dictionary<String, AnyObject> = UIPheonix.loadJSONFile(jsonFileName)
+        if let displayDictionary:Dictionary<String, Any> = UIPheonix.loadJSONFile(jsonFileName)
         {
             if (mUIPheonix == nil)
             {

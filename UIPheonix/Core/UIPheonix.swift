@@ -310,10 +310,10 @@ final class UIPheonix
         }
 
         // read the model-view relationship from the display dictionary
-        let modelViewRelationshipsDict:Dictionary<String, String> = mDisplayDictionary["UIPCVModelViewRelationships"] as! Dictionary<String, String>
+        let modelViewRelationshipsDict:Dictionary<String, String> = mDisplayDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>
 
         guard (modelViewRelationshipsDict.count != 0) else {
-            fatalError("[UIPheonix] The key `UIPCVModelViewRelationships` could not be found in the display dictionary!")
+            fatalError("[UIPheonix] The key `\(UIPConstants.Collection.modelViewRelationships)` could not be found in the display dictionary!")
         }
 
         var modelClassNames:Array<String> = Array<String>()
@@ -392,10 +392,10 @@ final class UIPheonix
     fileprivate func createDisplayList(append:Bool)
     {
         // read models
-        let uipCVCellModelsArray:Array<Any> = mDisplayDictionary["UIPCVCellModels"] as! Array<Any>
+        let uipCVCellModelsArray:Array<Any> = mDisplayDictionary[UIPConstants.Collection.cellModels] as! Array<Any>
 
         guard (uipCVCellModelsArray.count != 0) else {
-            fatalError("[UIPheonix] The key `UIPCVCellModels` could not be found in the display dictionary!")
+            fatalError("[UIPheonix] The key `\(UIPConstants.Collection.cellModels)` could not be found in the display dictionary!")
         }
 
         // don't append, but replace

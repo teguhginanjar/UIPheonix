@@ -55,10 +55,10 @@ func NOTE()
 
 struct UIPConstants
 {
-    struct Dictionary
+    struct Collection
     {
-        let modelViewRelationships:String = "UIPCVModelViewRelationships"
-        let cvCellModels:String = "UIPCVCellModels"
+        static let modelViewRelationships:String = "UIPCVModelViewRelationships"
+        static let cellModels:String = "UIPCVCellModels"
     }
 }
 

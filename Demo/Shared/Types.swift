@@ -26,10 +26,54 @@
 //
 
 
-///
-/// All app display states with their corresponding JSON file name.
-///
-enum AppDisplayState:String
+typealias AppDisplayStateType = (buttonId:ButtonId, jsonFileName:JSONFileName)
+
+
+enum AppDisplayState /* of type AppDisplayStateType */
+{
+    case startUp
+    case mixed
+    case animations
+    case switching
+    case appending
+    case persistent
+    case specific
+
+    var typeValue:AppDisplayStateType
+    {
+        switch (self)
+        {
+            case .startUp: return AppDisplayStateType(buttonId:.startUp, jsonFileName:.startUp)
+            case .mixed: return AppDisplayStateType(buttonId:.mixed, jsonFileName:.mixed)
+            case .animations: return AppDisplayStateType(buttonId:.animations, jsonFileName:.animations)
+            case .switching: return AppDisplayStateType(buttonId:.switching, jsonFileName:.switching)
+            case .appending: return AppDisplayStateType(buttonId:.appending, jsonFileName:.appending)
+            case .persistent: return AppDisplayStateType(buttonId:.persistent, jsonFileName:.persistent)
+            case .specific: return AppDisplayStateType(buttonId:.specific, jsonFileName:.specific)
+        }
+    }
+}
+
+
+enum ButtonId:Int
+{
+    case startUp = 0
+
+    case mixed = 100
+    case animations = 101
+    case switching = 102
+
+    case appending = 1030
+    case appendingReload = 1031
+
+    case persistent = 1040
+    case persistentGoBack = 1041
+
+    case specific = 105
+}
+
+
+enum JSONFileName:String
 {
     case startUp = "DisplayState-StartUp"
     case mixed = "DisplayState-Mixed"

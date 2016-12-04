@@ -28,19 +28,19 @@
 import Cocoa
 
 
-final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource,
+final class DemoViewController:NSViewController,
+                               NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource,
                                UIPButtonDelegate
 {
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:NSCollectionView!
 
     // MARK: Private Members
+    fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
-    fileprivate var mCurrentDisplayState:AppDisplayState!
 
     // MARK: (for demo purpose only)
     fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
-    fileprivate var mAnimateViewReload:Bool = true
 
 
     // MARK:- Life Cycle
@@ -56,7 +56,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
             fatalError("[UIPheonix] Could not create new instance of `DemoViewController` from nib!")
         }
 
-        vc.mCurrentDisplayState = appDisplayState
+        vc.mAppDisplayStateType = appDisplayState.typeValue
 
         return vc
     }
@@ -129,113 +129,55 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
     }
 
 
-    // MARK:- UIPDelegate
-
-
-    func displayListDidSet()
-    {
-        if (mAnimateViewReload)
-        {
-            // Do some nice fading animation when the display-list is changed. //
-
-            NSAnimationContext.runAnimationGroup(
-            {
-                [weak self] (context:NSAnimationContext) in
-
-                context.duration = 0.5
-
-                self?.view.animator().alphaValue = 0.0
-            },
-            completionHandler:
-            {
-                [weak self] in
-
-                // reload
-                self?.ibCollectionView.reloadData()
-
-                NSAnimationContext.runAnimationGroup(
-                {
-                    [weak self] (context:NSAnimationContext) in
-
-                    context.duration = 0.5
-
-                    self?.view.animator().alphaValue = 1.0
-                },
-                completionHandler:nil)
-            })
-        }
-        else
-        {
-            // just reload
-            self.ibCollectionView.reloadData()
-        }
-    }
-
-
     // MARK:- UIPButtonDelegate
 
 
     func buttonAction(_ buttonId:Int)
     {
-        // reset view animation state
-        mAnimateViewReload = true
-
         var appendElements:Bool = false
         var isThePersistentDemo:Bool = false
+        var animateChange:Bool = true
 
         switch (buttonId)
         {
-            case 0:
-                mCurrentDisplayState = AppDisplayState.startUp
-            break
+            case ButtonId.startUp.rawValue: mAppDisplayStateType = AppDisplayState.startUp.typeValue; break
 
-            case 100:
-                mCurrentDisplayState = AppDisplayState.mixed
-            break
+            case 100: mAppDisplayStateType = AppDisplayState.mixed.typeValue; break
 
-            case 101:
-                mCurrentDisplayState = AppDisplayState.animations
-            break
+            case 101: mAppDisplayStateType = AppDisplayState.animations.typeValue; break
 
-            case 102:
-                mCurrentDisplayState = AppDisplayState.switching
-            break
+            case 102: mAppDisplayStateType = AppDisplayState.switching.typeValue; break
 
-            case 1030:
-                mCurrentDisplayState = AppDisplayState.appending
-            break
+            case 1030: mAppDisplayStateType = AppDisplayState.appending.typeValue; break
 
                 case 1031:
-                    mCurrentDisplayState = AppDisplayState.appending
+                    mAppDisplayStateType = AppDisplayState.appending.typeValue
                     appendElements = true
-
-                    // set view animation state
-                    mAnimateViewReload = false
+                    animateChange = false
                 break
 
             case 1040:
-                mCurrentDisplayState = AppDisplayState.persistent
+                mAppDisplayStateType = AppDisplayState.persistent.typeValue
                 isThePersistentDemo = true
             break
 
                 case 1041:
-                    mCurrentDisplayState = AppDisplayState.startUp
+                    mAppDisplayStateType = AppDisplayState.startUp.typeValue
                     // when we leave the state
                     // store the current display list for later reuse
                     // so that when we re-enter the state, we can just use the stored display list
-                    mExamplePersistentDisplayList = mUIPheonix.displayList()
+                    mExamplePersistentDisplayList = mUIPheonix.displayModels()
                 break
 
-            case 105:
-                mCurrentDisplayState = AppDisplayState.specific
-            break
+            case 105: mAppDisplayStateType = AppDisplayState.specific.typeValue; break
 
-            default:
-                mCurrentDisplayState = AppDisplayState.startUp
-            break
+            default: mAppDisplayStateType = AppDisplayState.startUp.typeValue; break
         }
 
+
+        animateView(animate:animateChange, animationState:false)
         updateView(appendElements:appendElements, isThePersistentDemo:isThePersistentDemo)
+        animateView(animate:animateChange, animationState:true)
     }
 
 
@@ -248,15 +190,17 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
         if (isThePersistentDemo && (mExamplePersistentDisplayList != nil))
         {
             // update UIPheonix with the persistent display list
-            mUIPheonix!.setDisplayList(with:mExamplePersistentDisplayList!)
-            return
+            mUIPheonix!.setDisplayModels(with:mExamplePersistentDisplayList!)
         }
-
-        if (mUIPheonix == nil)
+        else if (appendElements)
+        {
+            mUIPheonix.addDisplayModels(in:mUIPheonix.displayModels())
+        }
+        else if (mUIPheonix == nil)
         {
             // init UIPheonix, with JSON file
             mUIPheonix = UIPheonix(with:ibCollectionView)
-            if let jsonDictionary:Dictionary<String, Any> = DataProvider.loadJSON(inFilePath:mCurrentDisplayState.rawValue)
+            if let jsonDictionary:Dictionary<String, Any> = DataProvider.loadJSON(inFilePath:mAppDisplayStateType.jsonFileName.rawValue)
             {
                 mUIPheonix.setModelViewRelationships(with:jsonDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>)
                 mUIPheonix.setDisplayModels(with:jsonDictionary[UIPConstants.Collection.cellModels] as! Array<Any>, append:false)
@@ -289,10 +233,32 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
 
             mUIPheonix.setDisplayList(with:modelsArray)*/
         }
+
+
+        // reload the collection view
+        ibCollectionView.reloadData()
+    }
+
+
+    func animateView(animate:Bool, animationState:Bool)
+    {
+        // do a nice fading animation
+        if (animate)
+        {
+            NSAnimationContext.runAnimationGroup(
+            {
+                [weak self] (context:NSAnimationContext) in
+
+                // guard self here…
+
+                context.duration = 0.5
+                self?.view.animator().alphaValue = animationState ? 1.0 : 0.0
+            },
+            completionHandler:nil)
+        }
         else
         {
-            // update UIPheonix
-            mUIPheonix.setDisplayList(with:displayDictionary, appendElements:appendElements)
+            view.alphaValue = animationState ? 1.0 : 0.0
         }
     }
 }

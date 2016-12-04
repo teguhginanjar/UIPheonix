@@ -40,7 +40,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     fileprivate var mViewToFocus:UIView? = nil
 
     // MARK: (for demo purpose only)
-    fileprivate var mExamplePersistentDisplayList:Array<UIPInstantiatable>?
+    fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
     fileprivate var mAnimateViewReload:Bool = true
 
     // MARK: Overriding Member
@@ -106,7 +106,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
         cellView.layoutIfNeeded()
 
         // tvOS, focus on item that wants focus (only buttons in this case)
-        if (cellModel.viewReuseId() == SimpleButtonModel.viewReuseIdStatic())
+        if (cellModel.viewReuseId() == SimpleButtonModel.nameStatic())
         {
             let buttonModel:SimpleButtonModel = cellModel as! SimpleButtonModel
 

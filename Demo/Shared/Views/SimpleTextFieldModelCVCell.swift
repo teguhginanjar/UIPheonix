@@ -53,13 +53,6 @@ final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
     // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
 
 
-    override class func nibNameStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {

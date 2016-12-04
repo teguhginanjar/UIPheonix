@@ -39,7 +39,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     fileprivate var mCurrentDisplayState:UIDisplayState!
 
     // MARK: (for demo purpose only)
-    fileprivate var mExamplePersistentDisplayList:Array<UIPInstantiatable>?
+    fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
     fileprivate var mAnimateViewReload:Bool = true
 
 
@@ -86,7 +86,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     -> UICollectionViewCell
     {
         let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.viewReuseId(), for:indexPath)!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.name(), for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
@@ -117,7 +117,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     -> CGSize
     {
         let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.viewReuseId())!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.name())!
 
         // default: full width, no margins
         let defaultCellWidth:CGFloat = collectionView.bounds.size.width - 0 - 0
@@ -272,7 +272,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
             else
             {
                 // update UIPheonix
-                mUIPheonix?.setDisplayList(displayDictionary, append:append)
+                mUIPheonix?.setDisplayList(with:displayDictionary, appendElements:append)
             }
         }
     }

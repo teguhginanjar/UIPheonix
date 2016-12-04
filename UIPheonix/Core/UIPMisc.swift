@@ -135,36 +135,3 @@ extension CGFloat
     }
 }
 
-
-// MARK:- Dictionary
-
-
-func += <K, V>(left:inout Dictionary<K, V>, right:Dictionary<K, V>)
-{
-    for (k, v) in right
-    {
-        left.updateValue(v, forKey:k)
-    }
-}
-
-
-extension Dictionary
-{
-    mutating func merge(with dictionary:Dictionary)
-    {
-        for (key, value) in dictionary
-        {
-            self[key] = value
-        }
-    }
-
-
-    mutating func mergeInPlace<S:Sequence>(sequence:S) where S.Iterator.Element == (Key,Value)
-    {
-        for (key, value) in sequence
-        {
-            self[key] = value
-        }
-    }
-}
-

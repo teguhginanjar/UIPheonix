@@ -57,13 +57,6 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
     // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
 
 
-    override class func nibNameStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
@@ -128,7 +121,7 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
 
     @objc fileprivate func handleNotification(notification:NSNotification)
     {
-        let value:Double = notification.userInfo?["CounterValue"] as? Double ?? Double.nan
+        let value:Double = notification.userInfo?[NotificationKey.counterValue] as? Double ?? Double.nan
 
         #if os(iOS) || os(tvOS)
             ibLabel.text = "The counter value is: \(Int(value))"
@@ -143,13 +136,13 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
     {
         switch (aligment)
         {
-            case "left":
+            case SimpleLabelModel.Alignment.left:
                 return NSTextAlignment.left
 
-            case "center":
+            case SimpleLabelModel.Alignment.center:
                 return NSTextAlignment.center
 
-            case "right":
+            case SimpleLabelModel.Alignment.right:
                 return NSTextAlignment.right
 
             default:
@@ -163,10 +156,10 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
     {
         switch (style)
         {
-            case "regular":
+            case SimpleLabelModel.Style.regular:
                 return UIPPlatformFont.systemFont(ofSize:size)
 
-            case "bold":
+            case SimpleLabelModel.Style.bold:
                 return UIPPlatformFont.boldSystemFont(ofSize:size)
 
             default:

@@ -34,6 +34,9 @@
 
 class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCVCellProtocol
 {
+    // MARK: UIPPlatformCollectionViewCell
+
+
     #if os(tvOS)
     // MARK: Overriding Member
     override var canBecomeFocused:Bool
@@ -42,9 +45,6 @@ class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCVCellProtocol
         return false
     }
     #endif
-
-
-    // MARK:- Life Cycle
 
 
     ///
@@ -75,14 +75,11 @@ class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCVCellProtocol
     }*/
 
 
-    // MARK:- UIPBaseCVCellProtocol (Override Required)
+    // MARK:- UIPBaseCVCellProtocol
 
 
-    class func nibNameStatic()
-    -> String
-    {
-        fatalError("You must override \(#function) in your subclass!")
-    }
+    var nameOfClass:String { get { return "\(type(of:self))" } }
+    static var nameOfClass:String { get { return "\(self)" } }
 
 
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)

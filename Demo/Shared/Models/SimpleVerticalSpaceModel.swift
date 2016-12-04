@@ -28,13 +28,19 @@
 import CoreGraphics
 
 
-class SimpleVerticalSpaceModel:UIPBaseCVCellModel
+final class SimpleVerticalSpaceModel:UIPBaseCVCellModel
 {
+    // MARK: Public Constants
+    struct Key
+    {
+        static let size:String = "size"
+    }
+
     // MARK: Public Members
     public var mSize:CGFloat!
 
 
-    // MARK: UIPInstantiatable
+    // MARK: UIPBaseModelProtocol
 
 
     required init()
@@ -45,7 +51,7 @@ class SimpleVerticalSpaceModel:UIPBaseCVCellModel
 
     override func setContents(with dictionary:Dictionary<String, Any>)
     {
-        mSize = dictionary["size"] as! CGFloat
+        mSize = dictionary[Key.size] as! CGFloat
     }
 
 
@@ -63,25 +69,11 @@ class SimpleVerticalSpaceModel:UIPBaseCVCellModel
     // MARK: UIPBaseCVCellModel
 
 
-    override class func viewReuseIdStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
-    override func viewReuseId()
-    -> String
-    {
-        return "\(type(of:self))"
-    }
-
-
     override func toDictionary()
     -> Dictionary<String, Any>
     {
         return [
-            "size":mSize
+            Key.size:mSize
         ]
     }
 }

@@ -46,13 +46,6 @@ final class SimpleCounterModelCVCell:UIPBaseCVCellView
     // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
 
 
-    override class func nibNameStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
@@ -80,7 +73,7 @@ final class SimpleCounterModelCVCell:UIPBaseCVCellView
         if (mNotificationId != nil)
         {
             NotificationCenter.default.post(name:NSNotification.Name(mNotificationId!),
-                                            object:nil, userInfo:["CounterValue":mCounterValue])
+                                            object:nil, userInfo:[NotificationKey.counterValue:mCounterValue])
         }
     }
 }

@@ -35,7 +35,7 @@ final class CustomViewControllerPresentationAnimator:NSObject, NSViewControllerP
 {
     @objc func animatePresentation(of viewController:NSViewController, from fromViewController:NSViewController)
     {
-        if let window = fromViewController.view.window
+        if let window:NSWindow = fromViewController.view.window
         {
             NSAnimationContext.runAnimationGroup(
             {
@@ -61,7 +61,7 @@ final class CustomViewControllerPresentationAnimator:NSObject, NSViewControllerP
 
     @objc func animateDismissal(of viewController:NSViewController, from fromViewController:NSViewController)
     {
-        if let window = viewController.view.window
+        if let window:NSWindow = viewController.view.window
         {
             NSAnimationContext.runAnimationGroup(
             {

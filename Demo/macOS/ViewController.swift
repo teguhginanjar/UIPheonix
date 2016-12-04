@@ -34,6 +34,11 @@ class ViewController:NSViewController
     {
         super.viewDidAppear()
 
+        if let window:NSWindow = self.view.window
+        {
+            window.setFrameOrigin(window.frame.offsetBy(dx:0, dy:200).origin)
+        }
+
         // create a nice launch screen effect like in iOS
         DispatchQueue.main.asyncAfter(deadline:(.now() + .seconds(1)), execute:
         {

@@ -26,13 +26,19 @@
 //
 
 
-class SimpleTextFieldModel:UIPBaseCVCellModel
+final class SimpleTextFieldModel:UIPBaseCVCellModel
 {
+    // MARK: Public Constants
+    struct Key
+    {
+        static let text:String = "text"
+    }
+
     // MARK: Public Member
     public var mText:String!
 
 
-    // MARK: UIPInstantiatable
+    // MARK: UIPBaseModelProtocol
 
 
     required init()
@@ -43,7 +49,7 @@ class SimpleTextFieldModel:UIPBaseCVCellModel
 
     override func setContents(with dictionary:Dictionary<String, Any>)
     {
-        mText = dictionary["text"] as! String
+        mText = dictionary[Key.text] as! String
     }
 
 
@@ -61,25 +67,11 @@ class SimpleTextFieldModel:UIPBaseCVCellModel
     // MARK: UIPBaseCVCellModel
 
 
-    override class func viewReuseIdStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
-    override func viewReuseId()
-    -> String
-    {
-        return "\(type(of:self))"
-    }
-
-
     override func toDictionary()
     -> Dictionary<String, Any>
     {
         return [
-            "text":mText
+            Key.text:mText
         ]
     }
 }

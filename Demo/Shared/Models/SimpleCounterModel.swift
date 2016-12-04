@@ -26,14 +26,21 @@
 //
 
 
-class SimpleCounterModel:UIPBaseCVCellModel
+final class SimpleCounterModel:UIPBaseCVCellModel
 {
+    // MARK: Public Constants
+    struct Key
+    {
+        static let value:String = "value"
+        static let notificationId:String = "notificationId"
+    }
+
     // MARK: Public Members
     public var mValue:Int!
     public var mNotificationId:String!
 
 
-    // MARK: UIPInstantiatable
+    // MARK:- UIPBaseModelProtocol
 
 
     required init()
@@ -44,13 +51,13 @@ class SimpleCounterModel:UIPBaseCVCellModel
 
     override func setContents(with dictionary:Dictionary<String, Any>)
     {
-        mValue = dictionary["value"] as! Int
+        mValue = dictionary[Key.value] as! Int
 
-        mNotificationId = (dictionary["notificationId"] as? String) ?? nil    // fallback to default value
+        mNotificationId = (dictionary[Key.notificationId] as? String) ?? nil    // fallback to default value
     }
 
 
-    // MARK: Life Cycle
+    // MARK:- Life Cycle
 
 
     init(value:Int, notificationId:String)
@@ -62,29 +69,15 @@ class SimpleCounterModel:UIPBaseCVCellModel
     }
 
 
-    // MARK: UIPBaseCVCellModel
-
-
-    override class func viewReuseIdStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
-    override func viewReuseId()
-    -> String
-    {
-        return "\(type(of:self))"
-    }
+    // MARK:- UIPBaseCVCellModel
 
 
     override func toDictionary()
     -> Dictionary<String, Any>
     {
         return [
-            "value":mValue,
-            "notificationId":mNotificationId
+            Key.value:mValue,
+            Key.notificationId:mNotificationId
         ]
     }
 }

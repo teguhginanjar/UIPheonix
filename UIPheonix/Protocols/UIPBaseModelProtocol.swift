@@ -25,18 +25,17 @@
 //  limitations under the License.
 //
 
+import Foundation
 
-///
-/// All display states with their corresponding JSON file name.
-///
-enum UIDisplayState:String
+
+protocol UIPBaseModelProtocol:class
 {
-    case startUp = "DisplayState-StartUp"
-    case mixed = "DisplayState-Mixed"
-    case animations = "DisplayState-Animations"
-    case switching = "DisplayState-Switching"
-    case appending = "DisplayState-Appending"
-    case persistent = "DisplayState-Persistent"
-    case specific = "DisplayState-Specific"
+    // we can't use "className" because that belongs to Objective-C NSObject
+    var nameOfClass:String { get }
+    static var nameOfClass:String { get }
+
+    init()
+
+    func setContents(with dictionary:Dictionary<String, Any>)
 }
 

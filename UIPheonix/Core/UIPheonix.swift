@@ -51,7 +51,7 @@ final class UIPheonix
     // (initialized as empty for convenience)
     fileprivate var mDisplayDictionary:Dictionary<String, Any> = Dictionary<String, Any>()
     fileprivate var mViewReuseIds:Dictionary<String, Any> = Dictionary<String, Any>()
-    fileprivate var mUIDisplayList:Array<UIPInstantiatable> = Array<UIPInstantiatable>()
+    fileprivate var mUIDisplayList:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
 
     // MARK: Private Weak Reference
     fileprivate weak var mDelegate:UIPDelegate?
@@ -64,7 +64,7 @@ final class UIPheonix
     ///
     /// Init for UICollectionView.
     ///
-    init(delegate:UIPDelegate?, collectionView:UIPPlatformCollectionView?, displayDictionary:Dictionary<String, Any>)
+    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?, using displayDictionary:Dictionary<String, Any>)
     {
         // init members
         mUIPDelegateViewType = UIPDelegateViewType.collection
@@ -74,9 +74,29 @@ final class UIPheonix
         mDelegateCollectionView = collectionView
         mDisplayDictionary = displayDictionary
 
-        // connect & display
+        // connect
         connectCollectionView()
-        createDisplayList(append:false)
+    }
+
+
+    ///
+    /// Init for UICollectionView.
+    ///
+    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?, using modelViewRelationships:Dictionary<String, String>)
+    {
+        // init members
+        mUIPDelegateViewType = UIPDelegateViewType.collection
+        mApplicationNameDot = getApplicationName() + "."
+
+        mDelegate = delegate
+        mDelegateCollectionView = collectionView
+
+        var displayDictionary:Dictionary<String, Any> = Dictionary<String, Any>(minimumCapacity:modelViewRelationships.count)
+        displayDictionary[UIPConstants.Collection.modelViewRelationships] = modelViewRelationships
+        mDisplayDictionary = displayDictionary
+
+        // connect
+        connectCollectionView()
     }
 
 
@@ -116,7 +136,7 @@ final class UIPheonix
     // MARK:- Display List
 
 
-    func setDisplayList(_ displayDictionary:Dictionary<String, Any>, append:Bool=false)
+    func setDisplayList(with displayDictionary:Dictionary<String, Any>, appendElements:Bool=false)
     {
         guard (mDelegate != nil) else {
             fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
@@ -126,13 +146,13 @@ final class UIPheonix
 
         // connect & display
         connectCollectionView()
-        createDisplayList(append:append)
+        createDisplayList(appendElements:appendElements)
 
         mDelegate!.displayListDidSet()
     }
 
 
-    func setDisplayList(_ array:Array<UIPInstantiatable>)
+    func setDisplayList(with array:Array<UIPBaseModelProtocol>)
     {
         guard (mDelegate != nil) else {
             fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
@@ -145,7 +165,7 @@ final class UIPheonix
 
 
     func displayList()
-    -> Array<UIPInstantiatable>
+    -> Array<UIPBaseModelProtocol>
     {
         return mUIDisplayList
     }
@@ -389,7 +409,7 @@ final class UIPheonix
     }
 
 
-    fileprivate func createDisplayList(append:Bool)
+    fileprivate func createDisplayList(appendElements:Bool)
     {
         // read models
         let uipCVCellModelsArray:Array<Any> = mDisplayDictionary[UIPConstants.Collection.cellModels] as! Array<Any>
@@ -399,7 +419,7 @@ final class UIPheonix
         }
 
         // don't append, but replace
-        if (!append)
+        if (!appendElements)
         {
             // prepare a new empty display list
             mUIDisplayList.removeAll(keepingCapacity:false)
@@ -418,9 +438,9 @@ final class UIPheonix
             }
 
             // create & add models
-            if let modelClassType:UIPInstantiatable.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPInstantiatable.Type
+            if let modelClassType:UIPBaseModelProtocol.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPBaseModelProtocol.Type
             {
-                let aModelObj:UIPInstantiatable = modelClassType.init()
+                let aModelObj:UIPBaseModelProtocol = modelClassType.init()
                 aModelObj.setContents(with:modelDict)
 
                 mUIDisplayList.append(aModelObj)

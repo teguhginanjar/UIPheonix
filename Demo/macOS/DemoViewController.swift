@@ -39,7 +39,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
     fileprivate var mCurrentDisplayState:UIDisplayState!
 
     // MARK: (for demo purpose only)
-    fileprivate var mExamplePersistentDisplayList:Array<UIPInstantiatable>?
+    fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
     fileprivate var mAnimateViewReload:Bool = true
 
 
@@ -88,7 +88,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
     -> NSCollectionViewItem
     {
         let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.viewReuseId(), for:indexPath)!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
@@ -117,7 +117,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
     -> CGSize
     {
         let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.viewReuseId())!
+        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
 
         // default: full width, no margins
         let defaultCellWidth:CGFloat = collectionView.bounds.size.width - 0 - 0
@@ -180,7 +180,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
         // reset view animation state
         mAnimateViewReload = true
 
-        var append:Bool = false
+        var appendElements:Bool = false
         var isThePersistentDemo:Bool = false
 
         switch (buttonId)
@@ -207,7 +207,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
 
                 case 1031:
                     mCurrentDisplayState = UIDisplayState.appending
-                    append = true
+                    appendElements = true
 
                     // set view animation state
                     mAnimateViewReload = false
@@ -235,20 +235,20 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
             break
         }
 
-        updateView(append:append, isThePersistentDemo:isThePersistentDemo)
+        updateView(appendElements:appendElements, isThePersistentDemo:isThePersistentDemo)
     }
 
 
     // MARK:- Private
 
 
-    func updateView(append:Bool=false, isThePersistentDemo:Bool=false)
+    func updateView(appendElements:Bool=false, isThePersistentDemo:Bool=false)
     {
         // for the persistent demo
         if (isThePersistentDemo && (mExamplePersistentDisplayList != nil))
         {
             // update UIPheonix with the persistent display list
-            mUIPheonix?.setDisplayList(mExamplePersistentDisplayList!)
+            mUIPheonix!.setDisplayList(with:mExamplePersistentDisplayList!)
             return
         }
 
@@ -260,13 +260,38 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
         {
             if (mUIPheonix == nil)
             {
-                // init UIPheonix
-                mUIPheonix = UIPheonix(delegate:self, collectionView:ibCollectionView, displayDictionary:displayDictionary)
+                // init UIPheonix, with JSON dictionary
+                //mUIPheonix = UIPheonix(with:self, for:ibCollectionView, using:displayDictionary)
+                //mUIPheonix.setDisplayList(with:displayDictionary, appendElements:false)
+
+                // or //
+
+                // init UIPheonix, with model:view dictionary
+                mUIPheonix = UIPheonix(with:self,
+                                        for:ibCollectionView,
+                                      using:[SimpleButtonModel.nameOfClass:SimpleButtonModelCVCell.nameOfClass,
+                                             SimpleCounterModel.nameOfClass:SimpleCounterModelCVCell.nameOfClass,
+                                             SimpleLabelModel.nameOfClass:SimpleLabelModelCVCell.nameOfClass,
+                                             SimpleTextFieldModel.nameOfClass:SimpleTextFieldModelCVCell.nameOfClass,
+                                             SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
+                                             SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
+
+                var modelsArray:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
+
+                for i in 1 ... 20
+                {
+                    let newModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
+                                                                     alignment:"left", style:"regular",
+                                                                     backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
+                    modelsArray.append(newModel)
+                }
+
+                mUIPheonix.setDisplayList(with:modelsArray)
             }
             else
             {
                 // update UIPheonix
-                mUIPheonix?.setDisplayList(displayDictionary, append:append)
+                mUIPheonix.setDisplayList(with:displayDictionary, appendElements:appendElements)
             }
         }
     }

@@ -63,13 +63,6 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
     // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
 
 
-    override class func nibNameStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
@@ -85,14 +78,14 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
             })
 
         #elseif os(macOS)
-            ibButton.title = simpleButtonModel.mButtonTitle
+            ibButton.title = simpleButtonModel.mTitle
             ibButton.sizeToFit()
             alignButton(with:simpleButtonModel.mAlignment)
         #endif
 
         // view delegate handling
         mDelegate = delegate as? UIPButtonDelegate
-        mButtonId = simpleButtonModel.mButtonId
+        mButtonId = simpleButtonModel.mId
 
         // return view size
         return UIPCellSizeUnmodified
@@ -119,15 +112,15 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
 
             switch (aligment)
             {
-                case "left":
+                case SimpleButtonModel.Alignment.left:
                     ibCenterConstraint.constant = -cellViewHalfWidth + (buttonWidth / 2) + 13
                 break
 
-                case "center":
+                case SimpleButtonModel.Alignment.center:
                     ibCenterConstraint.constant = 0
                 break
 
-                case "right":
+                case SimpleButtonModel.Alignment.right:
                     ibCenterConstraint.constant = cellViewHalfWidth - (buttonWidth / 2) - 13
                 break
 

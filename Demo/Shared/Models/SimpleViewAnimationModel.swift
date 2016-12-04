@@ -26,13 +26,19 @@
 //
 
 
-class SimpleViewAnimationModel:UIPBaseCVCellModel
+final class SimpleViewAnimationModel:UIPBaseCVCellModel
 {
+    // MARK: Public Constants
+    struct Key
+    {
+        static let animationState:String = "animationState"
+    }
+
     // MARK: Public Member
     public var mAnimationState:Bool = false
 
 
-    // MARK: UIPInstantiatable
+    // MARK: UIPBaseModelProtocol
 
 
     required init()
@@ -43,7 +49,7 @@ class SimpleViewAnimationModel:UIPBaseCVCellModel
 
     override func setContents(with dictionary:Dictionary<String, Any>)
     {
-        mAnimationState = dictionary["animationState"] as! Bool
+        mAnimationState = dictionary[Key.animationState] as! Bool
     }
 
 
@@ -61,25 +67,11 @@ class SimpleViewAnimationModel:UIPBaseCVCellModel
     // MARK: UIPBaseCVCellModel
 
 
-    override class func viewReuseIdStatic()
-    -> String
-    {
-        return "\(self)"
-    }
-
-
-    override func viewReuseId()
-    -> String
-    {
-        return "\(type(of:self))"
-    }
-
-
     override func toDictionary()
     -> Dictionary<String, Any>
     {
         return [
-            "animationState":mAnimationState
+            Key.animationState:mAnimationState
         ]
     }
 }

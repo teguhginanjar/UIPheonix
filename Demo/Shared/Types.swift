@@ -25,13 +25,24 @@
 //  limitations under the License.
 //
 
-import Foundation
 
-
-protocol UIPInstantiatable:class
+///
+/// All display states with their corresponding JSON file name.
+///
+enum UIDisplayState:String
 {
-    init()
+    case startUp = "DisplayState-StartUp"
+    case mixed = "DisplayState-Mixed"
+    case animations = "DisplayState-Animations"
+    case switching = "DisplayState-Switching"
+    case appending = "DisplayState-Appending"
+    case persistent = "DisplayState-Persistent"
+    case specific = "DisplayState-Specific"
+}
 
-    func setContents(with dictionary:Dictionary<String, Any>)
+
+struct NotificationKey
+{
+    static let counterValue = "CounterValue"
 }
 

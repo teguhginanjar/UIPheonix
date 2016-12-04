@@ -26,9 +26,11 @@
 //
 
 
-class UIPBaseCVCellModel:UIPInstantiatable
+class UIPBaseCVCellModel:UIPBaseModelProtocol
 {
-    // MARK: UIPInstantiatable
+    // MARK: UIPBaseModelProtocol
+    var nameOfClass:String { get { return "\(type(of:self))" } }
+    static var nameOfClass:String { get { return "\(self)" } }
 
 
     required init()
@@ -43,31 +45,13 @@ class UIPBaseCVCellModel:UIPInstantiatable
     }
 
 
-    // MARK: Base Class Functions
+    // MARK:- Base Class Functions
 
 
     ///
-    /// The reuse identifier for the view (in static context).
-    /// E.g. "UIPBaseCVCellModel" the name of the class.
+    /// Currently this has no purpose other than to serve as a "forced" implementation
+    /// that may/will come in hand when there is a need to debug a model.
     ///
-    class func viewReuseIdStatic()
-    -> String
-    {
-        fatalError("You must override \(#function) in your subclass!")
-    }
-
-
-    ///
-    /// The reuse identifier for the view.
-    /// E.g. "UIPBaseCVCellModel" the name of the class.
-    ///
-    func viewReuseId()
-    -> String
-    {
-        fatalError("You must override \(#function) in your subclass!")
-    }
-
-
     func toDictionary()
     -> Dictionary<String, Any>
     {

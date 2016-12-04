@@ -29,7 +29,7 @@ import Cocoa
 
 
 final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource,
-                               UIPDelegate, UIPButtonDelegate
+                               UIPButtonDelegate
 {
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:NSCollectionView!
@@ -255,9 +255,15 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
         if (mUIPheonix == nil)
         {
             // init UIPheonix, with JSON file
-            let jsonFileName:String = mCurrentDisplayState.rawValue
-            mUIPheonix = UIPheonix(with:self, for:ibCollectionView, using:jsonFileName)
-            mUIPheonix.setDisplayList(with:displayDictionary, appendElements:false)
+            mUIPheonix = UIPheonix(with:ibCollectionView)
+            if let jsonDictionary:Dictionary<String, Any> = DataProvider.loadJSON(inFilePath:mCurrentDisplayState.rawValue)
+            {
+                mUIPheonix.setModelViewRelationships(with:jsonDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>)
+                mUIPheonix.setDisplayModels(with:jsonDictionary[UIPConstants.Collection.cellModels] as! Array<Any>, append:false)
+            }
+            else {
+                fatalError("Failed to init with JSON file!")
+            }
 
             // or //
 

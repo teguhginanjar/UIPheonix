@@ -51,10 +51,9 @@ final class UIPheonix
     // (initialized as empty for convenience)
     fileprivate var mModelViewRelationships:Dictionary<String, String> = Dictionary<String, String>()
     fileprivate var mViewReuseIds:Dictionary<String, Any> = Dictionary<String, Any>()
-    /* rename */ fileprivate var mUIDisplayList:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
+    fileprivate var mDisplayModels:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
 
     // MARK: Private Weak Reference
-    fileprivate weak var mDelegate:UIPDelegate?
     fileprivate weak var mDelegateCollectionView:UIPPlatformCollectionView?
 
 
@@ -68,13 +67,12 @@ final class UIPheonix
     ///   - delegate: A handler for `UIPDelegate`.
     ///   - collectionView: The collection view.
     ///
-    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?)
+    init(with collectionView:UIPPlatformCollectionView?)
     {
         // init members
         mUIPDelegateViewType = UIPDelegateViewType.collection
         mApplicationNameDot = getApplicationName() + "."
 
-        mDelegate = delegate
         mDelegateCollectionView = collectionView
     }
 
@@ -82,19 +80,10 @@ final class UIPheonix
     // MARK:- Model-View Relationships
 
 
-    // Containing both *model-view relationships* and *model data*
-    // JSON file in the app bundle containing both *model-view relationships* and *model data*
-    // Containing only *model-view relationships*, no model data provided here.
-
-
-    //using jsonFileName:String
-    //guard let displayDictionary:Dictionary<String, Any> = loadJSONFile(jsonFileName) else { return }
-
-
     func setModelViewRelationships(with dictionary:Dictionary<String, String>)
     {
         guard (dictionary.count != 0) else {
-            fatalError("[UIPheonix] Can't set new model-view relationships dictionary because it is empty!")
+            fatalError("[UIPheonix] Can't set model-view relationships with dictionary because it is empty!")
         }
 
         mModelViewRelationships = dictionary
@@ -103,73 +92,90 @@ final class UIPheonix
     }
 
 
-
-
-
     // MARK:- Display Models List
 
 
-
-
-
-
-
     ///
-    /// Replaces the entire display dictionary i.e. all model-view relationships.
+    /// - Parameters:
+    ///   - rawModelsArray: An array containing dictionary objects with model data (e.g. from JSON).
+    ///   - append: Append to or replace current model list.
     ///
-    func setDisplayList(with displayDictionary:Dictionary<String, Any>, appendElements:Bool=false)
+    func setDisplayModels(with rawModelDataArray:Array<Any>, append:Bool)
     {
-        guard (mDelegate != nil) else {
-            fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
+        guard (rawModelDataArray.count != 0) else {
+            fatalError("[UIPheonix] Raw model data array is empty!")
         }
 
-        // connect & display
-        connectWithCollectionView(with:displayDictionary)
-        createDisplayListFromDisplayDictionary(appendElements:appendElements)
+        // don't append, but replace
+        if (!append)
+        {
+            // prepare a new empty display models list
+            mDisplayModels.removeAll(keepingCapacity:false)
+        }
 
-        mDelegate!.displayListDidSet()
+        // instantiate model classes with their data in the display dictionary
+        // add the models to the display list
+        for aModelType:Any in rawModelDataArray
+        {
+            let modelDict:Dictionary<String, Any> = aModelType as! Dictionary<String, Any>
+            let modelTypeName:String? = modelDict[UIPConstants.modelType] as? String
+
+            // `type` field does not exist
+            if (modelTypeName == nil) {
+                fatalError("[UIPheonix] The key `type` was not found for the model `\(aModelType)`!")
+            }
+
+            // create & add models
+            if let modelClassType:UIPBaseModelProtocol.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPBaseModelProtocol.Type
+            {
+                let aModelObj:UIPBaseModelProtocol = modelClassType.init()
+                aModelObj.setContents(with:modelDict)
+
+                mDisplayModels.append(aModelObj)
+            }
+        }
     }
 
 
     ///
-    /// Replaces only the display list i.e. models.
+    /// I.e. replace
     ///
-    func setDisplayList(with array:Array<UIPBaseModelProtocol>)
+    func setDisplayModels(with array:Array<UIPBaseModelProtocol>)
     {
-        guard (mDelegate != nil) else {
-            fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
-        }
-
-        mUIDisplayList = array
-
-        mDelegate!.displayListDidSet()
+        mDisplayModels = array
     }
 
 
-    func displayList()
+    func addDisplayModels(in array:Array<UIPBaseModelProtocol>)
+    {
+        mDisplayModels.append(contentsOf:array)
+    }
+
+
+    func displayModels()
     -> Array<UIPBaseModelProtocol>
     {
-        return mUIDisplayList
+        return mDisplayModels
     }
 
 
     ///
-    /// The number of RUIC's in the display list.
+    /// The number of models in the display models list.
     ///
     func count()
     -> Int
     {
-        return mUIDisplayList.count
+        return mDisplayModels.count
     }
 
 
     ///
-    /// Get RUIC model.
+    /// Get model.
     ///
     func model(at index:Int)
     -> UIPBaseCVCellModel?
     {
-        if let cellModel:UIPBaseCVCellModel = mUIDisplayList[index] as? UIPBaseCVCellModel
+        if let cellModel:UIPBaseCVCellModel = mDisplayModels[index] as? UIPBaseCVCellModel
         {
             return cellModel
         }
@@ -315,6 +321,7 @@ final class UIPheonix
             fatalError("[UIPheonix] Model-View relationships dictionary is empty!")
         }
 
+
         var modelClassNames:Array<String> = Array<String>()
         var nibNames:Array<String> = Array<String>()
 
@@ -327,6 +334,7 @@ final class UIPheonix
         guard (modelClassNames.count == nibNames.count) else {
             fatalError("[UIPheonix] Number of `modelClassNames` & `nibNames` count does not match!")
         }
+
 
         for i in 0 ..< modelClassNames.count
         {
@@ -351,6 +359,7 @@ final class UIPheonix
                     fatalError("[UIPheonix] Nib is empty: \(nibName)")
                 }
 
+
                 // find the element we are looking for, since the xib contents order is not guaranteed
                 let filteredNibContents:[Any] = nibContents!.filter(
                 {
@@ -361,6 +370,7 @@ final class UIPheonix
                 guard (filteredNibContents.count == 1) else {
                     fatalError("[UIPheonix] Nib \"\(nibName)\" contains more elements, expected only 1!")
                 }
+
 
                 // with the reuse-id, connect the cell-view in the nib
                 #if os(iOS) || os(tvOS)
@@ -383,46 +393,6 @@ final class UIPheonix
 
                     mDelegateCollectionView!.register(nib, forItemWithIdentifier:modelName)
                 #endif
-            }
-        }
-    }
-
-
-    fileprivate func createDisplayListFromDisplayDictionary(appendElements:Bool)
-    {
-        // read models
-        let uipCVCellModelsArray:Array<Any> = mDisplayDictionary[UIPConstants.Collection.cellModels] as! Array<Any>
-
-        guard (uipCVCellModelsArray.count != 0) else {
-            fatalError("[UIPheonix] The key `\(UIPConstants.Collection.cellModels)` could not be found in the display dictionary!")
-        }
-
-        // don't append, but replace
-        if (!appendElements)
-        {
-            // prepare a new empty display list
-            mUIDisplayList.removeAll(keepingCapacity:false)
-        }
-
-        // instantiate model classes with their data in the display dictionary
-        // add the models to the display list
-        for aModelType:Any in uipCVCellModelsArray
-        {
-            let modelDict:Dictionary<String, Any> = aModelType as! Dictionary<String, Any>
-            let modelTypeName:String? = modelDict["type"] as? String
-
-            // `type` field does not exist
-            if (modelTypeName == nil) {
-                fatalError("[UIPheonix] The key `type` was not found for the model `\(aModelType)`!")
-            }
-
-            // create & add models
-            if let modelClassType:UIPBaseModelProtocol.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPBaseModelProtocol.Type
-            {
-                let aModelObj:UIPBaseModelProtocol = modelClassType.init()
-                aModelObj.setContents(with:modelDict)
-
-                mUIDisplayList.append(aModelObj)
             }
         }
     }

@@ -28,15 +28,6 @@
 import Foundation
 
 
-protocol UIPDelegate:class
-{
-    ///
-    /// Called when the display list has been set/created/updated.
-    ///
-    func displayListDidSet()
-}
-
-
 protocol UIPButtonDelegate:class
 {
     func buttonAction(_ buttonId:Int)

@@ -55,6 +55,8 @@ func NOTE()
 
 struct UIPConstants
 {
+    static let modelType:String = "type"
+
     struct Collection
     {
         static let modelViewRelationships:String = "UIPCVModelViewRelationships"

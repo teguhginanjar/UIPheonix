@@ -36,7 +36,7 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
 
     // MARK: Private Members
     fileprivate var mUIPheonix:UIPheonix!
-    fileprivate var mCurrentDisplayState:UIDisplayState!
+    fileprivate var mCurrentDisplayState:AppDisplayState!
 
     // MARK: (for demo purpose only)
     fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
@@ -49,14 +49,14 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
     ///
     /// Create a new instance of self with nib.
     ///
-    class func newInstance(with uiDisplayState:UIDisplayState)
+    class func newInstance(with appDisplayState:AppDisplayState)
     -> DemoViewController
     {
         guard let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil) else {
             fatalError("[UIPheonix] Could not create new instance of `DemoViewController` from nib!")
         }
 
-        vc.mCurrentDisplayState = uiDisplayState
+        vc.mCurrentDisplayState = appDisplayState
 
         return vc
     }
@@ -186,27 +186,27 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
         switch (buttonId)
         {
             case 0:
-                mCurrentDisplayState = UIDisplayState.startUp
+                mCurrentDisplayState = AppDisplayState.startUp
             break
 
             case 100:
-                mCurrentDisplayState = UIDisplayState.mixed
+                mCurrentDisplayState = AppDisplayState.mixed
             break
 
             case 101:
-                mCurrentDisplayState = UIDisplayState.animations
+                mCurrentDisplayState = AppDisplayState.animations
             break
 
             case 102:
-                mCurrentDisplayState = UIDisplayState.switching
+                mCurrentDisplayState = AppDisplayState.switching
             break
 
             case 1030:
-                mCurrentDisplayState = UIDisplayState.appending
+                mCurrentDisplayState = AppDisplayState.appending
             break
 
                 case 1031:
-                    mCurrentDisplayState = UIDisplayState.appending
+                    mCurrentDisplayState = AppDisplayState.appending
                     appendElements = true
 
                     // set view animation state
@@ -214,12 +214,12 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
                 break
 
             case 1040:
-                mCurrentDisplayState = UIDisplayState.persistent
+                mCurrentDisplayState = AppDisplayState.persistent
                 isThePersistentDemo = true
             break
 
                 case 1041:
-                    mCurrentDisplayState = UIDisplayState.startUp
+                    mCurrentDisplayState = AppDisplayState.startUp
                     // when we leave the state
                     // store the current display list for later reuse
                     // so that when we re-enter the state, we can just use the stored display list
@@ -227,11 +227,11 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
                 break
 
             case 105:
-                mCurrentDisplayState = UIDisplayState.specific
+                mCurrentDisplayState = AppDisplayState.specific
             break
 
             default:
-                mCurrentDisplayState = UIDisplayState.startUp
+                mCurrentDisplayState = AppDisplayState.startUp
             break
         }
 
@@ -252,47 +252,41 @@ final class DemoViewController:NSViewController, NSCollectionViewDelegateFlowLay
             return
         }
 
-
-        // load JSON file
-        let jsonFileName:String = mCurrentDisplayState.rawValue
-
-        if let displayDictionary:Dictionary<String, Any> = UIPheonix.loadJSONFile(jsonFileName)
+        if (mUIPheonix == nil)
         {
-            if (mUIPheonix == nil)
+            // init UIPheonix, with JSON file
+            let jsonFileName:String = mCurrentDisplayState.rawValue
+            mUIPheonix = UIPheonix(with:self, for:ibCollectionView, using:jsonFileName)
+            mUIPheonix.setDisplayList(with:displayDictionary, appendElements:false)
+
+            // or //
+
+            // init UIPheonix, with model:view dictionary
+            /*mUIPheonix = UIPheonix(with:self,
+                                    for:ibCollectionView,
+                                  using:[SimpleButtonModel.nameOfClass:SimpleButtonModelCVCell.nameOfClass,
+                                         SimpleCounterModel.nameOfClass:SimpleCounterModelCVCell.nameOfClass,
+                                         SimpleLabelModel.nameOfClass:SimpleLabelModelCVCell.nameOfClass,
+                                         SimpleTextFieldModel.nameOfClass:SimpleTextFieldModelCVCell.nameOfClass,
+                                         SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
+                                         SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
+
+            var modelsArray:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
+
+            for i in 1 ... 20
             {
-                // init UIPheonix, with JSON dictionary
-                //mUIPheonix = UIPheonix(with:self, for:ibCollectionView, using:displayDictionary)
-                //mUIPheonix.setDisplayList(with:displayDictionary, appendElements:false)
-
-                // or //
-
-                // init UIPheonix, with model:view dictionary
-                mUIPheonix = UIPheonix(with:self,
-                                        for:ibCollectionView,
-                                      using:[SimpleButtonModel.nameOfClass:SimpleButtonModelCVCell.nameOfClass,
-                                             SimpleCounterModel.nameOfClass:SimpleCounterModelCVCell.nameOfClass,
-                                             SimpleLabelModel.nameOfClass:SimpleLabelModelCVCell.nameOfClass,
-                                             SimpleTextFieldModel.nameOfClass:SimpleTextFieldModelCVCell.nameOfClass,
-                                             SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
-                                             SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
-
-                var modelsArray:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
-
-                for i in 1 ... 20
-                {
-                    let newModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
-                                                                     alignment:"left", style:"regular",
-                                                                     backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
-                    modelsArray.append(newModel)
-                }
-
-                mUIPheonix.setDisplayList(with:modelsArray)
+                let newModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
+                                                                 alignment:"left", style:"regular",
+                                                                 backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
+                modelsArray.append(newModel)
             }
-            else
-            {
-                // update UIPheonix
-                mUIPheonix.setDisplayList(with:displayDictionary, appendElements:appendElements)
-            }
+
+            mUIPheonix.setDisplayList(with:modelsArray)*/
+        }
+        else
+        {
+            // update UIPheonix
+            mUIPheonix.setDisplayList(with:displayDictionary, appendElements:appendElements)
         }
     }
 }

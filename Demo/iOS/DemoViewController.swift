@@ -36,7 +36,7 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
 
     // MARK: Private Members
     fileprivate var mUIPheonix:UIPheonix!
-    fileprivate var mCurrentDisplayState:UIDisplayState!
+    fileprivate var mCurrentDisplayState:AppDisplayState!
 
     // MARK: (for demo purpose only)
     fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
@@ -49,12 +49,12 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
     ///
     /// Create a new instance of self with nib.
     ///
-    class func newInstance(with uiDisplayState:UIDisplayState)
+    class func newInstance(with appDisplayState:AppDisplayState)
     -> DemoViewController
     {
         let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil)
 
-        vc.mCurrentDisplayState = uiDisplayState
+        vc.mCurrentDisplayState = appDisplayState
 
         return vc
     }
@@ -192,27 +192,27 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
         switch (buttonId)
         {
             case 0:
-                mCurrentDisplayState = UIDisplayState.startUp
+                mCurrentDisplayState = AppDisplayState.startUp
             break
 
             case 100:
-                mCurrentDisplayState = UIDisplayState.mixed
+                mCurrentDisplayState = AppDisplayState.mixed
             break
 
             case 101:
-                mCurrentDisplayState = UIDisplayState.animations
+                mCurrentDisplayState = AppDisplayState.animations
             break
 
             case 102:
-                mCurrentDisplayState = UIDisplayState.switching
+                mCurrentDisplayState = AppDisplayState.switching
             break
 
             case 1030:
-                mCurrentDisplayState = UIDisplayState.appending
+                mCurrentDisplayState = AppDisplayState.appending
             break
 
                 case 1031:
-                    mCurrentDisplayState = UIDisplayState.appending
+                    mCurrentDisplayState = AppDisplayState.appending
                     append = true
 
                     // set view animation state
@@ -220,12 +220,12 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
                 break
 
             case 1040:
-                mCurrentDisplayState = UIDisplayState.persistent
+                mCurrentDisplayState = AppDisplayState.persistent
                 isThePersistentDemo = true
             break
 
                 case 1041:
-                    mCurrentDisplayState = UIDisplayState.startUp
+                    mCurrentDisplayState = AppDisplayState.startUp
                     // when we leave the state
                     // store the current display list for later reuse
                     // so that when we re-enter the state, we can just use the stored display list
@@ -233,11 +233,11 @@ final class DemoViewController:UIViewController, UICollectionViewDelegateFlowLay
                 break
 
             case 105:
-                mCurrentDisplayState = UIDisplayState.specific
+                mCurrentDisplayState = AppDisplayState.specific
             break
 
             default:
-                mCurrentDisplayState = UIDisplayState.startUp
+                mCurrentDisplayState = AppDisplayState.startUp
             break
         }
 

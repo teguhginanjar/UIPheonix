@@ -27,9 +27,9 @@
 
 
 ///
-/// All display states with their corresponding JSON file name.
+/// All app display states with their corresponding JSON file name.
 ///
-enum UIDisplayState:String
+enum AppDisplayState:String
 {
     case startUp = "DisplayState-StartUp"
     case mixed = "DisplayState-Mixed"

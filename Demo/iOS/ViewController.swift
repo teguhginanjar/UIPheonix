@@ -36,7 +36,7 @@ class ViewController:UIViewController
 
         // start the UIPheonix iOS demo
         // create & present a new instance of the demo VC
-        let demoViewController:DemoViewController = DemoViewController.newInstance(with:UIDisplayState.startUp)
+        let demoViewController:DemoViewController = DemoViewController.newInstance(with:AppDisplayState.startUp)
         self.navigationController!.present(demoViewController, animated:true, completion:nil)
     }
 }

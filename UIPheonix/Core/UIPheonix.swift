@@ -49,9 +49,9 @@ final class UIPheonix
     fileprivate var mUIPDelegateViewType:UIPDelegateViewType!
 
     // (initialized as empty for convenience)
-    fileprivate var mDisplayDictionary:Dictionary<String, Any> = Dictionary<String, Any>()
+    fileprivate var mModelViewRelationships:Dictionary<String, String> = Dictionary<String, String>()
     fileprivate var mViewReuseIds:Dictionary<String, Any> = Dictionary<String, Any>()
-    fileprivate var mUIDisplayList:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
+    /* rename */ fileprivate var mUIDisplayList:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
 
     // MARK: Private Weak Reference
     fileprivate weak var mDelegate:UIPDelegate?
@@ -64,7 +64,11 @@ final class UIPheonix
     ///
     /// Init for UICollectionView.
     ///
-    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?, using displayDictionary:Dictionary<String, Any>)
+    /// - Parameters:
+    ///   - delegate: A handler for `UIPDelegate`.
+    ///   - collectionView: The collection view.
+    ///
+    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?)
     {
         // init members
         mUIPDelegateViewType = UIPDelegateViewType.collection
@@ -72,86 +76,64 @@ final class UIPheonix
 
         mDelegate = delegate
         mDelegateCollectionView = collectionView
-        mDisplayDictionary = displayDictionary
-
-        // connect
-        connectCollectionView()
     }
 
 
-    ///
-    /// Init for UICollectionView.
-    ///
-    init(with delegate:UIPDelegate?, for collectionView:UIPPlatformCollectionView?, using modelViewRelationships:Dictionary<String, String>)
+    // MARK:- Model-View Relationships
+
+
+    // Containing both *model-view relationships* and *model data*
+    // JSON file in the app bundle containing both *model-view relationships* and *model data*
+    // Containing only *model-view relationships*, no model data provided here.
+
+
+    //using jsonFileName:String
+    //guard let displayDictionary:Dictionary<String, Any> = loadJSONFile(jsonFileName) else { return }
+
+
+    func setModelViewRelationships(with dictionary:Dictionary<String, String>)
     {
-        // init members
-        mUIPDelegateViewType = UIPDelegateViewType.collection
-        mApplicationNameDot = getApplicationName() + "."
-
-        mDelegate = delegate
-        mDelegateCollectionView = collectionView
-
-        var displayDictionary:Dictionary<String, Any> = Dictionary<String, Any>(minimumCapacity:modelViewRelationships.count)
-        displayDictionary[UIPConstants.Collection.modelViewRelationships] = modelViewRelationships
-        mDisplayDictionary = displayDictionary
-
-        // connect
-        connectCollectionView()
-    }
-
-
-    // MARK:- JSON
-
-
-    ///
-    /// Convenience JSON file loader.
-    ///
-    class func loadJSONFile(_ filePath:String)
-    -> Dictionary<String, Any>?
-    {
-        if let jsonFilePath:String = Bundle.main.path(forResource:filePath, ofType:"json")
-        {
-            do
-            {
-                let fileUrl:URL = URL(fileURLWithPath:jsonFilePath)
-                let jsonData:Data = try Data(contentsOf:fileUrl, options:NSData.ReadingOptions.uncached)
-                let jsonDictionary:Dictionary<String, Any> = try JSONSerialization.jsonObject(with:jsonData, options:JSONSerialization.ReadingOptions.mutableContainers) as! Dictionary<String, Any>
-
-                return jsonDictionary
-            }
-            catch let error
-            {
-                print("[UIPheonix] \(error.localizedDescription)")
-            }
-        }
-        else
-        {
-            print("[UIPheonix] Filename/path not found: \(filePath)")
+        guard (dictionary.count != 0) else {
+            fatalError("[UIPheonix] Can't set new model-view relationships dictionary because it is empty!")
         }
 
-        return nil
+        mModelViewRelationships = dictionary
+
+        connectWithCollectionView()
     }
 
 
-    // MARK:- Display List
 
 
+
+    // MARK:- Display Models List
+
+
+
+
+
+
+
+    ///
+    /// Replaces the entire display dictionary i.e. all model-view relationships.
+    ///
     func setDisplayList(with displayDictionary:Dictionary<String, Any>, appendElements:Bool=false)
     {
         guard (mDelegate != nil) else {
             fatalError("[UIPheonix] `setUIDisplayList` failed, `mDelegate` is nil!")
         }
 
-        mDisplayDictionary = displayDictionary
-
         // connect & display
-        connectCollectionView()
-        createDisplayList(appendElements:appendElements)
+        connectWithCollectionView(with:displayDictionary)
+        createDisplayListFromDisplayDictionary(appendElements:appendElements)
 
         mDelegate!.displayListDidSet()
     }
 
 
+    ///
+    /// Replaces only the display list i.e. models.
+    ///
     func setDisplayList(with array:Array<UIPBaseModelProtocol>)
     {
         guard (mDelegate != nil) else {
@@ -320,26 +302,23 @@ final class UIPheonix
 
 
     ///
-    /// Registers all cell-views with the delegate UICollectionView,
-    /// by using the model's name as the cell-view's reuse-id.
+    /// • Uses the model's name as the cell-view's reuse-id.
+    /// • Registers all cell-views with the delegate UICollectionView.
     ///
-    fileprivate func connectCollectionView()
+    fileprivate func connectWithCollectionView()
     {
         guard (mDelegateCollectionView != nil) else {
-            fatalError("[UIPheonix] `connectCollectionView` failed, `delegateCollectionView` is nil!")
+            fatalError("[UIPheonix] `connectWithCollectionView` failed, `delegateCollectionView` is nil!")
         }
 
-        // read the model-view relationship from the display dictionary
-        let modelViewRelationshipsDict:Dictionary<String, String> = mDisplayDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>
-
-        guard (modelViewRelationshipsDict.count != 0) else {
-            fatalError("[UIPheonix] The key `\(UIPConstants.Collection.modelViewRelationships)` could not be found in the display dictionary!")
+        guard (mModelViewRelationships.count != 0) else {
+            fatalError("[UIPheonix] Model-View relationships dictionary is empty!")
         }
 
         var modelClassNames:Array<String> = Array<String>()
         var nibNames:Array<String> = Array<String>()
 
-        for (modelClassName, viewClassName) in modelViewRelationshipsDict
+        for (modelClassName, viewClassName) in mModelViewRelationships
         {
             modelClassNames.append(modelClassName)
             nibNames.append(viewClassName)
@@ -351,8 +330,8 @@ final class UIPheonix
 
         for i in 0 ..< modelClassNames.count
         {
-            let nibName:String = nibNames[i]
             let modelName:String = modelClassNames[i]
+            let nibName:String = nibNames[i]
 
             // only add new models/views that have not been registered
             if (mViewReuseIds[modelName] == nil)
@@ -409,7 +388,7 @@ final class UIPheonix
     }
 
 
-    fileprivate func createDisplayList(appendElements:Bool)
+    fileprivate func createDisplayListFromDisplayDictionary(appendElements:Bool)
     {
         // read models
         let uipCVCellModelsArray:Array<Any> = mDisplayDictionary[UIPConstants.Collection.cellModels] as! Array<Any>

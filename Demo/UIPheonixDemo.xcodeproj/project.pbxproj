@@ -34,6 +34,9 @@
 		4DA7D8821D51444500AA018F /* SimpleVerticalSpaceModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D8811D51444500AA018F /* SimpleVerticalSpaceModelCVCell.xib */; };
 		4DA7D88F1D51488E00AA018F /* SimpleCounterModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D88E1D51488E00AA018F /* SimpleCounterModelCVCell.xib */; };
 		4DA7D8911D514D5A00AA018F /* SimpleViewAnimationModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA7D8901D514D5A00AA018F /* SimpleViewAnimationModelCVCell.xib */; };
+		4DA8FFA01DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
+		4DA8FFA11DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
+		4DA8FFA21DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
 		4DAB68F11D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB68F01D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib */; };
 		4DAB68F21D5E6E3300BFF15A /* SimpleVerticalSpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF71C1D379D7C00A4B1FC /* SimpleVerticalSpaceModel.swift */; };
 		4DAB68F31D5E6E6100BFF15A /* SimpleVerticalSpaceModelCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF7221D379D7C00A4B1FC /* SimpleVerticalSpaceModelCVCell.swift */; };
@@ -156,6 +159,7 @@
 		4DA7D8811D51444500AA018F /* SimpleVerticalSpaceModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVerticalSpaceModelCVCell.xib; sourceTree = "<group>"; };
 		4DA7D88E1D51488E00AA018F /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
 		4DA7D8901D514D5A00AA018F /* SimpleViewAnimationModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleViewAnimationModelCVCell.xib; sourceTree = "<group>"; };
+		4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		4DAB68F01D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVerticalSpaceModelCVCell.xib; sourceTree = "<group>"; };
 		4DAB68F41D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTextFieldModelCVCell.xib; sourceTree = "<group>"; };
 		4DAB68F81D5E835100BFF15A /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
@@ -459,6 +463,7 @@
 			isa = PBXGroup;
 			children = (
 				66AAF7161D379D7C00A4B1FC /* Types.swift */,
+				4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */,
 				66AAF7171D379D7C00A4B1FC /* Models */,
 				66AAF71D1D379D7C00A4B1FC /* Views */,
 			);
@@ -693,6 +698,7 @@
 				66AAF6F81D379D6C00A4B1FC /* UIPBaseCVCellView.swift in Sources */,
 				66AAF73F1D379D7C00A4B1FC /* SimpleButtonModelCVCell.swift in Sources */,
 				66AAF6F71D379D6C00A4B1FC /* UIPBaseModelProtocol.swift in Sources */,
+				4DA8FFA11DF47D4A00DC0B18 /* DataProvider.swift in Sources */,
 				66AAF7391D379D7C00A4B1FC /* Types.swift in Sources */,
 				66AAF7491D37DA6700A4B1FC /* SimpleCounterModel.swift in Sources */,
 				66AAF7411D379D7C00A4B1FC /* SimpleTextFieldModelCVCell.swift in Sources */,
@@ -722,6 +728,7 @@
 				4D74B2F51D53F2AC00682A02 /* UIPBaseCVCellModel.swift in Sources */,
 				4DBE5A7C1D626C82001ED6F5 /* SimpleViewAnimationModelCVCell.swift in Sources */,
 				4D74B2F81D53F2AC00682A02 /* UIPBaseModelProtocol.swift in Sources */,
+				4DA8FFA01DF47D4A00DC0B18 /* DataProvider.swift in Sources */,
 				4D74B2F71D53F2AC00682A02 /* UIPDelegates.swift in Sources */,
 				4DAB68F21D5E6E3300BFF15A /* SimpleVerticalSpaceModel.swift in Sources */,
 				4DAB68F71D5E77F900BFF15A /* SimpleTextFieldModelCVCell.swift in Sources */,
@@ -754,6 +761,7 @@
 				66847F7D1D3FAF6500A0427A /* UIPheonix.swift in Sources */,
 				66847F831D3FAF7600A0427A /* UIPBaseCVCellView.swift in Sources */,
 				4DA5F8911D57CF5E0049956B /* UIPMisc.swift in Sources */,
+				4DA8FFA21DF47D4A00DC0B18 /* DataProvider.swift in Sources */,
 				66847F761D3FAF5900A0427A /* SimpleVerticalSpaceModel.swift in Sources */,
 				66847F711D3FAF5900A0427A /* SimpleButtonModel.swift in Sources */,
 				66847F721D3FAF5900A0427A /* SimpleCounterModel.swift in Sources */,

@@ -20,19 +20,19 @@ Inspired by game development UIPheonix is a simple framework + concept for build
 ![iOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/iOS.png)
 ![tvOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/tvOS.png)
 
-* Reusable UI Control (from here on mentioned as a "RUIC") – Is basically just a Model and a View.
+??? * Reusable UI Control (from here on mentioned as a "RUIC") – Is basically just a Model and a View.
 You can configure a RUIC in any way you want, in the demo apps I'm using JSON files to configure models which are sent to cell views for a collection view.
 
 ![RUIC Diagram](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/RUIC.png)
 
-* Display List – An array of [RUIC, RUIC, RUIC…], etc., this is how UIPheonix knows what to display.
+??? * Display List – An array of [RUIC, RUIC, RUIC…], etc., this is how UIPheonix knows what to display.
 
 ![States](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/States.png)
 
-* Display State – In the demo apps I'm using different states to…know the current state of the app.
+??? * Display State – In the demo apps I'm using different states to…know the current state of the app.
 You may find alternative solutions, and your milage may vary :-)
 
-* Display Dictionary – A dictionary defining the relationship between model+view, and the properties of the model.
+??? * Display Dictionary – A dictionary defining the relationship between model+view, and the properties of the model.
 In the demo apps I'm using JSON files.
 
 UIPheonix and the demo app is cross-platform (macOS, iOS and tvOS), that’s how I Kung Fu!

@@ -80,7 +80,7 @@ final class UIPheonix
     // MARK:- Model-View Relationships
 
 
-    func setModelViewRelationships(with dictionary:Dictionary<String, String>)
+    func setModelViewRelationships(_ dictionary:Dictionary<String, String>)
     {
         guard (dictionary.count != 0) else {
             fatalError("[UIPheonix] Can't set model-view relationships with dictionary because it is empty!")
@@ -92,7 +92,7 @@ final class UIPheonix
     }
 
 
-    // MARK:- Display Models List
+    // MARK:- Display Models
 
 
     ///
@@ -100,7 +100,7 @@ final class UIPheonix
     ///   - rawModelsArray: An array containing dictionary objects with model data (e.g. from JSON).
     ///   - append: Append to or replace current model list.
     ///
-    func setDisplayModels(with rawModelDataArray:Array<Any>, append:Bool)
+    func setDisplayModels(_ rawModelDataArray:Array<Any>, append:Bool)
     {
         guard (rawModelDataArray.count != 0) else {
             fatalError("[UIPheonix] Raw model data array is empty!")
@@ -140,13 +140,13 @@ final class UIPheonix
     ///
     /// I.e. replace
     ///
-    func setDisplayModels(with array:Array<UIPBaseModelProtocol>)
+    func setDisplayModels(_ array:Array<UIPBaseModelProtocol>)
     {
         mDisplayModels = array
     }
 
 
-    func addDisplayModels(in array:Array<UIPBaseModelProtocol>)
+    func addDisplayModels(_ array:Array<UIPBaseModelProtocol>)
     {
         mDisplayModels.append(contentsOf:array)
     }
@@ -160,7 +160,7 @@ final class UIPheonix
 
 
     ///
-    /// The number of models in the display models list.
+    /// The number of display models.
     ///
     func count()
     -> Int

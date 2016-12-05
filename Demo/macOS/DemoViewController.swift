@@ -33,14 +33,14 @@ final class DemoViewController:NSViewController,
                                UIPButtonDelegate
 {
     // MARK: Public IB Outlet
-    @IBOutlet weak var ibCollectionView:NSCollectionView!
+    @IBOutlet fileprivate weak var ibCollectionView:NSCollectionView!
 
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
 
     // MARK: (for demo purpose only)
-    fileprivate var mExamplePersistentDisplayList:Array<UIPBaseModelProtocol>?
+    fileprivate var mPersistentDisplayModels:Array<UIPBaseModelProtocol>?
 
 
     // MARK:- Life Cycle
@@ -66,10 +66,11 @@ final class DemoViewController:NSViewController,
     {
         super.viewDidLoad()
 
-        // delegate & data source
+        // collection view: delegate & data source
         ibCollectionView.delegate = self
         ibCollectionView.dataSource = self
 
+        initUIPheonix()
         updateView()
     }
 
@@ -134,132 +135,150 @@ final class DemoViewController:NSViewController,
 
     func buttonAction(_ buttonId:Int)
     {
-        var appendElements:Bool = false
+        var isTheAppendModelsDemo:Bool = false
         var isThePersistentDemo:Bool = false
-        var animateChange:Bool = true
+        var shouldAnimateChange:Bool = true
 
+        // set the display state depending on which button we clicked
         switch (buttonId)
         {
             case ButtonId.startUp.rawValue: mAppDisplayStateType = AppDisplayState.startUp.typeValue; break
 
-            case 100: mAppDisplayStateType = AppDisplayState.mixed.typeValue; break
+            case ButtonId.mixed.rawValue: mAppDisplayStateType = AppDisplayState.mixed.typeValue; break
 
-            case 101: mAppDisplayStateType = AppDisplayState.animations.typeValue; break
+            case ButtonId.animations.rawValue: mAppDisplayStateType = AppDisplayState.animations.typeValue; break
 
-            case 102: mAppDisplayStateType = AppDisplayState.switching.typeValue; break
+            case ButtonId.switching.rawValue: mAppDisplayStateType = AppDisplayState.switching.typeValue; break
 
-            case 1030: mAppDisplayStateType = AppDisplayState.appending.typeValue; break
+            case ButtonId.appending.rawValue: mAppDisplayStateType = AppDisplayState.appending.typeValue; break
 
-                case 1031:
+                case ButtonId.appendingReload.rawValue:
                     mAppDisplayStateType = AppDisplayState.appending.typeValue
-                    appendElements = true
-                    animateChange = false
+                    isTheAppendModelsDemo = true
+                    shouldAnimateChange = false
                 break
 
-            case 1040:
+            case ButtonId.persistent.rawValue:
                 mAppDisplayStateType = AppDisplayState.persistent.typeValue
                 isThePersistentDemo = true
             break
 
-                case 1041:
+                case ButtonId.persistentGoBack.rawValue:
                     mAppDisplayStateType = AppDisplayState.startUp.typeValue
-                    // when we leave the state
-                    // store the current display list for later reuse
-                    // so that when we re-enter the state, we can just use the stored display list
-                    mExamplePersistentDisplayList = mUIPheonix.displayModels()
+                    // when we leave the state, store the current display models for later reuse
+                    // so that when we re-enter the state, we can just use them as they were
+                    mPersistentDisplayModels = mUIPheonix.displayModels()
                 break
 
-            case 105: mAppDisplayStateType = AppDisplayState.specific.typeValue; break
+            case ButtonId.specific.rawValue: mAppDisplayStateType = AppDisplayState.specific.typeValue; break
 
             default: mAppDisplayStateType = AppDisplayState.startUp.typeValue; break
         }
 
 
-        animateView(animate:animateChange, animationState:false)
-        updateView(appendElements:appendElements, isThePersistentDemo:isThePersistentDemo)
-        animateView(animate:animateChange, animationState:true)
+        // update UI
+        if (shouldAnimateChange)
+        {
+            animateView(animationState:false)
+            updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
+            animateView(animationState:true)
+        }
+        else
+        {
+            updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
+        }
     }
 
 
     // MARK:- Private
 
 
-    func updateView(appendElements:Bool=false, isThePersistentDemo:Bool=false)
+    fileprivate func initUIPheonix()
     {
-        // for the persistent demo
-        if (isThePersistentDemo && (mExamplePersistentDisplayList != nil))
-        {
-            // update UIPheonix with the persistent display list
-            mUIPheonix!.setDisplayModels(with:mExamplePersistentDisplayList!)
-        }
-        else if (appendElements)
-        {
-            mUIPheonix.addDisplayModels(in:mUIPheonix.displayModels())
-        }
-        else if (mUIPheonix == nil)
-        {
-            // init UIPheonix, with JSON file
-            mUIPheonix = UIPheonix(with:ibCollectionView)
-            if let jsonDictionary:Dictionary<String, Any> = DataProvider.loadJSON(inFilePath:mAppDisplayStateType.jsonFileName.rawValue)
-            {
-                mUIPheonix.setModelViewRelationships(with:jsonDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>)
-                mUIPheonix.setDisplayModels(with:jsonDictionary[UIPConstants.Collection.cellModels] as! Array<Any>, append:false)
-            }
-            else {
-                fatalError("Failed to init with JSON file!")
-            }
+        mUIPheonix = UIPheonix(with:ibCollectionView)
+    }
 
+
+    fileprivate func setupWithJSON()
+    {
+        if let jsonDictionary:Dictionary<String, Any> = DataProvider.loadJSON(inFilePath:mAppDisplayStateType.jsonFileName.rawValue)
+        {
+            mUIPheonix.setModelViewRelationships(jsonDictionary[UIPConstants.Collection.modelViewRelationships] as! Dictionary<String, String>)
+            mUIPheonix.setDisplayModels(jsonDictionary[UIPConstants.Collection.cellModels] as! Array<Any>, append:false)
+        }
+        else
+        {
+            fatalError("Failed to init with JSON file!")
+        }
+    }
+
+
+    fileprivate func setupWithModels()
+    {
+        mUIPheonix.setModelViewRelationships([SimpleButtonModel.nameOfClass:SimpleButtonModelCVCell.nameOfClass,
+                                              SimpleCounterModel.nameOfClass:SimpleCounterModelCVCell.nameOfClass,
+                                              SimpleLabelModel.nameOfClass:SimpleLabelModelCVCell.nameOfClass,
+                                              SimpleTextFieldModel.nameOfClass:SimpleTextFieldModelCVCell.nameOfClass,
+                                              SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
+                                              SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
+
+        var models:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
+
+        for i in 1 ... 20
+        {
+            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
+                                                                     alignment:"left", style:"regular",
+                                                                     backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
+            models.append(simpleLabelModel)
+        }
+
+        mUIPheonix.setDisplayModels(models)
+    }
+
+
+    fileprivate func updateView(isTheAppendModelsDemo:Bool=false, isThePersistentDemo:Bool=false)
+    {
+        if (isTheAppendModelsDemo)
+        {
+            // append the current display models list to itself
+            mUIPheonix.addDisplayModels(mUIPheonix.displayModels())
+        }
+        else if (isThePersistentDemo)
+        {
+            if (mPersistentDisplayModels == nil) {
+                setupWithJSON()
+            }
+            else
+            {
+                // set the persistent display models
+                mUIPheonix!.setDisplayModels(mPersistentDisplayModels!)
+            }
+        }
+        else
+        {
+            setupWithJSON()
             // or //
-
-            // init UIPheonix, with model:view dictionary
-            /*mUIPheonix = UIPheonix(with:self,
-                                    for:ibCollectionView,
-                                  using:[SimpleButtonModel.nameOfClass:SimpleButtonModelCVCell.nameOfClass,
-                                         SimpleCounterModel.nameOfClass:SimpleCounterModelCVCell.nameOfClass,
-                                         SimpleLabelModel.nameOfClass:SimpleLabelModelCVCell.nameOfClass,
-                                         SimpleTextFieldModel.nameOfClass:SimpleTextFieldModelCVCell.nameOfClass,
-                                         SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
-                                         SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
-
-            var modelsArray:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
-
-            for i in 1 ... 20
-            {
-                let newModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
-                                                                 alignment:"left", style:"regular",
-                                                                 backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
-                modelsArray.append(newModel)
-            }
-
-            mUIPheonix.setDisplayList(with:modelsArray)*/
+            //setupWithModels()
         }
-
 
         // reload the collection view
         ibCollectionView.reloadData()
     }
 
 
-    func animateView(animate:Bool, animationState:Bool)
+    fileprivate func animateView(animationState:Bool)
     {
         // do a nice fading animation
-        if (animate)
+        NSAnimationContext.runAnimationGroup(
         {
-            NSAnimationContext.runAnimationGroup(
-            {
-                [weak self] (context:NSAnimationContext) in
+            [weak self] (context:NSAnimationContext) in
 
-                // guard self here…
+            guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
 
-                context.duration = 0.5
-                self?.view.animator().alphaValue = animationState ? 1.0 : 0.0
-            },
-            completionHandler:nil)
-        }
-        else
-        {
-            view.alphaValue = animationState ? 1.0 : 0.0
-        }
+            context.duration = 0.5
+            strongSelf.view.animator().alphaValue = animationState ? 1.0 : 0.0
+        },
+        completionHandler:nil)
     }
 }
 

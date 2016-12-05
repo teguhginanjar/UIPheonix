@@ -251,6 +251,12 @@ final class DemoViewController:NSViewController,
             models.append(simpleLabelModel)
         }
 
+        let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue,
+                                                                    title:"Enough with the RAINBOW!",
+                                                                    alignment:SimpleButtonModel.Alignment.center)
+
+        models.append(simpleButtonModel)
+
         mUIPheonix.setDisplayModels(models)
     }
 

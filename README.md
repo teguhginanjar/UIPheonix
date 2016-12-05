@@ -20,27 +20,27 @@ Inspired by game development UIPheonix is a simple framework + concept for build
 ![iOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/iOS.png)
 ![tvOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/tvOS.png)
 
-??? * Reusable UI Control (from here on mentioned as a "RUIC") – Is basically just a Model and a View.
-You can configure a RUIC in any way you want, in the demo apps I'm using JSON files to configure models which are sent to cell views for a collection view.
+* Reusable UI Control (from here on mentioned as a "RUIC") – Is basically just a Model and a View.
+You can configure a RUIC in any way you want. In the demo app I'm using JSON files to setup models and also by creating models in code.
 
 ![RUIC Diagram](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/RUIC.png)
 
-??? * Display List – An array of [RUIC, RUIC, RUIC…], etc., this is how UIPheonix knows what to display.
+* Display Models (list) – An array of [model, model, model…], etc., this is how UIPheonix knows what to display.
 
 ![States](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/States.png)
 
-??? * Display State – In the demo apps I'm using different states to…know the current state of the app.
+* Display State – In the demo app I'm using a simple "state machine".
 You may find alternative solutions, and your milage may vary :-)
 
-??? * Display Dictionary – A dictionary defining the relationship between model+view, and the properties of the model.
-In the demo apps I'm using JSON files.
+* Model-View Relationships (dictionary) – A dictionary defining the relationship between model+view, and the properties of the model.
+In the demo app I'm using JSON files and models created in code.
 
 UIPheonix and the demo app is cross-platform (macOS, iOS and tvOS), that’s how I Kung Fu!
 
 
 Example RUICs
 ------
-Making a RUIC is pretty much about breaking down your UI into small reusable pieces/blocks. Then create a JSON file, a model and the view – then you simply put them in a display list.
+Making a RUIC is pretty simple as making a model and a view.
 
 ![ExampleRUIC1](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/Example1.png)
 ![ExampleRUIC1](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/Example2.png)
@@ -55,6 +55,7 @@ Whats Next?
 Used By
 ------
 [McDonald's Sweden](https://itunes.apple.com/se/app/mcdonalds-sverige/id322810359?mt=8)
+[McDonald's Switzerland](???)
 
 
 Contributing

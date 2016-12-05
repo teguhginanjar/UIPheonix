@@ -231,9 +231,12 @@ final class DemoViewController:NSViewController,
 
         for i in 1 ... 20
         {
-            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)", size:(12.0 + CGFloat(i) * 2.0),
-                                                                     alignment:"left", style:"regular",
-                                                                     backgroundColorHue:(CGFloat(i) * 0.05), notificationId:"")
+            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)",
+                                                                     size:(12.0 + CGFloat(i) * 2.0),
+                                                                     alignment:SimpleLabelModel.Alignment.left,
+                                                                     style:SimpleLabelModel.Style.regular,
+                                                                     backgroundColorHue:(CGFloat(i) * 0.05),
+                                                                     notificationId:"")
             models.append(simpleLabelModel)
         }
 

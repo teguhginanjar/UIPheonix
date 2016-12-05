@@ -136,7 +136,8 @@ final class DemoViewController:NSViewController,
     func buttonAction(_ buttonId:Int)
     {
         var isTheAppendModelsDemo:Bool = false
-        var isThePersistentDemo:Bool = false
+        var isThePersistentModelsDemo:Bool = false
+        var isTheCustomMadeModelsDemo:Bool = false
         var shouldAnimateChange:Bool = true
 
         // set the display state depending on which button we clicked
@@ -160,7 +161,7 @@ final class DemoViewController:NSViewController,
 
             case ButtonId.persistent.rawValue:
                 mAppDisplayStateType = AppDisplayState.persistent.typeValue
-                isThePersistentDemo = true
+                isThePersistentModelsDemo = true
             break
 
                 case ButtonId.persistentGoBack.rawValue:
@@ -171,6 +172,11 @@ final class DemoViewController:NSViewController,
                 break
 
             case ButtonId.specific.rawValue: mAppDisplayStateType = AppDisplayState.specific.typeValue; break
+
+            case ButtonId.customMadeModels.rawValue:
+                mAppDisplayStateType = AppDisplayState.customMadeModels.typeValue;
+                isTheCustomMadeModelsDemo = true
+            break
 
             default: mAppDisplayStateType = AppDisplayState.startUp.typeValue; break
         }
@@ -184,13 +190,18 @@ final class DemoViewController:NSViewController,
                 [weak self] in
                 guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
 
-                strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
+                strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
+                                      isThePersistentDemo:isThePersistentModelsDemo,
+                                      isTheCustomMadeModelsDemo:isTheCustomMadeModelsDemo)
+
                 strongSelf.animateView(animationState:true, completionHandler:nil)
             })
         }
         else
         {
-            updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
+            updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
+                       isThePersistentDemo:isThePersistentModelsDemo,
+                       isTheCustomMadeModelsDemo:isTheCustomMadeModelsDemo)
         }
     }
 
@@ -244,7 +255,7 @@ final class DemoViewController:NSViewController,
     }
 
 
-    fileprivate func updateView(isTheAppendModelsDemo:Bool=false, isThePersistentDemo:Bool=false)
+    fileprivate func updateView(isTheAppendModelsDemo:Bool=false, isThePersistentDemo:Bool=false, isTheCustomMadeModelsDemo:Bool=false)
     {
         if (isTheAppendModelsDemo)
         {
@@ -262,13 +273,13 @@ final class DemoViewController:NSViewController,
                 mUIPheonix!.setDisplayModels(mPersistentDisplayModels!)
             }
         }
+        else if (isTheCustomMadeModelsDemo)
+        {
+            setupWithModels()
+        }
         else
         {
-            // Test any of these functions. //
-
             setupWithJSON()
-            // or //
-            //setupWithModels()
         }
 
         // reload the collection view

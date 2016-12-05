@@ -38,6 +38,7 @@ enum AppDisplayState /* of type AppDisplayStateType */
     case appending
     case persistent
     case specific
+    case customMadeModels
 
     var typeValue:AppDisplayStateType
     {
@@ -50,6 +51,7 @@ enum AppDisplayState /* of type AppDisplayStateType */
             case .appending: return AppDisplayStateType(buttonId:.appending, jsonFileName:.appending)
             case .persistent: return AppDisplayStateType(buttonId:.persistent, jsonFileName:.persistent)
             case .specific: return AppDisplayStateType(buttonId:.specific, jsonFileName:.specific)
+            case .customMadeModels: return AppDisplayStateType(buttonId:.customMadeModels, jsonFileName:.customMadeModels)
         }
     }
 }
@@ -70,6 +72,8 @@ enum ButtonId:Int
     case persistentGoBack = 1041
 
     case specific = 105
+
+    case customMadeModels = 106
 }
 
 
@@ -82,6 +86,7 @@ enum JSONFileName:String
     case appending = "DisplayState-Appending"
     case persistent = "DisplayState-Persistent"
     case specific = "DisplayState-Specific"
+    case customMadeModels = ""
 }
 
 

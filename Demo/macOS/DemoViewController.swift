@@ -179,9 +179,14 @@ final class DemoViewController:NSViewController,
         // update UI
         if (shouldAnimateChange)
         {
-            animateView(animationState:false)
-            updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
-            animateView(animationState:true)
+            animateView(animationState:false, completionHandler:
+            {
+                [weak self] in
+                guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+
+                strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo, isThePersistentDemo:isThePersistentDemo)
+                strongSelf.animateView(animationState:true, completionHandler:nil)
+            })
         }
         else
         {
@@ -256,6 +261,8 @@ final class DemoViewController:NSViewController,
         }
         else
         {
+            // Test any of these functions. //
+
             setupWithJSON()
             // or //
             //setupWithModels()
@@ -266,7 +273,7 @@ final class DemoViewController:NSViewController,
     }
 
 
-    fileprivate func animateView(animationState:Bool)
+    fileprivate func animateView(animationState:Bool, completionHandler:(()->Void)?)
     {
         // do a nice fading animation
         NSAnimationContext.runAnimationGroup(
@@ -275,10 +282,10 @@ final class DemoViewController:NSViewController,
 
             guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
 
-            context.duration = 0.5
+            context.duration = 0.25
             strongSelf.view.animator().alphaValue = animationState ? 1.0 : 0.0
         },
-        completionHandler:nil)
+        completionHandler:completionHandler)
     }
 }
 

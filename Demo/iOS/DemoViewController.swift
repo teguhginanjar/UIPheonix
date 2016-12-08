@@ -301,13 +301,13 @@ final class DemoViewController:UIViewController,
 
             guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
 
-            strongSelf.view.alpha = 0.0
+            strongSelf.ibCollectionView.alpha = animationState ? 1.0 : 0.0
         },
         completion:
         {
             (animationCompleted:Bool) in
 
-            completionHandler!()
+            completionHandler?()
         })
     }
 }

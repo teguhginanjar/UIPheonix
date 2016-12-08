@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="UIPheonixDemo_iOS" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="BYZ-38-t0r" customClass="ViewController" customModule="UIPheonixDemo_iOS" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -30,7 +30,7 @@
         <!--Navigation Controller-->
         <scene sceneID="N0d-UG-0VN">
             <objects>
-                <navigationController id="wBn-ia-x9r" sceneMemberID="viewController">
+                <navigationController modalTransitionStyle="crossDissolve" navigationBarHidden="YES" id="wBn-ia-x9r" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fEG-dA-DPk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -103,7 +103,7 @@ final class DemoViewController:UIViewController,
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, insetForSectionAt section:Int)
     -> UIEdgeInsets
     {
-        return UIEdgeInsets(top:30, left:0, bottom:0, right:0)
+        return UIEdgeInsets(top:10, left:0, bottom:0, right:0)
     }
 
 
@@ -242,7 +242,7 @@ final class DemoViewController:UIViewController,
 
         for i in 1 ... 20
         {
-            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)",
+            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"  Label \(i)",
                                                                      size:(12.0 + CGFloat(i) * 2.0),
                                                                      alignment:SimpleLabelModel.Alignment.left,
                                                                      style:SimpleLabelModel.Style.regular,

@@ -73,7 +73,7 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
             UIView.performWithoutAnimation(
             {
                 [weak self] in
-                self?.ibButton.setTitle(simpleButtonModel.mButtonTitle, for:UIControlState())
+                self?.ibButton.setTitle(simpleButtonModel.mTitle, for:UIControlState())
                 self?.ibButton.layoutIfNeeded()
             })
 

@@ -34,6 +34,7 @@ class ViewController:NSViewController
     {
         super.viewDidAppear()
 
+        // adjust window position
         if let window:NSWindow = self.view.window
         {
             window.setFrameOrigin(window.frame.offsetBy(dx:0, dy:200).origin)
@@ -50,11 +51,11 @@ class ViewController:NSViewController
     }
 
 
-    override var representedObject:Any?
+    /*override var representedObject:Any?
     {
         didSet {
             // Update the view, if already loaded.
         }
-    }
+    }*/
 }
 

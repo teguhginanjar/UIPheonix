@@ -40,11 +40,12 @@ class ViewController:NSViewController
             window.setFrameOrigin(window.frame.offsetBy(dx:0, dy:200).origin)
         }
 
-        // create a nice launch screen effect like in iOS
+        // create a nice/delayed launch screen effect like in iOS
         DispatchQueue.main.asyncAfter(deadline:(.now() + .seconds(1)), execute:
         {
             // start the UIPheonix macOS demo
             // create & present a new instance of the demo VC
+            // use custom view transition
             let demoViewController:DemoViewController = DemoViewController.newInstance(with:AppDisplayState.startUp)
             self.presentViewController(demoViewController, animator:CustomViewControllerPresentationAnimator())
         })

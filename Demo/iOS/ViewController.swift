@@ -38,6 +38,7 @@ class ViewController:UIViewController
         // create & present a new instance of the demo VC
         let demoViewController:DemoViewController = DemoViewController.newInstance(with:AppDisplayState.startUp)
 
+        // use custom view transition
         let transition:CATransition = CATransition()
         transition.duration = 0.5
         transition.type = kCATransitionFade

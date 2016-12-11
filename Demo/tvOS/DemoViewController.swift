@@ -272,13 +272,13 @@ final class DemoViewController:UIViewController,
 
         var models:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
 
-        for i in 1 ... 20
+        for i in 1 ... 8
         {
             let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"  Label \(i)",
-                                                                     size:(12.0 + CGFloat(i) * 2.0),
+                                                                     size:(24.0 + CGFloat(i) * 4.0),
                                                                      alignment:SimpleLabelModel.Alignment.left,
                                                                      style:SimpleLabelModel.Style.regular,
-                                                                     backgroundColorHue:(CGFloat(i) * 0.05),
+                                                                     backgroundColorHue:(CGFloat(i) * 0.10),
                                                                      notificationId:"")
             models.append(simpleLabelModel)
         }

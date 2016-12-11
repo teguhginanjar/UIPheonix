@@ -39,6 +39,8 @@ iOS Demo</string>
                             <constraint firstAttribute="trailing" secondItem="Yty-tm-0J6" secondAttribute="trailing" id="ZKm-y5-E2z"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

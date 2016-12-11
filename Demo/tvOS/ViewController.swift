@@ -37,7 +37,16 @@ class ViewController:UIViewController
         // start the UIPheonix tvOS demo
         // create & present a new instance of the demo VC
         let demoViewController:DemoViewController = DemoViewController.newInstance(with:AppDisplayState.startUp)
-        self.navigationController!.present(demoViewController, animated:true, completion:nil)
+
+        // use custom view transition
+        let transition:CATransition = CATransition()
+        transition.duration = 0.5
+        transition.type = kCATransitionFade
+        self.navigationController!.view.layer.add(transition, forKey:nil)
+
+        self.navigationController!.setViewControllers([demoViewController], animated:false)
+        // or //
+        //self.navigationController!.pushViewController(demoViewController, animated:false)
     }
 }
 

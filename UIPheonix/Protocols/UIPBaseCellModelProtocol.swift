@@ -26,15 +26,16 @@
 //
 
 import Foundation
-import CoreGraphics
 
 
-protocol UIPBaseCVCellProtocol:class
+protocol UIPBaseCellModelProtocol:class
 {
     // we can't use "className" because that belongs to Objective-C NSObject
     var nameOfClass:String { get }
     static var nameOfClass:String { get }
 
-    func update(with model:Any, delegate:Any, for indexPath:IndexPath) -> UIPCellSize
+    init()
+
+    func setContents(with dictionary:Dictionary<String, Any>)
 }
 

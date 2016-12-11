@@ -32,9 +32,9 @@
 #endif
 
 
-class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCellViewProtocol
+class UIPBaseTVCellView:UIPPlatformTableViewCell, UIPBaseCellViewProtocol
 {
-    // MARK: UIPPlatformCollectionViewCell
+    // MARK: UIPPlatformTableViewCell
 
 
     #if os(tvOS)

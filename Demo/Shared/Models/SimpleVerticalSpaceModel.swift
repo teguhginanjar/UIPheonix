@@ -28,7 +28,7 @@
 import CoreGraphics
 
 
-final class SimpleVerticalSpaceModel:UIPBaseCVCellModel
+final class SimpleVerticalSpaceModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -40,7 +40,7 @@ final class SimpleVerticalSpaceModel:UIPBaseCVCellModel
     public var mSize:CGFloat!
 
 
-    // MARK: UIPBaseModelProtocol
+    // MARK: UIPBaseCellModelProtocol
 
 
     required init()
@@ -66,7 +66,7 @@ final class SimpleVerticalSpaceModel:UIPBaseCVCellModel
     }
 
 
-    // MARK: UIPBaseCVCellModel
+    // MARK: UIPBaseCellModel
 
 
     override func toDictionary()

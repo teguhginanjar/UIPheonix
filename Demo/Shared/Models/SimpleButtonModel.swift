@@ -26,7 +26,7 @@
 //
 
 
-final class SimpleButtonModel:UIPBaseCVCellModel
+final class SimpleButtonModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -57,7 +57,7 @@ final class SimpleButtonModel:UIPBaseCVCellModel
     #endif
 
 
-    // MARK:- UIPBaseModelProtocol
+    // MARK:- UIPBaseCellModelProtocol
 
 
     required init()
@@ -115,7 +115,7 @@ final class SimpleButtonModel:UIPBaseCVCellModel
     #endif
 
 
-    // MARK:- UIPBaseCVCellModel
+    // MARK:- UIPBaseCellModel
 
 
     override func toDictionary()

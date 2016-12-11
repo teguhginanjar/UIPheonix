@@ -60,7 +60,7 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
+    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)

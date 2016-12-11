@@ -40,7 +40,7 @@ final class DemoViewController:NSViewController,
     fileprivate var mUIPheonix:UIPheonix!
 
     // MARK: (for demo purpose only)
-    fileprivate var mPersistentDisplayModels:Array<UIPBaseModelProtocol>?
+    fileprivate var mPersistentDisplayModels:Array<UIPBaseCellModelProtocol>?
 
 
     // MARK:- Life Cycle
@@ -88,7 +88,7 @@ final class DemoViewController:NSViewController,
     func collectionView(_ collectionView:NSCollectionView, itemForRepresentedObjectAt indexPath:IndexPath)
     -> NSCollectionViewItem
     {
-        let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
         let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
@@ -117,7 +117,7 @@ final class DemoViewController:NSViewController,
     func collectionView(_ collectionView:NSCollectionView, layout collectionViewLayout:NSCollectionViewLayout, sizeForItemAt indexPath:IndexPath)
     -> CGSize
     {
-        let cellModel:UIPBaseCVCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
         let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
 
         // default: full width, no margins
@@ -238,7 +238,7 @@ final class DemoViewController:NSViewController,
                                               SimpleVerticalSpaceModel.nameOfClass:SimpleVerticalSpaceModelCVCell.nameOfClass,
                                               SimpleViewAnimationModel.nameOfClass:SimpleViewAnimationModelCVCell.nameOfClass])
 
-        var models:[UIPBaseCVCellModel] = [UIPBaseCVCellModel]()
+        var models:[UIPBaseCellModel] = [UIPBaseCellModel]()
 
         for i in 1 ... 20
         {

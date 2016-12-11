@@ -26,7 +26,7 @@
 //
 
 
-final class SimpleViewAnimationModel:UIPBaseCVCellModel
+final class SimpleViewAnimationModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -38,7 +38,7 @@ final class SimpleViewAnimationModel:UIPBaseCVCellModel
     public var mAnimationState:Bool = false
 
 
-    // MARK: UIPBaseModelProtocol
+    // MARK: UIPBaseCellModelProtocol
 
 
     required init()
@@ -64,7 +64,7 @@ final class SimpleViewAnimationModel:UIPBaseCVCellModel
     }
 
 
-    // MARK: UIPBaseCVCellModel
+    // MARK: UIPBaseCellModel
 
 
     override func toDictionary()

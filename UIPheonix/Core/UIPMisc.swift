@@ -100,6 +100,7 @@ var UIPCellSizeUnmodified = UIPCellSize(absoluteWidth:false, width:0, absoluteHe
     typealias UIPPlatformLabel = UILabel
     typealias UIPPlatformButton = UIButton
     typealias UIPPlatformCollectionViewCell = UICollectionViewCell
+    typealias UIPPlatformTableViewCell = UITableViewCell
     typealias UIPPlatformCollectionView = UICollectionView
     typealias UIPPlatformViewController = UIViewController
 #elseif os(macOS)
@@ -114,6 +115,7 @@ var UIPCellSizeUnmodified = UIPCellSize(absoluteWidth:false, width:0, absoluteHe
     typealias UIPPlatformLabel = NSTextField
     typealias UIPPlatformButton = NSButton
     typealias UIPPlatformCollectionViewCell = NSCollectionViewItem
+    typealias UIPPlatformTableViewCell = NSTableCellView
     typealias UIPPlatformCollectionView = NSCollectionView
     typealias UIPPlatformViewController = NSViewController
 #endif

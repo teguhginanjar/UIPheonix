@@ -25,17 +25,37 @@
 //  limitations under the License.
 //
 
-import Foundation
 
-
-protocol UIPBaseModelProtocol:class
+class UIPBaseCellModel:UIPBaseCellModelProtocol
 {
-    // we can't use "className" because that belongs to Objective-C NSObject
-    var nameOfClass:String { get }
-    static var nameOfClass:String { get }
+    // MARK: UIPBaseCellModelProtocol
+    var nameOfClass:String { get { return "\(type(of:self))" } }
+    static var nameOfClass:String { get { return "\(self)" } }
 
-    init()
+
+    required init()
+    {
+        // empty
+    }
+
 
     func setContents(with dictionary:Dictionary<String, Any>)
+    {
+        fatalError("You must override \(#function) in your subclass!")
+    }
+
+
+    // MARK:- Base Class Functions
+
+
+    ///
+    /// Currently this has no purpose other than to serve as a "forced" implementation
+    /// that may/will come in hand when there is a need to debug a model.
+    ///
+    func toDictionary()
+    -> Dictionary<String, Any>
+    {
+        fatalError("You must override \(#function) in your subclass!")
+    }
 }
 

@@ -32,41 +32,29 @@
 #endif
 
 
-final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
+final class SimpleCounterModelCVCell:UIPBaseCVCellView
 {
     // MARK: Private IB Outlet
-    @IBOutlet fileprivate weak var ibTextField:UIPPlatformTextField!
+    @IBOutlet fileprivate weak var ibPlusButton:UIPPlatformButton!
+    @IBOutlet fileprivate weak var ibMinusButton:UIPPlatformButton!
 
-    // MARK: Private Weak Reference
-    fileprivate weak var mSimpleTextFieldModelReference:SimpleTextFieldModel?
-
-
-    // MARK:- UICollectionViewCell
-
-
-    override func prepareForReuse()
-    {
-        super.prepareForReuse()
-    }
+    // MARK: Private Members
+    fileprivate var mCounterValue:Double = 0
+    fileprivate var mNotificationId:String?
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
+    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleTextFieldModel:SimpleTextFieldModel = model as! SimpleTextFieldModel
+        let simpleCounterModel:SimpleCounterModel = model as! SimpleCounterModel
 
-        #if os(iOS) || os(tvOS)
-            ibTextField.text = simpleTextFieldModel.mText
-        #elseif os(macOS)
-            ibTextField.stringValue = simpleTextFieldModel.mText
-        #endif
-
-        // keep a reference to the model
-        mSimpleTextFieldModelReference = model as? SimpleTextFieldModel
+        // store for later
+        mCounterValue = Double(simpleCounterModel.mValue)
+        mNotificationId = simpleCounterModel.mNotificationId
 
         // return view size
         return UIPCellSizeUnmodified
@@ -76,14 +64,17 @@ final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
     // MARK:- IBAction
 
 
-    @IBAction func editingChanged(_ sender:UIPPlatformTextField)
+    @IBAction func valueChanged(_ sender:UIPPlatformButton)
     {
-        // update reference model
-        #if os(iOS) || os(tvOS)
-            mSimpleTextFieldModelReference?.mText = sender.text
-        #elseif os(macOS)
-            mSimpleTextFieldModelReference?.mText = sender.stringValue
-        #endif
+        // we use the buttons tag for the value change
+        mCounterValue += Double(sender.tag)
+
+        // send value changed notification
+        if (mNotificationId != nil)
+        {
+            NotificationCenter.default.post(name:NSNotification.Name(mNotificationId!),
+                                            object:nil, userInfo:[NotificationKey.counterValue:mCounterValue])
+        }
     }
 }
 

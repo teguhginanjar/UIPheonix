@@ -32,29 +32,41 @@
 #endif
 
 
-final class SimpleCounterModelCVCell:UIPBaseCVCellView
+final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
 {
     // MARK: Private IB Outlet
-    @IBOutlet fileprivate weak var ibPlusButton:UIPPlatformButton!
-    @IBOutlet fileprivate weak var ibMinusButton:UIPPlatformButton!
+    @IBOutlet fileprivate weak var ibTextField:UIPPlatformTextField!
 
-    // MARK: Private Members
-    fileprivate var mCounterValue:Double = 0
-    fileprivate var mNotificationId:String?
+    // MARK: Private Weak Reference
+    fileprivate weak var mSimpleTextFieldModelReference:SimpleTextFieldModel?
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
+    // MARK:- UICollectionViewCell
+
+
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+    }
+
+
+    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
         // apply model to view
-        let simpleCounterModel:SimpleCounterModel = model as! SimpleCounterModel
+        let simpleTextFieldModel:SimpleTextFieldModel = model as! SimpleTextFieldModel
 
-        // store for later
-        mCounterValue = Double(simpleCounterModel.mValue)
-        mNotificationId = simpleCounterModel.mNotificationId
+        #if os(iOS) || os(tvOS)
+            ibTextField.text = simpleTextFieldModel.mText
+        #elseif os(macOS)
+            ibTextField.stringValue = simpleTextFieldModel.mText
+        #endif
+
+        // keep a reference to the model
+        mSimpleTextFieldModelReference = model as? SimpleTextFieldModel
 
         // return view size
         return UIPCellSizeUnmodified
@@ -64,17 +76,14 @@ final class SimpleCounterModelCVCell:UIPBaseCVCellView
     // MARK:- IBAction
 
 
-    @IBAction func valueChanged(_ sender:UIPPlatformButton)
+    @IBAction func editingChanged(_ sender:UIPPlatformTextField)
     {
-        // we use the buttons tag for the value change
-        mCounterValue += Double(sender.tag)
-
-        // send value changed notification
-        if (mNotificationId != nil)
-        {
-            NotificationCenter.default.post(name:NSNotification.Name(mNotificationId!),
-                                            object:nil, userInfo:[NotificationKey.counterValue:mCounterValue])
-        }
+        // update reference model
+        #if os(iOS) || os(tvOS)
+            mSimpleTextFieldModelReference?.mText = sender.text
+        #elseif os(macOS)
+            mSimpleTextFieldModelReference?.mText = sender.stringValue
+        #endif
     }
 }
 

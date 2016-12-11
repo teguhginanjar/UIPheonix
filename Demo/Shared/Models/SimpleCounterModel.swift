@@ -26,7 +26,7 @@
 //
 
 
-final class SimpleCounterModel:UIPBaseCVCellModel
+final class SimpleCounterModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -40,7 +40,7 @@ final class SimpleCounterModel:UIPBaseCVCellModel
     public var mNotificationId:String!
 
 
-    // MARK:- UIPBaseModelProtocol
+    // MARK:- UIPBaseCellModelProtocol
 
 
     required init()
@@ -69,7 +69,7 @@ final class SimpleCounterModel:UIPBaseCVCellModel
     }
 
 
-    // MARK:- UIPBaseCVCellModel
+    // MARK:- UIPBaseCellModel
 
 
     override func toDictionary()

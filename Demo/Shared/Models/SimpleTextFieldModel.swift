@@ -26,7 +26,7 @@
 //
 
 
-final class SimpleTextFieldModel:UIPBaseCVCellModel
+final class SimpleTextFieldModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -38,7 +38,7 @@ final class SimpleTextFieldModel:UIPBaseCVCellModel
     public var mText:String!
 
 
-    // MARK: UIPBaseModelProtocol
+    // MARK: UIPBaseCellModelProtocol
 
 
     required init()
@@ -64,7 +64,7 @@ final class SimpleTextFieldModel:UIPBaseCVCellModel
     }
 
 
-    // MARK: UIPBaseCVCellModel
+    // MARK: UIPBaseCellModel
 
 
     override func toDictionary()

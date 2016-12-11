@@ -37,7 +37,7 @@ import CoreGraphics
 fileprivate enum UIPDelegateViewType
 {
     case collection
-    //case table
+    case table
     //case stack
 }
 
@@ -51,7 +51,7 @@ final class UIPheonix
     // (initialized as empty for convenience)
     fileprivate var mModelViewRelationships:Dictionary<String, String> = Dictionary<String, String>()
     fileprivate var mViewReuseIds:Dictionary<String, Any> = Dictionary<String, Any>()
-    fileprivate var mDisplayModels:Array<UIPBaseModelProtocol> = Array<UIPBaseModelProtocol>()
+    fileprivate var mDisplayModels:Array<UIPBaseCellModelProtocol> = Array<UIPBaseCellModelProtocol>()
 
     // MARK: Private Weak Reference
     fileprivate weak var mDelegateCollectionView:UIPPlatformCollectionView?
@@ -126,9 +126,9 @@ final class UIPheonix
             }
 
             // create & add models
-            if let modelClassType:UIPBaseModelProtocol.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPBaseModelProtocol.Type
+            if let modelClassType:UIPBaseCellModelProtocol.Type = NSClassFromString(mApplicationNameDot + modelTypeName!) as? UIPBaseCellModelProtocol.Type
             {
-                let aModelObj:UIPBaseModelProtocol = modelClassType.init()
+                let aModelObj:UIPBaseCellModelProtocol = modelClassType.init()
                 aModelObj.setContents(with:modelDict)
 
                 mDisplayModels.append(aModelObj)
@@ -140,20 +140,20 @@ final class UIPheonix
     ///
     /// I.e. replace
     ///
-    func setDisplayModels(_ array:Array<UIPBaseModelProtocol>)
+    func setDisplayModels(_ array:Array<UIPBaseCellModelProtocol>)
     {
         mDisplayModels = array
     }
 
 
-    func addDisplayModels(_ array:Array<UIPBaseModelProtocol>)
+    func addDisplayModels(_ array:Array<UIPBaseCellModelProtocol>)
     {
         mDisplayModels.append(contentsOf:array)
     }
 
 
     func displayModels()
-    -> Array<UIPBaseModelProtocol>
+    -> Array<UIPBaseCellModelProtocol>
     {
         return mDisplayModels
     }
@@ -173,9 +173,9 @@ final class UIPheonix
     /// Get model.
     ///
     func model(at index:Int)
-    -> UIPBaseCVCellModel?
+    -> UIPBaseCellModel?
     {
-        if let cellModel:UIPBaseCVCellModel = mDisplayModels[index] as? UIPBaseCVCellModel
+        if let cellModel:UIPBaseCellModel = mDisplayModels[index] as? UIPBaseCellModel
         {
             return cellModel
         }

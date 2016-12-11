@@ -29,29 +29,12 @@ import Foundation
 import CoreGraphics
 
 
-final class SimpleVerticalSpaceModelCVCell:UIPBaseCVCellView
+protocol UIPBaseCellViewProtocol:class
 {
-    // MARK:- UICollectionViewCell
+    // we can't use "className" because that belongs to Objective-C NSObject
+    var nameOfClass:String { get }
+    static var nameOfClass:String { get }
 
-
-    override func prepareForReuse()
-    {
-        super.prepareForReuse()
-    }
-
-
-    // MARK:- UIPBaseCVCellView/UIPBaseCVCellProtocol
-
-
-    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellSize
-    {
-        // apply model to view
-        let simpleVerticalSpaceModel:SimpleVerticalSpaceModel = model as! SimpleVerticalSpaceModel
-
-        // return view size
-        return UIPCellSize(absoluteWidth:false, width:0,
-                           absoluteHeight:true, height:simpleVerticalSpaceModel.mSize)
-    }
+    func update(with model:Any, delegate:Any, for indexPath:IndexPath) -> UIPCellSize
 }
 

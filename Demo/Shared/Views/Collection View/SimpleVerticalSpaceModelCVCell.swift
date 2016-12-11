@@ -25,37 +25,33 @@
 //  limitations under the License.
 //
 
+import Foundation
+import CoreGraphics
 
-class UIPBaseCVCellModel:UIPBaseModelProtocol
+
+final class SimpleVerticalSpaceModelCVCell:UIPBaseCVCellView
 {
-    // MARK: UIPBaseModelProtocol
-    var nameOfClass:String { get { return "\(type(of:self))" } }
-    static var nameOfClass:String { get { return "\(self)" } }
+    // MARK:- UICollectionViewCell
 
 
-    required init()
+    override func prepareForReuse()
     {
-        // empty
+        super.prepareForReuse()
     }
 
 
-    func setContents(with dictionary:Dictionary<String, Any>)
+    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+
+
+    override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
+    -> UIPCellSize
     {
-        fatalError("You must override \(#function) in your subclass!")
-    }
+        // apply model to view
+        let simpleVerticalSpaceModel:SimpleVerticalSpaceModel = model as! SimpleVerticalSpaceModel
 
-
-    // MARK:- Base Class Functions
-
-
-    ///
-    /// Currently this has no purpose other than to serve as a "forced" implementation
-    /// that may/will come in hand when there is a need to debug a model.
-    ///
-    func toDictionary()
-    -> Dictionary<String, Any>
-    {
-        fatalError("You must override \(#function) in your subclass!")
+        // return view size
+        return UIPCellSize(absoluteWidth:false, width:0,
+                           absoluteHeight:true, height:simpleVerticalSpaceModel.mSize)
     }
 }
 

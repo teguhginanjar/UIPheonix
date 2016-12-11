@@ -34,7 +34,7 @@ import CoreGraphics
 #endif
 
 
-final class SimpleLabelModel:UIPBaseCVCellModel
+final class SimpleLabelModel:UIPBaseCellModel
 {
     // MARK: Public Constants
     struct Key
@@ -69,7 +69,7 @@ final class SimpleLabelModel:UIPBaseCVCellModel
     public var mNotificationId:String!
 
 
-    // MARK:- UIPBaseModelProtocol
+    // MARK:- UIPBaseCellModelProtocol
 
 
     required init()
@@ -116,7 +116,7 @@ final class SimpleLabelModel:UIPBaseCVCellModel
     }
 
 
-    // MARK:- UIPBaseCVCellModel
+    // MARK:- UIPBaseCellModel
 
 
     override func toDictionary()

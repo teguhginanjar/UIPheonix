@@ -49,8 +49,7 @@
         {
             "type":"SimpleButtonModel",
             "id":106,
-            "title":"Custom made models",
-            "focus":true
+            "title":"Custom made models"
         }
     ]
 }

@@ -188,19 +188,19 @@ final class UIPheonix
     /// Dequeue reusable cell view.
     ///
     func view(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
-    -> UIPBaseCVCellView?
+    -> UIPBaseCollectionViewCell?
     {
         guard (mDelegateCollectionView != nil) else {
             fatalError("[UIPheonix] `view for reuseIdentifier` failed, `delegateCollectionView` is nil!")
         }
 
         #if os(iOS) || os(tvOS)
-            if let cellView:UIPBaseCVCellView = mDelegateCollectionView!.dequeueReusableCell(withReuseIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCVCellView
+            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.dequeueReusableCell(withReuseIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
             {
                 return cellView
             }
         #elseif os(macOS)
-            if let cellView:UIPBaseCVCellView = mDelegateCollectionView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCVCellView
+            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
             {
                 return cellView
             }
@@ -285,9 +285,9 @@ final class UIPheonix
 
 
     func view(forReuseIdentifier viewReuseId:String)
-    -> UIPBaseCVCellView?
+    -> UIPBaseCollectionViewCell?
     {
-        return mViewReuseIds[viewReuseId] as? UIPBaseCVCellView
+        return mViewReuseIds[viewReuseId] as? UIPBaseCollectionViewCell
     }
 
 

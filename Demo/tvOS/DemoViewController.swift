@@ -100,7 +100,7 @@ final class DemoViewController:UIViewController,
     -> UICollectionViewCell
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
+        let cellView:UIPBaseCollectionViewCell = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
@@ -142,7 +142,7 @@ final class DemoViewController:UIViewController,
     -> CGSize
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCVCellView = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
+        let cellView:UIPBaseCollectionViewCell = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
 
         // default: full width, no margins
         let defaultCellWidth:CGFloat = collectionView.bounds.size.width - 0 - 0

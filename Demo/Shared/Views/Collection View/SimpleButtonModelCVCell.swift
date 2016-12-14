@@ -32,7 +32,7 @@
 #endif
 
 
-final class SimpleButtonModelCVCell:UIPBaseCVCellView
+final class SimpleButtonModelCVCell:UIPBaseCollectionViewCell
 {
     // MARK: Private IB Outlet
     @IBOutlet fileprivate weak var ibButton:UIPPlatformButton!
@@ -60,7 +60,7 @@ final class SimpleButtonModelCVCell:UIPBaseCVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCell/UIPBaseCollectionViewCellProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)

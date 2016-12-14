@@ -32,7 +32,7 @@
 #endif
 
 
-final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
+final class SimpleTextFieldModelCVCell:UIPBaseCollectionViewCell
 {
     // MARK: Private IB Outlet
     @IBOutlet fileprivate weak var ibTextField:UIPPlatformTextField!
@@ -50,7 +50,7 @@ final class SimpleTextFieldModelCVCell:UIPBaseCVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCell/UIPBaseCollectionViewCellProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)

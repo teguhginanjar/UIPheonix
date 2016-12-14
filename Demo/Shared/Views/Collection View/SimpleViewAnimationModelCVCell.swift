@@ -32,7 +32,7 @@
 #endif
 
 
-final class SimpleViewAnimationModelCVCell:UIPBaseCVCellView
+final class SimpleViewAnimationModelCVCell:UIPBaseCollectionViewCell
 {
     // MARK: Private IB Outlet
     @IBOutlet fileprivate weak var ibLeftSpaceConstraint:NSLayoutConstraint!
@@ -50,7 +50,7 @@ final class SimpleViewAnimationModelCVCell:UIPBaseCVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCell/UIPBaseCollectionViewCellProtocol
 
 
     override func update(with model:Any, delegate:Any,for  indexPath:IndexPath)

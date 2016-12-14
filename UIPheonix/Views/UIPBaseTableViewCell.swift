@@ -32,7 +32,7 @@
 #endif
 
 
-class UIPBaseTVCellView:UIPPlatformTableViewCell, UIPBaseCellViewProtocol
+class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtocol
 {
     // MARK: UIPPlatformTableViewCell
 
@@ -75,7 +75,7 @@ class UIPBaseTVCellView:UIPPlatformTableViewCell, UIPBaseCellViewProtocol
     }*/
 
 
-    // MARK:- UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCellProtocol
 
 
     var nameOfClass:String { get { return "\(type(of:self))" } }
@@ -83,7 +83,7 @@ class UIPBaseTVCellView:UIPPlatformTableViewCell, UIPBaseCellViewProtocol
 
 
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellSize
+    -> UIPCellHeight
     {
         fatalError("You must override \(#function) in your subclass!")
     }

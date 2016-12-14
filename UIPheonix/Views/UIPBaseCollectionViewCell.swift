@@ -32,7 +32,7 @@
 #endif
 
 
-class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCellViewProtocol
+class UIPBaseCollectionViewCell:UIPPlatformCollectionViewCell, UIPBaseCollectionViewCellProtocol
 {
     // MARK: UIPPlatformCollectionViewCell
 
@@ -75,7 +75,7 @@ class UIPBaseCVCellView:UIPPlatformCollectionViewCell, UIPBaseCellViewProtocol
     }*/
 
 
-    // MARK:- UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCellProtocol
 
 
     var nameOfClass:String { get { return "\(type(of:self))" } }

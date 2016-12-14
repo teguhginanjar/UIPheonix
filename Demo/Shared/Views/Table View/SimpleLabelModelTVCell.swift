@@ -32,7 +32,7 @@
 #endif
 
 
-final class SimpleLabelModelTVCell:UIPBaseTVCellView
+final class SimpleLabelModelTVCell:UIPBaseTableViewCell
 {
     // MARK: Private IB Outlet
     @IBOutlet fileprivate weak var ibLabel:UIPPlatformLabel!
@@ -54,11 +54,11 @@ final class SimpleLabelModelTVCell:UIPBaseTVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCell/UIPBaseCollectionViewCellProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellSize
+    -> UIPCellHeight
     {
         // apply model to view
         let simpleLabelModel:SimpleLabelModel = model as! SimpleLabelModel
@@ -96,8 +96,7 @@ final class SimpleLabelModelTVCell:UIPBaseTVCellView
         #endif
 
         // return view size
-        return UIPCellSize(absoluteWidth:false, width:-20,
-                           absoluteHeight:false, height:0)
+        return UIPCellHeight(absoluteHeight:false, height:0)
     }
 
 

@@ -32,7 +32,7 @@
 #endif
 
 
-final class SimpleLabelModelCVCell:UIPBaseCVCellView
+final class SimpleLabelModelCVCell:UIPBaseCollectionViewCell
 {
     // MARK: Private IB Outlet
     @IBOutlet fileprivate weak var ibLabel:UIPPlatformLabel!
@@ -54,7 +54,7 @@ final class SimpleLabelModelCVCell:UIPBaseCVCellView
     }
 
 
-    // MARK:- UIPBaseCVCellView/UIPBaseCellViewProtocol
+    // MARK:- UIPBaseCollectionViewCell/UIPBaseCollectionViewCellProtocol
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)

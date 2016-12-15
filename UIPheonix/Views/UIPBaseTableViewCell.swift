@@ -75,7 +75,7 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
     }*/
 
 
-    // MARK:- UIPBaseCollectionViewCellProtocol
+    // MARK:- UIPBaseTableViewCellProtocol
 
 
     var nameOfClass:String { get { return "\(type(of:self))" } }

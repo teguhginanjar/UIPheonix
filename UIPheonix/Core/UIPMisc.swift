@@ -104,6 +104,7 @@ var UIPCellHeightUnmodified = UIPCellHeight(absoluteHeight:false, height:0)
     typealias UIPPlatformCollectionViewCell = UICollectionViewCell
     typealias UIPPlatformTableViewCell = UITableViewCell
     typealias UIPPlatformCollectionView = UICollectionView
+    typealias UIPPlatformTableView = UITableView
     typealias UIPPlatformViewController = UIViewController
 #elseif os(macOS)
     typealias UIPPlatformFloat = CGFloat
@@ -119,6 +120,7 @@ var UIPCellHeightUnmodified = UIPCellHeight(absoluteHeight:false, height:0)
     typealias UIPPlatformCollectionViewCell = NSCollectionViewItem
     typealias UIPPlatformTableViewCell = NSTableCellView
     typealias UIPPlatformCollectionView = NSCollectionView
+    typealias UIPPlatformTableView = NSTableView
     typealias UIPPlatformViewController = NSViewController
 #endif
 

@@ -34,6 +34,7 @@ final class DemoViewController:UIViewController,
 {
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:UICollectionView!
+    @IBOutlet weak var ibTableView:UITableView!
 
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
@@ -97,7 +98,7 @@ final class DemoViewController:UIViewController,
     }
 
 
-    // MARK:- UICollectionViewDelegate
+    // MARK: UICollectionViewDelegate
 
 
     func collectionView(_ collectionView:UICollectionView, layout collectionViewLayout:UICollectionViewLayout, insetForSectionAt section:Int)
@@ -211,7 +212,7 @@ final class DemoViewController:UIViewController,
 
     fileprivate func initUIPheonix()
     {
-        mUIPheonix = UIPheonix(with:ibCollectionView)
+        mUIPheonix = UIPheonix(with:ibTableView)
     }
 
 

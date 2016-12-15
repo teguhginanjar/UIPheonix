@@ -38,7 +38,6 @@ fileprivate enum UIPDelegateViewType
 {
     case collection
     case table
-    //case stack
 }
 
 
@@ -55,6 +54,7 @@ final class UIPheonix
 
     // MARK: Private Weak Reference
     fileprivate weak var mDelegateCollectionView:UIPPlatformCollectionView?
+    fileprivate weak var mDelegateTableView:UIPPlatformTableView?
 
 
     // MARK:- Life Cycle
@@ -64,7 +64,6 @@ final class UIPheonix
     /// Init for UICollectionView.
     ///
     /// - Parameters:
-    ///   - delegate: A handler for `UIPDelegate`.
     ///   - collectionView: The collection view.
     ///
     init(with collectionView:UIPPlatformCollectionView?)
@@ -75,6 +74,25 @@ final class UIPheonix
 
         mDelegateCollectionView = collectionView
     }
+
+
+    ///
+    /// Init for UITableView.
+    ///
+    /// - Parameters:
+    ///   - tableView: The table view.
+    ///
+    init(with tableView:UIPPlatformTableView?)
+    {
+        // init members
+        mUIPDelegateViewType = UIPDelegateViewType.table
+        mApplicationNameDot = getApplicationName() + "."
+
+        mDelegateTableView = tableView
+    }
+
+
+    CFH
 
 
     // MARK:- Model-View Relationships

@@ -34,6 +34,7 @@
 		4D279AE91DFDF3DE006EDC1E /* SimpleLabelModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279AD01DFDEEBE006EDC1E /* SimpleLabelModelTVCell.swift */; };
 		4D279AEA1DFE0BA6006EDC1E /* UIPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */; };
 		4D279AEB1DFE0BA7006EDC1E /* UIPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */; };
+		4D30D99F1E0353A800898FE1 /* SimpleLabelModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D30D99E1E0353A800898FE1 /* SimpleLabelModelTVCell.xib */; };
 		4D3C7A7A1D5BF79A0006C7AE /* SimpleButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF7181D379D7C00A4B1FC /* SimpleButtonModel.swift */; };
 		4D3C7A7B1D5BF8C90006C7AE /* SimpleButtonModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C7A771D5BEDB10006C7AE /* SimpleButtonModelCVCell.xib */; };
 		4D3E212E1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4D3E212C1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig */; };
@@ -152,6 +153,7 @@
 		4D279ACE1DFDEEBE006EDC1E /* SimpleViewAnimationModelCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleViewAnimationModelCVCell.swift; sourceTree = "<group>"; };
 		4D279AD01DFDEEBE006EDC1E /* SimpleLabelModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLabelModelTVCell.swift; sourceTree = "<group>"; };
 		4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPBaseTableViewCell.swift; sourceTree = "<group>"; };
+		4D30D99E1E0353A800898FE1 /* SimpleLabelModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleLabelModelTVCell.xib; sourceTree = "<group>"; };
 		4D3C7A771D5BEDB10006C7AE /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
 		4D3E212C1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UIPheonix_RELEASE.xcconfig; sourceTree = "<group>"; };
 		4D3E212D1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UIPheonix_DEBUG.xcconfig; sourceTree = "<group>"; };
@@ -490,6 +492,7 @@
 				66AAF70A1D379D7C00A4B1FC /* SimpleTextFieldModelCVCell.xib */,
 				66AAF70C1D379D7C00A4B1FC /* SimpleVerticalSpaceModelCVCell.xib */,
 				66AAF70B1D379D7C00A4B1FC /* SimpleViewAnimationModelCVCell.xib */,
+				4D30D99E1E0353A800898FE1 /* SimpleLabelModelTVCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -589,7 +592,7 @@
 			attributes = {
 				CLASSPREFIX = UIP;
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Mohsan Khan";
 				TargetAttributes = {
 					4D5439C61CA75C4500AA882D = {
@@ -648,6 +651,7 @@
 				66100FF51D457A84009B2555 /* DisplayState-StartUp.json in Resources */,
 				66AAF72F1D379D7C00A4B1FC /* SimpleTextFieldModelCVCell.xib in Resources */,
 				66100FF21D457A83009B2555 /* DisplayState-Mixed.json in Resources */,
+				4D30D99F1E0353A800898FE1 /* SimpleLabelModelTVCell.xib in Resources */,
 				66100FF41D457A84009B2555 /* DisplayState-Specific.json in Resources */,
 				66AAF72D1D379D7C00A4B1FC /* SimpleButtonModelCVCell.xib in Resources */,
 				66100FF11D457A83009B2555 /* DisplayState-Appending.json in Resources */,

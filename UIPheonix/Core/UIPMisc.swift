@@ -74,13 +74,11 @@ struct UIPConstants
 /// - false = the size is relative and should be added/subtracted to the original size
 ///
 typealias UIPCellSize = (absoluteWidth:Bool, width:CGFloat, absoluteHeight:Bool, height:CGFloat)
-typealias UIPCellHeight = (absoluteHeight:Bool, height:CGFloat)
 
 ///
 /// Convenient variable for an unmodified cell size.
 ///
 var UIPCellSizeUnmodified = UIPCellSize(absoluteWidth:false, width:0, absoluteHeight:false, height:0)
-var UIPCellHeightUnmodified = UIPCellHeight(absoluteHeight:false, height:0)
 
 
 // MARK:- Cross Platform Types

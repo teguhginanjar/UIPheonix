@@ -83,7 +83,6 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
 
 
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellHeight
     {
         fatalError("You must override \(#function) in your subclass!")
     }

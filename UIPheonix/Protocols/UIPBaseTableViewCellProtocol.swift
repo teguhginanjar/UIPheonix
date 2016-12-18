@@ -35,6 +35,6 @@ protocol UIPBaseTableViewCellProtocol:class
     var nameOfClass:String { get }
     static var nameOfClass:String { get }
 
-    func update(with model:Any, delegate:Any, for indexPath:IndexPath) -> UIPCellHeight
+    func update(with model:Any, delegate:Any, for indexPath:IndexPath)
 }
 

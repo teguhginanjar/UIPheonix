@@ -90,14 +90,13 @@ final class DemoTableViewController:UIViewController,
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
         let cellView:UIPBaseTableViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
-        let _:UIPCellHeight = cellView.update(with:cellModel, delegate:self, for:indexPath)
+        cellView.update(with:cellModel, delegate:self, for:indexPath)
 
         return cellView
     }
 
 
     // MARK: UITableViewDelegate
-
 
 
     // MARK:- Private

@@ -38,7 +38,6 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellHeight
     {
         // apply model to view
         let simpleLabelModel2:SimpleLabelModel2 = model as! SimpleLabelModel2
@@ -54,9 +53,6 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
         #elseif os(macOS)
             self.view.layer?.backgroundColor = UIPPlatformColor(hue:simpleLabelModel2.mBackgroundColorHue, saturation:0.5, brightness:1, alpha:1).cgColor
         #endif
-
-        // return view height
-        return UIPCellHeight(absoluteHeight:false, height:0)
     }
 }
 

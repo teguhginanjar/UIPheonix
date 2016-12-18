@@ -310,67 +310,6 @@ final class UIPheonix
 
 
     ///
-    /// Call this after setting content on the cell to have a fitting layout height returned.
-    /// **Note!** The cell's height is determined using Auto Layout & constraints.
-    ///
-    class func calculateLayoutHeightForCell(_ cell:UIPPlatformTableViewCell, preferredWidth:CGFloat)
-    -> CGFloat
-    {
-        var size:CGSize
-
-        #if os(iOS) || os(tvOS)
-            // set bounds, and match with the `contentView`
-            cell.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.bounds.size.height)
-            cell.contentView.bounds = cell.bounds
-
-            // layout subviews
-            cell.setNeedsLayout()
-            cell.layoutIfNeeded()
-
-            // we use the `preferredWidth`
-            // and the fitting height because of the layout pass done above
-            size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-            size.width = preferredWidth
-            //size.height = CGFloat(ceilf(Float(size.height)))    // don't need to do this as per Apple's advice
-        #elseif os(macOS)
-            cell.view.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.view.bounds.size.height)
-
-            // layout subviews
-            cell.view.layoutSubtreeIfNeeded()
-
-            // we use the `preferredWidth`
-            // and the height from the layout pass done above
-            size = cell.view.bounds.size
-            size.width = preferredWidth
-        #endif
-
-        return size.height
-    }
-
-
-    class func viewHeight(with baseHeight:CGFloat, addedHeight:UIPCellHeight)
-    -> CGFloat
-    {
-        // by default, we use the cells layout height
-        var finalHeight:CGFloat = baseHeight
-
-        // Replace or add/subtract height. //
-
-        // height
-        if (addedHeight.absoluteHeight)
-        {
-            finalHeight = addedHeight.height
-        }
-        else
-        {
-            finalHeight += addedHeight.height
-        }
-
-        return finalHeight
-    }
-
-
-    ///
     /// Dequeue reusable cell view.
     ///
     func dequeueView(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)

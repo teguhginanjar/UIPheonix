@@ -43,7 +43,6 @@ final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
 
 
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
-    -> UIPCellHeight
     {
         // apply model to view
         let simpleUserProfileModel:SimpleUserProfileModel = model as! SimpleUserProfileModel
@@ -55,9 +54,6 @@ final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
             ibTitleLabel.text = simpleUserProfileModel.mTitle
             ibDescriptionLabel.text = simpleUserProfileModel.mDescription
         #endif
-
-        // return view height
-        return UIPCellHeight(absoluteHeight:false, height:100)
     }
 }
 

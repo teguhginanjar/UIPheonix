@@ -60,7 +60,14 @@ final class DemoTableViewController:UIViewController,
         // table view: delegate & data source
         ibTableView.delegate = self
         ibTableView.dataSource = self
-        ibTableView.separatorColor = UIColor.white
+
+        // when you set the rowHeight as UITableViewAutomaticDimension,
+        // the table view knows to use the auto layout constraints to determine each cell’s height
+        ibTableView.rowHeight = UITableViewAutomaticDimension
+
+        // in order for the table view to do this, you must also provide an estimatedRowHeight
+        // in this case just an arbitrary value (design value)
+        ibTableView.estimatedRowHeight = 117
 
         initUIPheonix()
         updateView()
@@ -85,29 +92,12 @@ final class DemoTableViewController:UIViewController,
 
         let _:UIPCellHeight = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
-        cellView.layoutIfNeeded()
-
         return cellView
     }
 
 
     // MARK: UITableViewDelegate
 
-
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)
-    -> CGFloat
-    {
-        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseTableViewCell = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
-
-        // default: full width, no margins
-        let defaultCellWidth:CGFloat = tableView.bounds.size.width
-
-        let modelCellHeight:UIPCellHeight = cellView.update(with:cellModel, delegate:self, for:indexPath)
-        let layoutCellHeight:CGFloat = UIPheonix.calculateLayoutHeightForCell(cellView, preferredWidth:defaultCellWidth)
-
-        return UIPheonix.viewHeight(with:layoutCellHeight, addedHeight:modelCellHeight)
-    }
 
 
     // MARK:- Private
@@ -121,16 +111,23 @@ final class DemoTableViewController:UIViewController,
 
     fileprivate func setupWithModels()
     {
-        mUIPheonix.setModelViewRelationships([SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass])
+        mUIPheonix.setModelViewRelationships([SimpleUserProfileModel.nameOfClass:SimpleUserProfileModelTVCell.nameOfClass])
 
         var models:[UIPBaseCellModel] = [UIPBaseCellModel]()
 
-        for i in 1 ... 20
-        {
-            let simpleLabelModel:SimpleLabelModel2 = SimpleLabelModel2(text:"#\(i) The quick, brown fox jumps over a lazy dog.",
-                                                                       backgroundColorHue:(CGFloat(i) * 0.05))
-            models.append(simpleLabelModel)
-        }
+
+        let simpleUserProfileModel1:SimpleUserProfileModel = SimpleUserProfileModel(title:"#1 The quick.",
+                                                                                   description:"Tilde coloring book health.")
+        models.append(simpleUserProfileModel1)
+
+        let simpleUserProfileModel2:SimpleUserProfileModel = SimpleUserProfileModel(title:"#2 The quick, brown fox.",
+                                                                                   description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast.")
+        models.append(simpleUserProfileModel2)
+
+        let simpleUserProfileModel3:SimpleUserProfileModel = SimpleUserProfileModel(title:"#12 The quick, brown fox jumps over a lazy dog.",
+                                                                                   description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast scenester hammock. Butcher truffaut flannel, unicorn fanny pack skateboard pug four loko.")
+        models.append(simpleUserProfileModel3)
+
 
         mUIPheonix.setDisplayModels(models)
     }

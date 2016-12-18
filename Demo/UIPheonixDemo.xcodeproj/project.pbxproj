@@ -44,6 +44,9 @@
 		4D43BEFC1E062CF200E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
 		4D43BEFD1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
 		4D43BEFE1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
+		4D43BF001E06314100E71655 /* SimpleUserProfileModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D43BEFF1E06314100E71655 /* SimpleUserProfileModelTVCell.xib */; };
+		4D43BF021E06336B00E71655 /* SimpleUserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BF011E06336B00E71655 /* SimpleUserProfileModel.swift */; };
+		4D43BF041E06342700E71655 /* SimpleUserProfileModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */; };
 		4D6FADFB1D53E9B500A31C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */; };
 		4D6FADFD1D53E9B500A31C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFC1D53E9B500A31C8F /* ViewController.swift */; };
 		4D6FADFF1D53E9B500A31C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */; };
@@ -165,6 +168,9 @@
 		4D43BEF31E061FF000E71655 /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		4D43BEF51E06205C00E71655 /* DemoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoTableViewController.xib; sourceTree = "<group>"; };
 		4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLabelModel2.swift; sourceTree = "<group>"; };
+		4D43BEFF1E06314100E71655 /* SimpleUserProfileModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleUserProfileModelTVCell.xib; sourceTree = "<group>"; };
+		4D43BF011E06336B00E71655 /* SimpleUserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUserProfileModel.swift; sourceTree = "<group>"; };
+		4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUserProfileModelTVCell.swift; sourceTree = "<group>"; };
 		4D5439C71CA75C4500AA882D /* UIPheonixDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6FADF81D53E9B400A31C8F /* UIPheonixDemo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -288,6 +294,7 @@
 			isa = PBXGroup;
 			children = (
 				4D279AD01DFDEEBE006EDC1E /* SimpleLabelModelTVCell.swift */,
+				4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */,
 			);
 			path = "Table View";
 			sourceTree = "<group>";
@@ -503,6 +510,7 @@
 				66AAF70C1D379D7C00A4B1FC /* SimpleVerticalSpaceModelCVCell.xib */,
 				66AAF70B1D379D7C00A4B1FC /* SimpleViewAnimationModelCVCell.xib */,
 				4D30D99E1E0353A800898FE1 /* SimpleLabelModelTVCell.xib */,
+				4D43BEFF1E06314100E71655 /* SimpleUserProfileModelTVCell.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -525,6 +533,7 @@
 				66AAF7481D37DA6700A4B1FC /* SimpleCounterModel.swift */,
 				66AAF7191D379D7C00A4B1FC /* SimpleLabelModel.swift */,
 				4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */,
+				4D43BF011E06336B00E71655 /* SimpleUserProfileModel.swift */,
 				66AAF71A1D379D7C00A4B1FC /* SimpleTextFieldModel.swift */,
 				66AAF71B1D379D7C00A4B1FC /* SimpleViewAnimationModel.swift */,
 				66AAF71C1D379D7C00A4B1FC /* SimpleVerticalSpaceModel.swift */,
@@ -658,6 +667,7 @@
 				66AAF7311D379D7C00A4B1FC /* SimpleVerticalSpaceModelCVCell.xib in Resources */,
 				66AAF7281D379D7C00A4B1FC /* LaunchScreen.storyboard in Resources */,
 				66AAF7301D379D7C00A4B1FC /* SimpleViewAnimationModelCVCell.xib in Resources */,
+				4D43BF001E06314100E71655 /* SimpleUserProfileModelTVCell.xib in Resources */,
 				66100FF01D457A83009B2555 /* DisplayState-Animations.json in Resources */,
 				66100FF51D457A84009B2555 /* DisplayState-StartUp.json in Resources */,
 				66AAF72F1D379D7C00A4B1FC /* SimpleTextFieldModelCVCell.xib in Resources */,
@@ -733,6 +743,7 @@
 				4D279AEA1DFE0BA6006EDC1E /* UIPBaseTableViewCell.swift in Sources */,
 				4D279AE01DFDF3DD006EDC1E /* SimpleVerticalSpaceModelCVCell.swift in Sources */,
 				4D279AE21DFDF3DD006EDC1E /* SimpleLabelModelTVCell.swift in Sources */,
+				4D43BF021E06336B00E71655 /* SimpleUserProfileModel.swift in Sources */,
 				66AAF73B1D379D7C00A4B1FC /* SimpleLabelModel.swift in Sources */,
 				66AAF6F21D379D6C00A4B1FC /* UIPheonix.swift in Sources */,
 				4D43BEFD1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */,
@@ -751,6 +762,7 @@
 				4D43BEF91E0620F400E71655 /* DemoTableViewController.swift in Sources */,
 				66AAF6F71D379D6C00A4B1FC /* UIPBaseCellModelProtocol.swift in Sources */,
 				4D279ADF1DFDF3DD006EDC1E /* SimpleTextFieldModelCVCell.swift in Sources */,
+				4D43BF041E06342700E71655 /* SimpleUserProfileModelTVCell.swift in Sources */,
 				4DA8FFA11DF47D4A00DC0B18 /* DataProvider.swift in Sources */,
 				66AAF7391D379D7C00A4B1FC /* Types.swift in Sources */,
 				66AAF7491D37DA6700A4B1FC /* SimpleCounterModel.swift in Sources */,

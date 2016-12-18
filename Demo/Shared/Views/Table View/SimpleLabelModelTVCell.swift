@@ -37,6 +37,11 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
     // MARK:- UIPBaseTableViewCell/UIPBaseTableViewCellProtocol
 
 
+    // we do this because the image we use is very big, that makes the cell really really enormous
+    override var rowHeight:CGFloat { get { return 44 } }    // return default build-in row height
+    override var estimatedRowHeight:CGFloat { get { return 44 } }
+
+
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     {
         // apply model to view

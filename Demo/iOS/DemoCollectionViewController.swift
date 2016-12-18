@@ -64,10 +64,7 @@ final class DemoCollectionViewController:UIViewController,
     {
         super.viewDidLoad()
 
-        // collection view: delegate & data source
-        ibCollectionView.delegate = self
-        ibCollectionView.dataSource = self
-
+        setupCollectionView()
         initUIPheonix()
         updateView()
     }
@@ -207,6 +204,13 @@ final class DemoCollectionViewController:UIViewController,
 
 
     // MARK:- Private
+
+
+    fileprivate func setupCollectionView()
+    {
+        ibCollectionView.delegate = self
+        ibCollectionView.dataSource = self
+    }
 
 
     fileprivate func initUIPheonix()

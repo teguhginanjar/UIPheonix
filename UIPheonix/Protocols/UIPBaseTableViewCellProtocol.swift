@@ -35,6 +35,9 @@ protocol UIPBaseTableViewCellProtocol:class
     var nameOfClass:String { get }
     static var nameOfClass:String { get }
 
+    var rowHeight:CGFloat { get }
+    var estimatedRowHeight:CGFloat { get }
+
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
 }
 

@@ -42,6 +42,10 @@ final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
     // MARK:- UIPBaseTableViewCell/UIPBaseTableViewCellProtocol
 
 
+    override var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
+    override var estimatedRowHeight:CGFloat { get { return 117 } }    // return default IB design height
+
+
     override func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     {
         // apply model to view

@@ -81,6 +81,9 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
     var nameOfClass:String { get { return "\(type(of:self))" } }
     static var nameOfClass:String { get { return "\(self)" } }
 
+    var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
+    var estimatedRowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
+
 
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     {

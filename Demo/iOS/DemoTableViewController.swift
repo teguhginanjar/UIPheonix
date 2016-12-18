@@ -120,8 +120,8 @@ final class DemoTableViewController:UIViewController,
         ibTableView.dataSource = self
 
         ///
-        /// In this case, we are using custom table view cell types.
-        /// But if we were only using the built-in table cell types – this would not be necessary, because they have fixed height of 44 points.
+        /// In our demo, we are using custom table view cell types.
+        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 44 points.
         ///
 
         // From Apple documentation:
@@ -130,12 +130,12 @@ final class DemoTableViewController:UIViewController,
         // Note that if you create a self-sizing cell in Interface Builder, the default row height is changed to the value
         // set in Interface Builder. To get the expected self-sizing behavior for a cell that you create in Interface Builder,
         // you must explicitly set rowHeight equal to UITableViewAutomaticDimension in your code.
-//        ibTableView.rowHeight = UITableViewAutomaticDimension
+        ////ibTableView.rowHeight = UITableViewAutomaticDimension
 
         // From Apple documentation:
         // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
         // in this case we set the default height set in IB
-//        ibTableView.estimatedRowHeight = 117
+        ////ibTableView.estimatedRowHeight = 117
     }
 
 

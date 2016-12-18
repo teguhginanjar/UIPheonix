@@ -60,6 +60,7 @@ final class DemoTableViewController:UIViewController,
         // table view: delegate & data source
         ibTableView.delegate = self
         ibTableView.dataSource = self
+        ibTableView.separatorColor = UIColor.white
 
         initUIPheonix()
         updateView()
@@ -120,18 +121,14 @@ final class DemoTableViewController:UIViewController,
 
     fileprivate func setupWithModels()
     {
-        mUIPheonix.setModelViewRelationships([SimpleLabelModel.nameOfClass:SimpleLabelModelTVCell.nameOfClass])
+        mUIPheonix.setModelViewRelationships([SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass])
 
         var models:[UIPBaseCellModel] = [UIPBaseCellModel]()
 
-        for i in 1 ... 3
+        for i in 1 ... 20
         {
-            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"\(i) label label label label label label label label label label label",
-                                                                     size:(12.0 + CGFloat(i) * 2.0),
-                                                                     alignment:SimpleLabelModel.Alignment.left,
-                                                                     style:SimpleLabelModel.Style.regular,
-                                                                     backgroundColorHue:(CGFloat(i) * 0.05),
-                                                                     notificationId:"")
+            let simpleLabelModel:SimpleLabelModel2 = SimpleLabelModel2(text:"#\(i) The quick, brown fox jumps over a lazy dog.",
+                                                                       backgroundColorHue:(CGFloat(i) * 0.05))
             models.append(simpleLabelModel)
         }
 

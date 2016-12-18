@@ -41,6 +41,9 @@
 		4D3E212F1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4D3E212D1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig */; };
 		4D43BEF91E0620F400E71655 /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEF31E061FF000E71655 /* DemoTableViewController.swift */; };
 		4D43BEFA1E0620F400E71655 /* DemoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D43BEF51E06205C00E71655 /* DemoTableViewController.xib */; };
+		4D43BEFC1E062CF200E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
+		4D43BEFD1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
+		4D43BEFE1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
 		4D6FADFB1D53E9B500A31C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */; };
 		4D6FADFD1D53E9B500A31C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFC1D53E9B500A31C8F /* ViewController.swift */; };
 		4D6FADFF1D53E9B500A31C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */; };
@@ -161,6 +164,7 @@
 		4D3E212D1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = UIPheonix_DEBUG.xcconfig; sourceTree = "<group>"; };
 		4D43BEF31E061FF000E71655 /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
 		4D43BEF51E06205C00E71655 /* DemoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoTableViewController.xib; sourceTree = "<group>"; };
+		4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLabelModel2.swift; sourceTree = "<group>"; };
 		4D5439C71CA75C4500AA882D /* UIPheonixDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6FADF81D53E9B400A31C8F /* UIPheonixDemo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 				66AAF7181D379D7C00A4B1FC /* SimpleButtonModel.swift */,
 				66AAF7481D37DA6700A4B1FC /* SimpleCounterModel.swift */,
 				66AAF7191D379D7C00A4B1FC /* SimpleLabelModel.swift */,
+				4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */,
 				66AAF71A1D379D7C00A4B1FC /* SimpleTextFieldModel.swift */,
 				66AAF71B1D379D7C00A4B1FC /* SimpleViewAnimationModel.swift */,
 				66AAF71C1D379D7C00A4B1FC /* SimpleVerticalSpaceModel.swift */,
@@ -730,6 +735,7 @@
 				4D279AE21DFDF3DD006EDC1E /* SimpleLabelModelTVCell.swift in Sources */,
 				66AAF73B1D379D7C00A4B1FC /* SimpleLabelModel.swift in Sources */,
 				66AAF6F21D379D6C00A4B1FC /* UIPheonix.swift in Sources */,
+				4D43BEFD1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */,
 				66AAF6F41D379D6C00A4B1FC /* UIPBaseCellModel.swift in Sources */,
 				4D279ADD1DFDF3DD006EDC1E /* SimpleCounterModelCVCell.swift in Sources */,
 				66AAF72A1D379D7C00A4B1FC /* DemoCollectionViewController.swift in Sources */,
@@ -765,6 +771,7 @@
 				4DAB68FA1D5E871D00BFF15A /* SimpleCounterModel.swift in Sources */,
 				4DA5F8951D57D31B0049956B /* CustomViewControllerPresentationAnimator.swift in Sources */,
 				4D12966D1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */,
+				4D43BEFC1E062CF200E71655 /* SimpleLabelModel2.swift in Sources */,
 				4DAB68F61D5E77F600BFF15A /* SimpleTextFieldModel.swift in Sources */,
 				4D6FADFB1D53E9B500A31C8F /* AppDelegate.swift in Sources */,
 				4D279AD41DFDEEBE006EDC1E /* SimpleTextFieldModelCVCell.swift in Sources */,
@@ -807,6 +814,7 @@
 				66847F7F1D3FAF6E00A0427A /* UIPBaseCellModel.swift in Sources */,
 				66847F801D3FAF7300A0427A /* UIPBaseCollectionViewCellProtocol.swift in Sources */,
 				4D279AE51DFDF3DE006EDC1E /* SimpleLabelModelCVCell.swift in Sources */,
+				4D43BEFE1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */,
 				66847F731D3FAF5900A0427A /* SimpleLabelModel.swift in Sources */,
 				66847F7D1D3FAF6500A0427A /* UIPheonix.swift in Sources */,
 				4D279AE81DFDF3DE006EDC1E /* SimpleViewAnimationModelCVCell.swift in Sources */,

@@ -41,12 +41,18 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
     -> UIPCellHeight
     {
         // apply model to view
-        let simpleLabelModel:SimpleLabelModel = model as! SimpleLabelModel
+        let simpleLabelModel2:SimpleLabelModel2 = model as! SimpleLabelModel2
 
         #if os(iOS) || os(tvOS)
-            self.textLabel?.text = simpleLabelModel.mText
+            self.textLabel?.text = simpleLabelModel2.mText
         #elseif os(macOS)
-            self.textLabel?.text = simpleLabelModel.mText
+            self.textLabel?.text = simpleLabelModel2.mText
+        #endif
+
+        #if os(iOS) || os(tvOS)
+            self.backgroundColor = UIPPlatformColor(hue:simpleLabelModel2.mBackgroundColorHue, saturation:0.5, brightness:1, alpha:1)
+        #elseif os(macOS)
+            self.view.layer?.backgroundColor = UIPPlatformColor(hue:simpleLabelModel2.mBackgroundColorHue, saturation:0.5, brightness:1, alpha:1).cgColor
         #endif
 
         // return view height

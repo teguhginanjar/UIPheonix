@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="117" id="uHz-0M-xQn" customClass="SimpleUserProfileModelTVCell" customModule="UIPheonixDemo_iOS">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" rowHeight="117" id="uHz-0M-xQn" customClass="SimpleUserProfileModelTVCell" customModule="UIPheonixDemo_iOS">
             <rect key="frame" x="0.0" y="0.0" width="320" height="117"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uHz-0M-xQn" id="S8h-m0-geQ">
@@ -55,6 +55,7 @@
                     <constraint firstItem="y3b-bq-0Lx" firstAttribute="top" secondItem="S8h-m0-geQ" secondAttribute="top" constant="8" id="vvL-0O-fHL"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="ibDescriptionLabel" destination="6KR-cl-Ged" id="zyU-ia-2VL"/>
                 <outlet property="ibTitleLabel" destination="MN3-8u-lb7" id="5St-ve-hOS"/>

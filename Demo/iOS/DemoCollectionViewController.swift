@@ -255,8 +255,7 @@ final class DemoCollectionViewController:UIViewController,
             models.append(simpleLabelModel)
         }
 
-        let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue,
-                                                                    title:"Enough with the RAINBOW!")
+        let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue, title:"Enough with the RAINBOW!")
         models.append(simpleButtonModel)
 
         mUIPheonix.setDisplayModels(models)

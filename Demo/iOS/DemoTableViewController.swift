@@ -88,9 +88,6 @@ final class DemoTableViewController:UIViewController,
     // MARK: UITableViewDelegate
 
 
-    // Nothing here for now. //
-
-
     func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)
     -> CGFloat
     {

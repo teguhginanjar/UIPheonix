@@ -38,7 +38,7 @@ class ViewController:UIViewController
         // create & present a new instance of the demo VC
         //let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:AppDisplayState.startUp)
         // or //
-        let demoViewController:DemoTableViewController = DemoTableViewController.newInstance()
+        let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
 
         // use custom view transition
         let transition:CATransition = CATransition()

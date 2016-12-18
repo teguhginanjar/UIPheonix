@@ -28,7 +28,7 @@
 import UIKit
 
 
-final class DemoCollectionViewController:UIViewController,
+final class DemoCollectionViewController:UIPBaseViewController,
                                          UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,
                                          UIPButtonDelegate
 {
@@ -44,20 +44,6 @@ final class DemoCollectionViewController:UIViewController,
 
 
     // MARK:- Life Cycle
-
-
-    ///
-    /// Create a new instance of self with nib.
-    ///
-    class func newInstance(with appDisplayState:AppDisplayState)
-    -> DemoCollectionViewController
-    {
-        let vc:DemoCollectionViewController = self.init(nibName:"\(self)", bundle:nil)
-
-        vc.mAppDisplayStateType = appDisplayState.typeValue
-
-        return vc
-    }
 
 
     override func viewDidLoad()

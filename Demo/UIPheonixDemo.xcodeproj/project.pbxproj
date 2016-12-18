@@ -54,6 +54,9 @@
 		4D43BEFE1E062D9300E71655 /* SimpleLabelModel2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BEFB1E062CF200E71655 /* SimpleLabelModel2.swift */; };
 		4D43BF021E06336B00E71655 /* SimpleUserProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BF011E06336B00E71655 /* SimpleUserProfileModel.swift */; };
 		4D43BF041E06342700E71655 /* SimpleUserProfileModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */; };
+		4D5D35F11E07481D00169DD3 /* UIPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5D35F01E07481D00169DD3 /* UIPBaseViewController.swift */; };
+		4D5D35F21E07481D00169DD3 /* UIPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5D35F01E07481D00169DD3 /* UIPBaseViewController.swift */; };
+		4D5D35F31E07481D00169DD3 /* UIPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D5D35F01E07481D00169DD3 /* UIPBaseViewController.swift */; };
 		4D6FADFB1D53E9B500A31C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */; };
 		4D6FADFD1D53E9B500A31C8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D6FADFC1D53E9B500A31C8F /* ViewController.swift */; };
 		4D6FADFF1D53E9B500A31C8F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */; };
@@ -179,6 +182,7 @@
 		4D43BF011E06336B00E71655 /* SimpleUserProfileModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUserProfileModel.swift; sourceTree = "<group>"; };
 		4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleUserProfileModelTVCell.swift; sourceTree = "<group>"; };
 		4D5439C71CA75C4500AA882D /* UIPheonixDemo-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D5D35F01E07481D00169DD3 /* UIPBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPBaseViewController.swift; sourceTree = "<group>"; };
 		4D6FADF81D53E9B400A31C8F /* UIPheonixDemo-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "UIPheonixDemo-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D6FADFC1D53E9B500A31C8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -462,6 +466,7 @@
 			children = (
 				66AAF6E71D379D6C00A4B1FC /* UIPheonix.swift */,
 				4DA5F88E1D57CEF80049956B /* UIPMisc.swift */,
+				4D5D35F01E07481D00169DD3 /* UIPBaseViewController.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				66AAF6F41D379D6C00A4B1FC /* UIPBaseCellModel.swift in Sources */,
 				4D279ADD1DFDF3DD006EDC1E /* SimpleCounterModelCVCell.swift in Sources */,
 				66AAF72A1D379D7C00A4B1FC /* DemoCollectionViewController.swift in Sources */,
+				4D5D35F21E07481D00169DD3 /* UIPBaseViewController.swift in Sources */,
 				66AAF73A1D379D7C00A4B1FC /* SimpleButtonModel.swift in Sources */,
 				4DA5F88F1D57CEF80049956B /* UIPMisc.swift in Sources */,
 				66AAF6F61D379D6C00A4B1FC /* UIPDelegates.swift in Sources */,
@@ -796,6 +802,7 @@
 				4D74B2E61D53F23F00682A02 /* Types.swift in Sources */,
 				4D74B2E91D53F24300682A02 /* SimpleLabelModel.swift in Sources */,
 				4D279ADB1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift in Sources */,
+				4D5D35F11E07481D00169DD3 /* UIPBaseViewController.swift in Sources */,
 				4DAB68FA1D5E871D00BFF15A /* SimpleCounterModel.swift in Sources */,
 				4DA5F8951D57D31B0049956B /* CustomViewControllerPresentationAnimator.swift in Sources */,
 				4D12966D1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */,
@@ -855,6 +862,7 @@
 				66847F711D3FAF5900A0427A /* SimpleButtonModel.swift in Sources */,
 				66847F721D3FAF5900A0427A /* SimpleCounterModel.swift in Sources */,
 				66847F571D3FAC9D00A0427A /* AppDelegate.swift in Sources */,
+				4D5D35F31E07481D00169DD3 /* UIPBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

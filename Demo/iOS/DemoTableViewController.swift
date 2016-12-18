@@ -28,7 +28,7 @@
 import UIKit
 
 
-final class DemoTableViewController:UIViewController,
+final class DemoTableViewController:UIPBaseViewController,
                                     UITableViewDelegate, UITableViewDataSource
 {
     // MARK: Public IB Outlet
@@ -39,18 +39,6 @@ final class DemoTableViewController:UIViewController,
 
 
     // MARK:- Life Cycle
-
-
-    ///
-    /// Create a new instance of self with nib.
-    ///
-    class func newInstance()
-    -> DemoTableViewController
-    {
-        let vc:DemoTableViewController = self.init(nibName:"\(self)", bundle:nil)
-
-        return vc
-    }
 
 
     override func viewDidLoad()

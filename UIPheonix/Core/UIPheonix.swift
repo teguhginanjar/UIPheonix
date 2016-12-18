@@ -92,9 +92,6 @@ final class UIPheonix
     }
 
 
-    CFH
-
-
     // MARK:- Model-View Relationships
 
 
@@ -106,7 +103,7 @@ final class UIPheonix
 
         mModelViewRelationships = dictionary
 
-        connectWithCollectionView()
+        connectWithDelegateViewType()
     }
 
 
@@ -115,8 +112,8 @@ final class UIPheonix
 
     ///
     /// - Parameters:
-    ///   - rawModelsArray: An array containing dictionary objects with model data (e.g. from JSON).
-    ///   - append: Append to or replace current model list.
+    ///   - rawModelsArray: An array containing dictionary objects with model data.
+    ///   - append: Append to, or replace, the current model list.
     ///
     func setDisplayModels(_ rawModelDataArray:Array<Any>, append:Bool)
     {
@@ -202,32 +199,6 @@ final class UIPheonix
     }
 
 
-    ///
-    /// Dequeue reusable cell view.
-    ///
-    func view(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
-    -> UIPBaseCollectionViewCell?
-    {
-        guard (mDelegateCollectionView != nil) else {
-            fatalError("[UIPheonix] `view for reuseIdentifier` failed, `delegateCollectionView` is nil!")
-        }
-
-        #if os(iOS) || os(tvOS)
-            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.dequeueReusableCell(withReuseIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
-            {
-                return cellView
-            }
-        #elseif os(macOS)
-            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
-            {
-                return cellView
-            }
-        #endif
-
-        return nil
-    }
-
-
     // MARK:- UICollectionView
 
 
@@ -302,10 +273,133 @@ final class UIPheonix
     }
 
 
+    ///
+    /// Dequeue reusable cell view.
+    ///
+    func dequeueView(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
+    -> UIPBaseCollectionViewCell?
+    {
+        guard (mDelegateCollectionView != nil) else {
+            fatalError("[UIPheonix] `view for reuseIdentifier` failed, `mDelegateCollectionView` is nil!")
+        }
+
+        #if os(iOS) || os(tvOS)
+            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.dequeueReusableCell(withReuseIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
+            {
+                return cellView
+            }
+        #elseif os(macOS)
+            if let cellView:UIPBaseCollectionViewCell = mDelegateCollectionView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseCollectionViewCell
+            {
+                return cellView
+            }
+        #endif
+
+        return nil
+    }
+
+
     func view(forReuseIdentifier viewReuseId:String)
     -> UIPBaseCollectionViewCell?
     {
         return mViewReuseIds[viewReuseId] as? UIPBaseCollectionViewCell
+    }
+
+
+    // MARK:- UITableView
+
+
+    ///
+    /// Call this after setting content on the cell to have a fitting layout height returned.
+    /// **Note!** The cell's height is determined using Auto Layout & constraints.
+    ///
+    class func calculateLayoutHeightForCell(_ cell:UIPPlatformTableViewCell, preferredWidth:CGFloat)
+    -> CGFloat
+    {
+        var size:CGSize
+
+        #if os(iOS) || os(tvOS)
+            // set bounds, and match with the `contentView`
+            cell.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.bounds.size.height)
+            cell.contentView.bounds = cell.bounds
+
+            // layout subviews
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
+
+            // we use the `preferredWidth`
+            // and the fitting height because of the layout pass done above
+            size = cell.contentView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+            size.width = preferredWidth
+            //size.height = CGFloat(ceilf(Float(size.height)))    // don't need to do this as per Apple's advice
+        #elseif os(macOS)
+            cell.view.bounds = CGRect(x:0, y:0, width:preferredWidth, height:cell.view.bounds.size.height)
+
+            // layout subviews
+            cell.view.layoutSubtreeIfNeeded()
+
+            // we use the `preferredWidth`
+            // and the height from the layout pass done above
+            size = cell.view.bounds.size
+            size.width = preferredWidth
+        #endif
+
+        return size.height
+    }
+
+
+    class func viewHeight(with baseHeight:CGFloat, addedHeight:UIPCellHeight)
+    -> CGFloat
+    {
+        // by default, we use the cells layout height
+        var finalHeight:CGFloat = baseHeight
+
+        // Replace or add/subtract height. //
+
+        // height
+        if (addedHeight.absoluteHeight)
+        {
+            finalHeight = addedHeight.height
+        }
+        else
+        {
+            finalHeight += addedHeight.height
+        }
+
+        return finalHeight
+    }
+
+
+    ///
+    /// Dequeue reusable cell view.
+    ///
+    func dequeueView(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
+    -> UIPBaseTableViewCell?
+    {
+        guard (mDelegateTableView != nil) else {
+            fatalError("[UIPheonix] `view for reuseIdentifier` failed, `mDelegateTableView` is nil!")
+        }
+
+        #if os(iOS) || os(tvOS)
+            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.dequeueReusableCell(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseTableViewCell
+            {
+                return cellView
+            }
+        #elseif os(macOS)
+            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseTableViewCell
+            {
+                return cellView
+            }
+        #endif
+
+        return nil
+    }
+
+
+    func view(forReuseIdentifier viewReuseId:String)
+    -> UIPBaseTableViewCell?
+    {
+        return mViewReuseIds[viewReuseId] as? UIPBaseTableViewCell
     }
 
 
@@ -326,13 +420,22 @@ final class UIPheonix
 
 
     ///
-    /// • Uses the model's name as the cell-view's reuse-id.
-    /// • Registers all cell-views with the delegate UICollectionView.
+    /// * Uses the model's name as the cell-view's reuse-id.
+    /// * Registers all cell-views with the delegate view.
     ///
-    fileprivate func connectWithCollectionView()
+    fileprivate func connectWithDelegateViewType()
     {
-        guard (mDelegateCollectionView != nil) else {
-            fatalError("[UIPheonix] `connectWithCollectionView` failed, `delegateCollectionView` is nil!")
+        if (mUIPDelegateViewType == UIPDelegateViewType.collection)
+        {
+            guard (mDelegateCollectionView != nil) else {
+                fatalError("[UIPheonix] `connectWithDelegateViewType` failed, `mDelegateCollectionView` is nil!")
+            }
+        }
+        else if (mUIPDelegateViewType == UIPDelegateViewType.table)
+        {
+            guard (mDelegateTableView != nil) else {
+                fatalError("[UIPheonix] `connectWithDelegateViewType` failed, `mDelegateTableView` is nil!")
+            }
         }
 
         guard (mModelViewRelationships.count != 0) else {
@@ -401,7 +504,14 @@ final class UIPheonix
                 #if os(iOS) || os(tvOS)
                     let nib:UINib = UINib(nibName:nibName, bundle:nil)
 
-                    mDelegateCollectionView!.register(nib, forCellWithReuseIdentifier:modelName)
+                    if (mUIPDelegateViewType == UIPDelegateViewType.collection)
+                    {
+                        mDelegateCollectionView!.register(nib, forCellWithReuseIdentifier:modelName)
+                    }
+                    else if (mUIPDelegateViewType == UIPDelegateViewType.table)
+                    {
+                        mDelegateTableView!.register(nib, forCellReuseIdentifier:modelName)
+                    }
                 #elseif os(macOS)
                     let nib:NSNib? = NSNib(nibNamed:nibName, bundle:nil)
 
@@ -409,7 +519,14 @@ final class UIPheonix
                         fatalError("[UIPheonix] Nib could not be instantiated: \(nibName)")
                     }
 
-                    mDelegateCollectionView!.register(nib, forItemWithIdentifier:modelName)
+                    if (mUIPDelegateViewType == UIPDelegateViewType.collection)
+                    {
+                        mDelegateCollectionView!.register(nib, forItemWithIdentifier:modelName)
+                    }
+                    else if (mUIPDelegateViewType == UIPDelegateViewType.table)
+                    {
+                        mDelegateTableView!.register(nib, forCellReuseIdentifier:modelName)
+                    }
                 #endif
             }
         }

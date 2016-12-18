@@ -28,13 +28,12 @@
 import UIKit
 
 
-final class DemoViewController:UIViewController,
-                               UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,
-                               UIPButtonDelegate
+final class DemoCollectionViewController:UIViewController,
+                                         UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,
+                                         UIPButtonDelegate
 {
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:UICollectionView!
-    @IBOutlet weak var ibTableView:UITableView!
 
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
@@ -51,9 +50,9 @@ final class DemoViewController:UIViewController,
     /// Create a new instance of self with nib.
     ///
     class func newInstance(with appDisplayState:AppDisplayState)
-    -> DemoViewController
+    -> DemoCollectionViewController
     {
-        let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil)
+        let vc:DemoCollectionViewController = self.init(nibName:"\(self)", bundle:nil)
 
         vc.mAppDisplayStateType = appDisplayState.typeValue
 
@@ -88,7 +87,7 @@ final class DemoViewController:UIViewController,
     -> UICollectionViewCell
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCollectionViewCell = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
+        let cellView:UIPBaseCollectionViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
@@ -189,7 +188,7 @@ final class DemoViewController:UIViewController,
             animateView(animationState:false, completionHandler:
             {
                 [weak self] in
-                guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+                guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
 
                 strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
                                       isThePersistentDemo:isThePersistentModelsDemo,
@@ -212,7 +211,7 @@ final class DemoViewController:UIViewController,
 
     fileprivate func initUIPheonix()
     {
-        mUIPheonix = UIPheonix(with:ibTableView)
+        mUIPheonix = UIPheonix(with:ibCollectionView)
     }
 
 
@@ -254,7 +253,6 @@ final class DemoViewController:UIViewController,
 
         let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue,
                                                                     title:"Enough with the RAINBOW!")
-
         models.append(simpleButtonModel)
 
         mUIPheonix.setDisplayModels(models)
@@ -300,7 +298,7 @@ final class DemoViewController:UIViewController,
         {
             [weak self] in
 
-            guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+            guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
 
             strongSelf.ibCollectionView.alpha = animationState ? 1.0 : 0.0
         },

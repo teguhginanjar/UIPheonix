@@ -36,7 +36,9 @@ class ViewController:UIViewController
 
         // start the UIPheonix iOS demo
         // create & present a new instance of the demo VC
-        let demoViewController:DemoViewController = DemoViewController.newInstance(with:AppDisplayState.startUp)
+        //let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:AppDisplayState.startUp)
+        // or //
+        let demoViewController:DemoTableViewController = DemoTableViewController.newInstance()
 
         // use custom view transition
         let transition:CATransition = CATransition()

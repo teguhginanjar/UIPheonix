@@ -46,7 +46,7 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
         #if os(iOS) || os(tvOS)
             self.textLabel?.text = simpleLabelModel.mText
         #elseif os(macOS)
-
+            self.textLabel?.text = simpleLabelModel.mText
         #endif
 
         // return view height

@@ -10,23 +10,30 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="O3n-iL-Yqd" style="IBUITableViewCellStyleDefault" id="lmt-Mh-s7f" customClass="SimpleLabelModelTVCell" customModule="UIPheonixDemo_iOS">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="O3n-iL-Yqd" imageView="K7e-k0-ghr" style="IBUITableViewCellStyleDefault" id="lmt-Mh-s7f" customClass="SimpleLabelModelTVCell" customModule="UIPheonixDemo_iOS">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lmt-Mh-s7f" id="gYg-Jq-svA">
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O3n-iL-Yqd">
-                        <rect key="frame" x="15" y="0.0" width="345" height="43"/>
+                    <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="O3n-iL-Yqd">
+                        <rect key="frame" x="73" y="0.0" width="287" height="43"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="UIPheonix_Logo" id="K7e-k0-ghr">
+                        <rect key="frame" x="15" y="0.0" width="43" height="43"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
             <point key="canvasLocation" x="15" y="-97"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="UIPheonix_Logo" width="1000" height="1000"/>
+    </resources>
 </document>

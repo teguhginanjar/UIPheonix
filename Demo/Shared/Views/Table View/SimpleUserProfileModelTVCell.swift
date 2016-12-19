@@ -34,7 +34,7 @@
 
 final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
 {
-    // MARK: Private IB Outlet
+    // MARK: Private IB Outlets
     @IBOutlet fileprivate weak var ibTitleLabel:UIPPlatformLabel!
     @IBOutlet fileprivate weak var ibDescriptionLabel:UIPPlatformLabel!
 

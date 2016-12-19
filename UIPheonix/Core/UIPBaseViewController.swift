@@ -32,33 +32,37 @@
 #endif
 
 
-#if os(iOS) || os(tvOS)
+protocol UIPBaseViewControllerProtocol
+{
+    static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>) -> T
+}
 
+
+#if os(iOS) || os(tvOS)
 
     class UIPBaseViewController:UIViewController
     {
-        // MARK: Private Members
-        private var mPreparedAttributes:Dictionary<String, Any> = Dictionary<String, Any>()
+        var mPreparedAttributes:Dictionary<String, Any> = Dictionary<String, Any>()
 
 
-        // MARK:- Life Cycle
+        /*
+            Example code, copy & paste into your concrete class.
 
+            ///
+            /// Create a new instance of self with nib.
+            ///
+            static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+            -> T
+            {
+                let vc:FooBarViewController = FooBarViewController.init(nibName:"\(self)", bundle:nil)
 
-        ///
-        /// Create a new instance of self with nib.
-        ///
-        class func newInstance<T>(with attributes:Dictionary<String, Any>)
-        -> T
-        {
-            let vc:UIPBaseViewController = UIPBaseViewController.init(nibName:"\(self)", bundle:nil)
+                // init member
+                vc.mPreparedAttributes = attributes
 
-            // init member
-            vc.mPreparedAttributes = attributes
-            
-            return vc as! T
-        }
+                return vc as! T
+            }
+        */
     }
-
 
 #elseif os(macOS)
 

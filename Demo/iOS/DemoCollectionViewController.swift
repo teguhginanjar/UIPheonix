@@ -28,19 +28,41 @@
 import UIKit
 
 
-final class DemoCollectionViewController:UIPBaseViewController,
-                                         UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,
-                                         UIPButtonDelegate
+final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
+                                         UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
 {
+    // MARK: Public Inner Struct
+    struct AttributeKeyName
+    {
+        static let appDisplayState:String = "AppDisplayState"
+    }
+
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:UICollectionView!
 
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
-
-    // MARK: (for demo purpose only)
+    //(for demo purpose only)
     fileprivate var mPersistentDisplayModels:Array<UIPBaseCellModelProtocol>?
+
+
+    // MARK:- UIPBaseViewController/UIPBaseViewControllerProtocol
+
+
+    ///
+    /// Create a new instance of self with nib.
+    ///
+    static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+    -> T
+    {
+        let vc:DemoCollectionViewController = DemoCollectionViewController.init(nibName:"\(self)", bundle:nil)
+
+        // init member
+        vc.mPreparedAttributes = attributes
+
+        return vc as! T
+    }
 
 
     // MARK:- Life Cycle
@@ -49,6 +71,9 @@ final class DemoCollectionViewController:UIPBaseViewController,
     override func viewDidLoad()
     {
         super.viewDidLoad()
+
+        // init member
+        mAppDisplayStateType = (mPreparedAttributes[AttributeKeyName.appDisplayState] as! AppDisplayState).typeValue
 
         setupCollectionView()
         initUIPheonix()

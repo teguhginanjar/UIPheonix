@@ -28,7 +28,7 @@
 import UIKit
 
 
-final class DemoTableViewController:UIPBaseViewController,
+final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol,
                                     UITableViewDelegate, UITableViewDataSource
 {
     // MARK: Public IB Outlet
@@ -36,6 +36,24 @@ final class DemoTableViewController:UIPBaseViewController,
 
     // MARK: Private Members
     fileprivate var mUIPheonix:UIPheonix!
+
+
+    // MARK:- UIPBaseViewController/UIPBaseViewControllerProtocol
+
+
+    ///
+    /// Create a new instance of self with nib.
+    ///
+    static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+    -> T
+    {
+        let vc:DemoTableViewController = DemoTableViewController.init(nibName:"\(self)", bundle:nil)
+
+        // init member
+        vc.mPreparedAttributes = attributes
+
+        return vc as! T
+    }
 
 
     // MARK:- Life Cycle

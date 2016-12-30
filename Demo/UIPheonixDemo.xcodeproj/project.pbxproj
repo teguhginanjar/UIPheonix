@@ -639,7 +639,7 @@
 					4D5439C61CA75C4500AA882D = {
 						CreatedOnToolsVersion = 7.3;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					4D6FADF71D53E9B400A31C8F = {
 						CreatedOnToolsVersion = 8.0;
@@ -929,6 +929,8 @@
 			baseConfigurationReference = 4D3E212D1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76C479XDTD;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mohsankhan.UIPheonixDemo-iOS";
@@ -941,6 +943,8 @@
 			baseConfigurationReference = 4D3E212C1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 76C479XDTD;
 				INFOPLIST_FILE = iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mohsankhan.UIPheonixDemo-iOS";

@@ -59,7 +59,7 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
             coordinator.addCoordinatedAnimations(
             {
                 () -> Void in
-                self.layer.backgroundColor = UIColor.blue().withAlphaComponent(0.2).cgColor
+                self.layer.backgroundColor = UIColor.blue.withAlphaComponent(0.75).cgColor
             },
             completion: nil)
         }
@@ -68,7 +68,7 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
             coordinator.addCoordinatedAnimations(
             {
                 () -> Void in
-                self.layer.backgroundColor = UIColor.clear().cgColor
+                self.layer.backgroundColor = UIColor.clear.cgColor
             },
             completion: nil)
         }

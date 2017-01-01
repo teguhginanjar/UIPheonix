@@ -71,10 +71,10 @@ final class SimpleButtonModelTVCell:UIPBaseTableViewCell
         override var estimatedRowHeight:CGFloat { get { return 44 } }    // return default IB design height
     #elseif os(tvOS)
         override var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
-        override var estimatedRowHeight:CGFloat { get { return 44 } }    // return default IB design height
+        override var estimatedRowHeight:CGFloat { get { return 110 } }    // return default IB design height
     #elseif os(macOS)
-        override var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
-        override var estimatedRowHeight:CGFloat { get { return 44 } }    // return default IB design height
+        override var rowHeight:CGFloat { get { return -1 } }
+        override var estimatedRowHeight:CGFloat { get { return -1 } }    // return default IB design height
     #endif
 
 

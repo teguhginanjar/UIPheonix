@@ -17,7 +17,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="464" height="66"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="25o-WW-ubY">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="&lt;label&gt;" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="14" id="25o-WW-ubY">
                         <rect key="frame" x="118" y="0.0" width="326" height="66"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <fontDescription key="fontDescription" type="system" pointSize="28"/>

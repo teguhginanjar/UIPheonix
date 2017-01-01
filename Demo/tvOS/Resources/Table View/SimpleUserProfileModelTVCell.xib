@@ -13,11 +13,11 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="0.0" rowHeight="216" id="EI7-fb-eVV" customClass="SimpleUserProfileModelTVCell" customModule="UIPheonixDemo_tvOS">
             <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EI7-fb-eVV" id="dxE-fy-bWy">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="EI7-fb-eVV" id="dxE-fy-bWy">
                 <rect key="frame" x="0.0" y="0.0" width="464" height="216"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;title&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K38-0H-j8N">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="&lt;title&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K38-0H-j8N">
                         <rect key="frame" x="264" y="32" width="184" height="41"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="wWQ-ar-WyT"/>
@@ -26,14 +26,14 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UIPheonix_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XVq-Wi-8f2">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="UIPheonix_Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XVq-Wi-8f2">
                         <rect key="frame" x="32" y="8" width="200" height="200"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="200" id="Ao2-0n-wzm"/>
                             <constraint firstAttribute="height" constant="200" id="UD0-C3-RuG"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;desc&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-Ib-S9x">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="&lt;desc&gt;" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sIX-Ib-S9x">
                         <rect key="frame" x="264" y="73" width="184" height="151"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="151" id="53P-TI-JMh"/>

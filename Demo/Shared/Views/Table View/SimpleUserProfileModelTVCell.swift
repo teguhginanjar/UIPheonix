@@ -49,8 +49,8 @@ final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
         override var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
         override var estimatedRowHeight:CGFloat { get { return 216 } }    // return default IB design height
     #elseif os(macOS)
-        override var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
-        override var estimatedRowHeight:CGFloat { get { return 66 } }    // return default IB design height
+        override var rowHeight:CGFloat { get { return -1 } }
+        override var estimatedRowHeight:CGFloat { get { return -1 } }    // return default IB design height
     #endif
 
 

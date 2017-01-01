@@ -20,6 +20,7 @@
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="nZt-1K-atl">
                         <rect key="frame" x="48" y="16" width="384" height="48"/>
                         <color key="backgroundColor" red="0.7044675350189209" green="0.90712237358093262" blue="0.99940657615661621" alpha="1" colorSpace="calibratedRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
                         <state key="normal" title="&lt;button&gt;"/>
                         <state key="disabled">
                             <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>

@@ -25,6 +25,12 @@
                         <state key="highlighted">
                             <color key="titleColor" red="0.74117647060000003" green="0.0" blue="0.090196078430000007" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="titleLabel.adjustsFontSizeToFitWidth" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.minimumScaleFactor">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="buttonAction:" destination="eUc-R0-Vf5" eventType="primaryActionTriggered" id="rSH-xf-8b9"/>
                         </connections>

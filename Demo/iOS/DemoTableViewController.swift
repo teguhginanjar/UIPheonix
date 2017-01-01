@@ -185,17 +185,12 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
         models.append(SimpleLabelModel2(text:"Label #1", backgroundColorHue:0.2))
         models.append(SimpleLabelModel2(text:"Label #2", backgroundColorHue:0.4))
-        models.append(SimpleLabelModel2(text:"Label #3", backgroundColorHue:0.6))
-        models.append(SimpleLabelModel2(text:"Label #4", backgroundColorHue:0.8))
         
         let simpleUserProfileModel1:SimpleUserProfileModel = SimpleUserProfileModel(title:"#1 The quick.", description:"Tilde coloring book health.")
         models.append(simpleUserProfileModel1)
 
-        let simpleUserProfileModel2:SimpleUserProfileModel = SimpleUserProfileModel(title:"#2 The quick, brown fox.", description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast.")
+        let simpleUserProfileModel2:SimpleUserProfileModel = SimpleUserProfileModel(title:"#2 The quick, brown fox jumps over a lazy dog.", description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast scenester hammock. Butcher truffaut flannel, unicorn fanny pack skateboard pug four loko.")
         models.append(simpleUserProfileModel2)
-
-        let simpleUserProfileModel3:SimpleUserProfileModel = SimpleUserProfileModel(title:"#12 The quick, brown fox jumps over a lazy dog.", description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast scenester hammock. Butcher truffaut flannel, unicorn fanny pack skateboard pug four loko.")
-        models.append(simpleUserProfileModel3)
 
         mUIPheonix.setDisplayModels(models)
     }

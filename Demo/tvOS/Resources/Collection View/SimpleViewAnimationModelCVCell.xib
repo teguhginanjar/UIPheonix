@@ -21,16 +21,23 @@
                         <rect key="frame" x="16" y="16" width="448" height="68"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0X1-UT-8vl">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="0X1-UT-8vl">
                         <rect key="frame" x="16" y="16" width="150" height="68"/>
-                        <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.7044675350189209" green="0.90712237358093262" blue="0.99940657615661621" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="68" id="EMu-DI-MGP"/>
                             <constraint firstAttribute="width" constant="150" id="RlJ-ns-9Em"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                        <state key="normal" title="Animate!">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                        <state key="normal" title="Animate!"/>
+                        <state key="disabled">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected">
+                            <color key="titleColor" red="1" green="0.15000000596046448" blue="0.0" alpha="1" colorSpace="deviceRGB"/>
+                        </state>
+                        <state key="highlighted">
+                            <color key="titleColor" red="0.018232390284538269" green="0.26662924885749817" blue="0.99607938528060913" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                         <state key="focused">
                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>

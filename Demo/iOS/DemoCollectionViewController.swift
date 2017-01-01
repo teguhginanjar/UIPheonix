@@ -221,6 +221,8 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
     {
         ibCollectionView.delegate = self
         ibCollectionView.dataSource = self
+
+        ibCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0)
     }
 
 

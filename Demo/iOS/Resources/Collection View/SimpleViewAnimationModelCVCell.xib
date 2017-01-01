@@ -28,6 +28,7 @@
                             <constraint firstAttribute="height" constant="44" id="4Ng-Lq-hhC"/>
                             <constraint firstAttribute="width" constant="70" id="ghm-3e-7FG"/>
                         </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <state key="normal" title="Animate!"/>
                         <connections>
                             <action selector="animateButtonAction:" destination="eUc-R0-Vf5" eventType="touchUpInside" id="711-hT-xGU"/>

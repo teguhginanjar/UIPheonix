@@ -28,7 +28,7 @@
 import UIKit
 
 
-class ViewController:UIViewController
+final class ViewController:UIViewController
 {
     override func viewDidAppear(_ animated:Bool)
     {

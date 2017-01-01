@@ -125,7 +125,7 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
         ///
         /// In our demo, we are using custom table view cell types.
-        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 44 points.
+        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 66 points.
         ///
 
         // From Apple documentation:
@@ -139,7 +139,7 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
         // From Apple documentation:
         // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
         // in this case we set the default height set in IB
-        ////ibTableView.estimatedRowHeight = 117
+        ////ibTableView.estimatedRowHeight = 216
     }
 
 

@@ -41,7 +41,7 @@ class UIPBaseCellModel:UIPBaseCellModelProtocol
 
     func setContents(with dictionary:Dictionary<String, Any>)
     {
-        fatalError("You must override \(#function) in your subclass!")
+        fatalError("[UIPheonix] You must override \(#function) in your subclass!")
     }
 
 
@@ -55,7 +55,7 @@ class UIPBaseCellModel:UIPBaseCellModelProtocol
     func toDictionary()
     -> Dictionary<String, Any>
     {
-        fatalError("You must override \(#function) in your subclass!")
+        fatalError("[UIPheonix] You must override \(#function) in your subclass!")
     }
 }
 

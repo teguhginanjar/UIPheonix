@@ -86,6 +86,10 @@
 		4DAB68FA1D5E871D00BFF15A /* SimpleCounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF7481D37DA6700A4B1FC /* SimpleCounterModel.swift */; };
 		4DBE5A7D1D626C92001ED6F5 /* SimpleViewAnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF71B1D379D7C00A4B1FC /* SimpleViewAnimationModel.swift */; };
 		4DBE5A7F1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */; };
+		4DC4A4691E195BF700FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
+		4DC4A46A1E195C0C00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
+		4DC4A46B1E195C0D00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
+		4DC4A46D1E1961E100FEC973 /* SimpleButtonModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */; };
 		4DC567021D593B98005A3F70 /* DisplayState-Animations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8971D57D4890049956B /* DisplayState-Animations.json */; };
 		4DC567031D593B98005A3F70 /* DisplayState-Appending.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8981D57D4890049956B /* DisplayState-Appending.json */; };
 		4DC567041D593B98005A3F70 /* DisplayState-Mixed.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8991D57D4890049956B /* DisplayState-Mixed.json */; };
@@ -213,6 +217,8 @@
 		4DAB68F41D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTextFieldModelCVCell.xib; sourceTree = "<group>"; };
 		4DAB68F81D5E835100BFF15A /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
 		4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleViewAnimationModelCVCell.xib; sourceTree = "<group>"; };
+		4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonModelTVCell.swift; sourceTree = "<group>"; };
+		4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
 		4DC567091D593C15005A3F70 /* SimpleLabelModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleLabelModelCVCell.xib; sourceTree = "<group>"; };
 		4DD1C8B71E187CC300257178 /* DemoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewController.xib; sourceTree = "<group>"; };
 		4DD1C8B81E187CC300257178 /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
@@ -309,6 +315,7 @@
 		4D279ACF1DFDEEBE006EDC1E /* Table View */ = {
 			isa = PBXGroup;
 			children = (
+				4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */,
 				4D279AD01DFDEEBE006EDC1E /* SimpleLabelModelTVCell.swift */,
 				4D43BF031E06342700E71655 /* SimpleUserProfileModelTVCell.swift */,
 			);
@@ -333,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				4D3DEFF91E06F1FB000D8B70 /* DemoTableViewController.xib */,
+				4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */,
 				4D3DEFFA1E06F1FB000D8B70 /* SimpleLabelModelTVCell.xib */,
 				4D3DF0051E06F238000D8B70 /* SimpleUserProfileModelTVCell.xib */,
 			);
@@ -730,6 +738,7 @@
 				66100FF51D457A84009B2555 /* DisplayState-StartUp.json in Resources */,
 				66100FF21D457A83009B2555 /* DisplayState-Mixed.json in Resources */,
 				66100FF41D457A84009B2555 /* DisplayState-Specific.json in Resources */,
+				4DC4A46D1E1961E100FEC973 /* SimpleButtonModelTVCell.xib in Resources */,
 				66100FF11D457A83009B2555 /* DisplayState-Appending.json in Resources */,
 				4D3DF0031E06F1FB000D8B70 /* DemoTableViewController.xib in Resources */,
 			);
@@ -794,6 +803,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D12966E1E01FE06006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */,
+				4DC4A46A1E195C0C00FEC973 /* SimpleButtonModelTVCell.swift in Sources */,
 				66AAF7321D379D7C00A4B1FC /* ViewController.swift in Sources */,
 				66AAF7261D379D7C00A4B1FC /* AppDelegate.swift in Sources */,
 				4D279AEA1DFE0BA6006EDC1E /* UIPBaseTableViewCell.swift in Sources */,
@@ -833,6 +843,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D279AD11DFDEEBE006EDC1E /* SimpleButtonModelCVCell.swift in Sources */,
+				4DC4A46B1E195C0D00FEC973 /* SimpleButtonModelTVCell.swift in Sources */,
 				4D6FADFD1D53E9B500A31C8F /* ViewController.swift in Sources */,
 				4D74B2E61D53F23F00682A02 /* Types.swift in Sources */,
 				4D74B2E91D53F24300682A02 /* SimpleLabelModel.swift in Sources */,
@@ -872,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D12966F1E01FE06006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */,
+				4DC4A4691E195BF700FEC973 /* SimpleButtonModelTVCell.swift in Sources */,
 				66847F741D3FAF5900A0427A /* SimpleTextFieldModel.swift in Sources */,
 				4D279AEB1DFE0BA7006EDC1E /* UIPBaseTableViewCell.swift in Sources */,
 				4D279AE71DFDF3DE006EDC1E /* SimpleVerticalSpaceModelCVCell.swift in Sources */,

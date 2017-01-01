@@ -87,7 +87,7 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
 
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     {
-        fatalError("You must override \(#function) in your subclass!")
+        fatalError("[UIPheonix] You must override \(#function) in your subclass!")
     }
 }
 

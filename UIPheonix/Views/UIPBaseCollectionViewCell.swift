@@ -85,7 +85,7 @@ class UIPBaseCollectionViewCell:UIPPlatformCollectionViewCell, UIPBaseCollection
     func update(with model:Any, delegate:Any, for indexPath:IndexPath)
     -> UIPCellSize
     {
-        fatalError("You must override \(#function) in your subclass!")
+        fatalError("[UIPheonix] You must override \(#function) in your subclass!")
     }
 }
 

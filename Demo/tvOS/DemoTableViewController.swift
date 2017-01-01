@@ -28,7 +28,7 @@
 import UIKit
 
 
-final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol,
+final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
                                     UITableViewDelegate, UITableViewDataSource
 {
     // MARK: Public IB Outlet
@@ -114,6 +114,24 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
+    // MARK:- UIPButtonDelegate
+
+
+    func buttonAction(_ buttonId:Int)
+    {
+        switch (buttonId)
+        {
+            case ButtonId.helloWorld.rawValue:
+                print("Hello World!")
+            break
+
+            default:
+                fatalError("DemoTableViewController buttonAction: Unknown button id \(buttonId)!")
+            break
+        }
+    }
+
+
     // MARK:- Private
 
 
@@ -151,7 +169,8 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
     fileprivate func setupWithModels()
     {
-        mUIPheonix.setModelViewRelationships([SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass,
+        mUIPheonix.setModelViewRelationships([SimpleButtonModel.nameOfClass:SimpleButtonModelTVCell.nameOfClass,
+                                              SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass,
                                               SimpleUserProfileModel.nameOfClass:SimpleUserProfileModelTVCell.nameOfClass])
 
         var models:[UIPBaseCellModel] = [UIPBaseCellModel]()
@@ -161,6 +180,8 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
         /// and that both self-sizing cells with constraints
         /// and the default build-in cells work just fine with auto-layout.
         ///
+
+        models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Hello World!", focus:true))
 
         models.append(SimpleLabelModel2(text:"Label #1", backgroundColorHue:0.2))
         models.append(SimpleLabelModel2(text:"Label #2", backgroundColorHue:0.4))
@@ -175,6 +196,8 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
         let simpleUserProfileModel3:SimpleUserProfileModel = SimpleUserProfileModel(title:"#12 The quick, brown fox jumps over a lazy dog.", description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast scenester hammock. Butcher truffaut flannel, unicorn fanny pack skateboard pug four loko.")
         models.append(simpleUserProfileModel3)
+
+        models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Good Bye World!", focus:false))
 
         mUIPheonix.setDisplayModels(models)
     }

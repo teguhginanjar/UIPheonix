@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" rowHeight="216" id="EI7-fb-eVV" customClass="SimpleUserProfileModelTVCell" customModule="UIPheonixDemo_tvOS">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="0.0" rowHeight="216" id="EI7-fb-eVV" customClass="SimpleUserProfileModelTVCell" customModule="UIPheonixDemo_tvOS">
             <rect key="frame" x="0.0" y="0.0" width="480" height="216"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EI7-fb-eVV" id="dxE-fy-bWy">

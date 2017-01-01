@@ -90,6 +90,7 @@
 		4DC4A46A1E195C0C00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
 		4DC4A46B1E195C0D00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
 		4DC4A46D1E1961E100FEC973 /* SimpleButtonModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */; };
+		4DC4A46F1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC4A46E1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib */; };
 		4DC567021D593B98005A3F70 /* DisplayState-Animations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8971D57D4890049956B /* DisplayState-Animations.json */; };
 		4DC567031D593B98005A3F70 /* DisplayState-Appending.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8981D57D4890049956B /* DisplayState-Appending.json */; };
 		4DC567041D593B98005A3F70 /* DisplayState-Mixed.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8991D57D4890049956B /* DisplayState-Mixed.json */; };
@@ -219,6 +220,7 @@
 		4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleViewAnimationModelCVCell.xib; sourceTree = "<group>"; };
 		4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonModelTVCell.swift; sourceTree = "<group>"; };
 		4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
+		4DC4A46E1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
 		4DC567091D593C15005A3F70 /* SimpleLabelModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleLabelModelCVCell.xib; sourceTree = "<group>"; };
 		4DD1C8B71E187CC300257178 /* DemoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewController.xib; sourceTree = "<group>"; };
 		4DD1C8B81E187CC300257178 /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
@@ -430,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				4DD1C8D71E1880BB00257178 /* DemoTableViewController.xib */,
+				4DC4A46E1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib */,
 				4DD1C8D91E18833000257178 /* SimpleLabelModelTVCell.xib */,
 				4DD1C8DB1E18860A00257178 /* SimpleUserProfileModelTVCell.xib */,
 			);
@@ -778,6 +781,7 @@
 				4DD1C8C91E187CD000257178 /* SimpleLabelModelCVCell.xib in Resources */,
 				4DD1C8DC1E18860A00257178 /* SimpleUserProfileModelTVCell.xib in Resources */,
 				66847F5E1D3FAC9D00A0427A /* Assets.xcassets in Resources */,
+				4DC4A46F1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib in Resources */,
 				66100FED1D457A76009B2555 /* DisplayState-Specific.json in Resources */,
 				4DD1C8C71E187CD000257178 /* SimpleButtonModelCVCell.xib in Resources */,
 				66100FEE1D457A76009B2555 /* DisplayState-StartUp.json in Resources */,

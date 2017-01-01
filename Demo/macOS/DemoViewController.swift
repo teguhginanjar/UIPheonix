@@ -53,7 +53,7 @@ final class DemoViewController:NSViewController,
     -> DemoViewController
     {
         guard let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil) else {
-            fatalError("[UIPheonix] Could not create new instance of `DemoViewController` from nib!")
+            fatalError("DemoCollectionViewController newInstance: Could not create new instance of `DemoViewController` from nib!")
         }
 
         vc.mAppDisplayStateType = appDisplayState.typeValue
@@ -188,7 +188,7 @@ final class DemoViewController:NSViewController,
             animateView(animationState:false, completionHandler:
             {
                 [weak self] in
-                guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+                guard let strongSelf:DemoViewController = self else { fatalError("DemoCollectionViewController buttonAction: `self` does not exist anymore!") }
 
                 strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
                                       isThePersistentDemo:isThePersistentModelsDemo,
@@ -224,7 +224,7 @@ final class DemoViewController:NSViewController,
         }
         else
         {
-            fatalError("Failed to init with JSON file!")
+            fatalError("DemoCollectionViewController setupWithJSON: Failed to init with JSON file!")
         }
     }
 
@@ -300,7 +300,7 @@ final class DemoViewController:NSViewController,
         {
             [weak self] (context:NSAnimationContext) in
 
-            guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+            guard let strongSelf:DemoViewController = self else { fatalError("DemoCollectionViewController animateView: `self` does not exist anymore!") }
 
             context.duration = 0.25
             strongSelf.view.animator().alphaValue = animationState ? 1.0 : 0.0

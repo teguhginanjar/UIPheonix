@@ -196,7 +196,7 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
             animateView(animationState:false, completionHandler:
             {
                 [weak self] in
-                guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
+                guard let strongSelf:DemoCollectionViewController = self else { fatalError("DemoCollectionViewController buttonAction: `self` does not exist anymore!") }
 
                 strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
                                       isThePersistentDemo:isThePersistentModelsDemo,
@@ -239,7 +239,7 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
         }
         else
         {
-            fatalError("Failed to init with JSON file!")
+            fatalError("DemoCollectionViewController setupWithJSON: Failed to init with JSON file!")
         }
     }
 
@@ -312,7 +312,7 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
         {
             [weak self] in
 
-            guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
+            guard let strongSelf:DemoCollectionViewController = self else { fatalError("DemoCollectionViewController animateView: `self` does not exist anymore!") }
 
             strongSelf.ibCollectionView.alpha = animationState ? 1.0 : 0.0
         },

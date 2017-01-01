@@ -28,10 +28,15 @@
 import UIKit
 
 
-final class DemoViewController:UIViewController,
-                               UICollectionViewDelegateFlowLayout, UICollectionViewDataSource,
-                               UIPButtonDelegate
+final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
+                                         UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
 {
+    // MARK: Public Inner Struct
+    struct AttributeKeyName
+    {
+        static let appDisplayState:String = "AppDisplayState"
+    }
+
     // MARK: Public IB Outlet
     @IBOutlet weak var ibCollectionView:UICollectionView!
 
@@ -39,8 +44,7 @@ final class DemoViewController:UIViewController,
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
     fileprivate var mViewToFocus:UIView? = nil
-
-    // MARK: (for demo purpose only)
+    // (for demo purpose only)
     fileprivate var mPersistentDisplayModels:Array<UIPBaseCellModelProtocol>?
 
     // MARK: Overriding Member
@@ -56,31 +60,35 @@ final class DemoViewController:UIViewController,
     }
 
 
-    // MARK:- Life Cycle
+    // MARK:- UIPBaseViewController/UIPBaseViewControllerProtocol
 
 
     ///
     /// Create a new instance of self with nib.
     ///
-    class func newInstance(with appDisplayState:AppDisplayState)
-    -> DemoViewController
+    static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+    -> T
     {
-        let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil)
+        let vc:DemoCollectionViewController = DemoCollectionViewController.init(nibName:"\(self)", bundle:nil)
 
-        vc.mAppDisplayStateType = appDisplayState.typeValue
+        // init member
+        vc.mPreparedAttributes = attributes
 
-        return vc
+        return vc as! T
     }
+
+
+    // MARK:- Life Cycle
 
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // collection view: delegate & data source
-        ibCollectionView.delegate = self
-        ibCollectionView.dataSource = self
+        // init member
+        mAppDisplayStateType = (mPreparedAttributes[AttributeKeyName.appDisplayState] as! AppDisplayState).typeValue
 
+        setupCollectionView()
         initUIPheonix()
         updateView()
     }
@@ -100,13 +108,13 @@ final class DemoViewController:UIViewController,
     -> UICollectionViewCell
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCollectionViewCell = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
+        let cellView:UIPBaseCollectionViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
         cellView.layoutIfNeeded()
 
-        // tvOS, focus on item that wants focus (only buttons in this case)
+        // tvOS, focus on the item that wants focus (only buttons in this case)
         if (cellModel.nameOfClass == SimpleButtonModel.nameOfClass)
         {
             let buttonModel:SimpleButtonModel = cellModel as! SimpleButtonModel
@@ -212,7 +220,7 @@ final class DemoViewController:UIViewController,
             animateView(animationState:false, completionHandler:
             {
                 [weak self] in
-                guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+                guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
 
                 strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
                                       isThePersistentDemo:isThePersistentModelsDemo,
@@ -221,7 +229,7 @@ final class DemoViewController:UIViewController,
                 strongSelf.animateView(animationState:true, completionHandler:
                 {
                     [weak self] in
-                    guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+                    guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
 
                     // force update view focus
                     strongSelf.setNeedsFocusUpdate()
@@ -239,6 +247,13 @@ final class DemoViewController:UIViewController,
 
 
     // MARK:- Private
+
+
+    fileprivate func setupCollectionView()
+    {
+        ibCollectionView.delegate = self
+        ibCollectionView.dataSource = self
+    }
 
 
     fileprivate func initUIPheonix()
@@ -332,7 +347,7 @@ final class DemoViewController:UIViewController,
         {
             [weak self] in
 
-            guard let strongSelf:DemoViewController = self else { fatalError("`self` does not exist anymore!") }
+            guard let strongSelf:DemoCollectionViewController = self else { fatalError("`self` does not exist anymore!") }
 
             strongSelf.ibCollectionView.alpha = animationState ? 1.0 : 0.0
         },

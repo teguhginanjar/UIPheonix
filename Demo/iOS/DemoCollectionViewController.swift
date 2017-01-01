@@ -43,7 +43,7 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
-    //(for demo purpose only)
+    // (for demo purpose only)
     fileprivate var mPersistentDisplayModels:Array<UIPBaseCellModelProtocol>?
 
 

@@ -90,7 +90,7 @@ final class SimpleButtonModelCVCell:UIPBaseCollectionViewCell
         #if os(iOS) || os(tvOS)
             ibButton.layer.cornerRadius = CGFloat.valueForPlatform(mac:10, mobile:10, tv:40)
         #elseif os(macOS)
-            ibButton.view.layer?.cornerRadius = CGFloat.valueForPlatform(mac:10, mobile:10, tv:40)
+            ibButton.layer?.cornerRadius = CGFloat.valueForPlatform(mac:10, mobile:10, tv:40)
         #endif
 
         // return view size

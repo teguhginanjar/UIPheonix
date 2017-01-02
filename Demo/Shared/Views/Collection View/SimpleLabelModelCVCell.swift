@@ -90,9 +90,9 @@ final class SimpleLabelModelCVCell:UIPBaseCollectionViewCell
 
         // layer drawing
         #if os(iOS) || os(tvOS)
-            self.layer.cornerRadius = CGFloat.valueForPlatform(mac:5, mobile:5, tv:20)
+            self.layer.cornerRadius = CGFloat.valueForPlatform(mac:2, mobile:2, tv:10)
         #elseif os(macOS)
-            self.view.layer?.cornerRadius = CGFloat.valueForPlatform(mac:5, mobile:5, tv:20)
+            self.view.layer?.cornerRadius = CGFloat.valueForPlatform(mac:2, mobile:2, tv:10)
         #endif
 
         // return view size

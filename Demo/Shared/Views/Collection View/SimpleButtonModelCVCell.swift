@@ -76,7 +76,6 @@ final class SimpleButtonModelCVCell:UIPBaseCollectionViewCell
                 self?.ibButton.setTitle(simpleButtonModel.mTitle, for:UIControlState())
                 self?.ibButton.layoutIfNeeded()
             })
-
         #elseif os(macOS)
             ibButton.title = simpleButtonModel.mTitle
             ibButton.sizeToFit()
@@ -86,6 +85,13 @@ final class SimpleButtonModelCVCell:UIPBaseCollectionViewCell
         // view delegate handling
         mDelegate = delegate as? UIPButtonDelegate
         mButtonId = simpleButtonModel.mId
+
+        // layer drawing
+        #if os(iOS) || os(tvOS)
+            ibButton.layer.cornerRadius = CGFloat.valueForPlatform(mac:10, mobile:10, tv:40)
+        #elseif os(macOS)
+            ibButton.view.layer?.cornerRadius = CGFloat.valueForPlatform(mac:10, mobile:10, tv:40)
+        #endif
 
         // return view size
         return UIPCellSizeUnmodified

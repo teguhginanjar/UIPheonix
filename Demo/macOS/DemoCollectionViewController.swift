@@ -28,48 +28,57 @@
 import Cocoa
 
 
-final class DemoViewController:NSViewController,
-                               NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource,
-                               UIPButtonDelegate
+final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
+                                         NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource
+
 {
+    // MARK: Public Inner Struct
+    struct AttributeKeyName
+    {
+        static let appDisplayState:String = "AppDisplayState"
+    }
+
     // MARK: Public IB Outlet
     @IBOutlet fileprivate weak var ibCollectionView:NSCollectionView!
 
     // MARK: Private Members
     fileprivate var mAppDisplayStateType:AppDisplayStateType!
     fileprivate var mUIPheonix:UIPheonix!
-
-    // MARK: (for demo purpose only)
+    // (for demo purpose only)
     fileprivate var mPersistentDisplayModels:Array<UIPBaseCellModelProtocol>?
 
 
-    // MARK:- Life Cycle
+    // MARK:- UIPBaseViewController/UIPBaseViewControllerProtocol
 
 
     ///
     /// Create a new instance of self with nib.
     ///
-    class func newInstance(with appDisplayState:AppDisplayState)
-    -> DemoViewController
+    static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+    -> T
     {
-        guard let vc:DemoViewController = self.init(nibName:"\(self)", bundle:nil) else {
-            fatalError("DemoCollectionViewController newInstance: Could not create new instance of `DemoViewController` from nib!")
+        guard let vc:DemoCollectionViewController = DemoCollectionViewController.init(nibName:"\(self)", bundle:nil) else {
+            fatalError("DemoCollectionViewController newInstance: Could not create new instance of `DemoCollectionViewController` from nib!")
         }
 
-        vc.mAppDisplayStateType = appDisplayState.typeValue
+        // init member
+        vc.mPreparedAttributes = attributes
 
-        return vc
+        return vc as! T
     }
+
+
+    // MARK:- Life Cycle
 
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        // collection view: delegate & data source
-        ibCollectionView.delegate = self
-        ibCollectionView.dataSource = self
+        // init member
+        mAppDisplayStateType = (mPreparedAttributes[AttributeKeyName.appDisplayState] as! AppDisplayState).typeValue
 
+        setupCollectionView()
         initUIPheonix()
         updateView()
     }
@@ -89,7 +98,7 @@ final class DemoViewController:NSViewController,
     -> NSCollectionViewItem
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
-        let cellView:UIPBaseCollectionViewCell = mUIPheonix.view(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
+        let cellView:UIPBaseCollectionViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         let _:UIPCellSize = cellView.update(with:cellModel, delegate:self, for:indexPath)
 
@@ -188,7 +197,7 @@ final class DemoViewController:NSViewController,
             animateView(animationState:false, completionHandler:
             {
                 [weak self] in
-                guard let strongSelf:DemoViewController = self else { fatalError("DemoCollectionViewController buttonAction: `self` does not exist anymore!") }
+                guard let strongSelf:DemoCollectionViewController = self else { fatalError("DemoCollectionViewController buttonAction: `self` does not exist anymore!") }
 
                 strongSelf.updateView(isTheAppendModelsDemo:isTheAppendModelsDemo,
                                       isThePersistentDemo:isThePersistentModelsDemo,
@@ -207,6 +216,13 @@ final class DemoViewController:NSViewController,
 
 
     // MARK:- Private
+
+
+    fileprivate func setupCollectionView()
+    {
+        ibCollectionView.delegate = self
+        ibCollectionView.dataSource = self
+    }
 
 
     fileprivate func initUIPheonix()
@@ -242,7 +258,7 @@ final class DemoViewController:NSViewController,
 
         for i in 1 ... 20
         {
-            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:"Label \(i)",
+            let simpleLabelModel:SimpleLabelModel = SimpleLabelModel(text:" Label \(i)",
                                                                      size:(12.0 + CGFloat(i) * 2.0),
                                                                      alignment:SimpleLabelModel.Alignment.left,
                                                                      style:SimpleLabelModel.Style.regular,
@@ -251,10 +267,7 @@ final class DemoViewController:NSViewController,
             models.append(simpleLabelModel)
         }
 
-        let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue,
-                                                                    title:"Enough with the RAINBOW!",
-                                                                    alignment:SimpleButtonModel.Alignment.center)
-
+        let simpleButtonModel:SimpleButtonModel = SimpleButtonModel(id:ButtonId.startUp.rawValue, title:"Enough with the RAINBOW!", alignment:SimpleButtonModel.Alignment.center)
         models.append(simpleButtonModel)
 
         mUIPheonix.setDisplayModels(models)
@@ -300,7 +313,7 @@ final class DemoViewController:NSViewController,
         {
             [weak self] (context:NSAnimationContext) in
 
-            guard let strongSelf:DemoViewController = self else { fatalError("DemoCollectionViewController animateView: `self` does not exist anymore!") }
+            guard let strongSelf:DemoCollectionViewController = self else { fatalError("DemoCollectionViewController animateView: `self` does not exist anymore!") }
 
             context.duration = 0.25
             strongSelf.view.animator().alphaValue = animationState ? 1.0 : 0.0

@@ -119,7 +119,7 @@ final class SimpleButtonModelTVCell:UIPBaseTableViewCell
         fileprivate func alignButton(with aligment:String)
         {
             let buttonWidth:CGFloat = ibButton.bounds.size.width
-            let cellViewHalfWidth:CGFloat = (self.view.bounds.size.width / 2)
+            let cellViewHalfWidth:CGFloat = (self.bounds.size.width / 2)
 
             switch (aligment)
             {

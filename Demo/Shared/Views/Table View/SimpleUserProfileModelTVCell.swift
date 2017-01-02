@@ -63,8 +63,8 @@ final class SimpleUserProfileModelTVCell:UIPBaseTableViewCell
             ibTitleLabel.text = simpleUserProfileModel.mTitle
             ibDescriptionLabel.text = simpleUserProfileModel.mDescription
         #elseif os(macOS)
-            ibTitleLabel.text = simpleUserProfileModel.mTitle
-            ibDescriptionLabel.text = simpleUserProfileModel.mDescription
+            ibTitleLabel.stringValue = simpleUserProfileModel.mTitle
+            ibDescriptionLabel.stringValue = simpleUserProfileModel.mDescription
         #endif
     }
 }

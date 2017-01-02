@@ -38,23 +38,6 @@
                </BreakpointActionProxy>
             </Actions>
             <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UIViewAlertForUnsatisfiableConstraints"
-                  moduleName = "UIKit"
-                  usesParentBreakpointCondition = "Yes"
-                  offsetFromSymbolStart = "0">
-                  <Actions>
-                     <BreakpointActionProxy
-                        ActionExtensionID = "Xcode.BreakpointAction.DebuggerCommand">
-                        <ActionContent
-                           consoleCommand = "po $arg1">
-                        </ActionContent>
-                     </BreakpointActionProxy>
-                  </Actions>
-               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

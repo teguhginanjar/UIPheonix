@@ -10,6 +10,14 @@
 		4D12966D1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D12966C1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift */; };
 		4D12966E1E01FE06006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D12966C1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift */; };
 		4D12966F1E01FE06006CF73B /* UIPBaseTableViewCellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D12966C1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift */; };
+		4D1F11781E1AF9470091D9FD /* DemoCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1F11761E1AF9470091D9FD /* DemoCollectionViewController.swift */; };
+		4D1F11831E1AF9560091D9FD /* DemoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F117B1E1AF9560091D9FD /* DemoCollectionViewController.xib */; };
+		4D1F11841E1AF9560091D9FD /* SimpleButtonModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F117C1E1AF9560091D9FD /* SimpleButtonModelCVCell.xib */; };
+		4D1F11851E1AF9560091D9FD /* SimpleCounterModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F117D1E1AF9560091D9FD /* SimpleCounterModelCVCell.xib */; };
+		4D1F11861E1AF9560091D9FD /* SimpleLabelModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F117E1E1AF9560091D9FD /* SimpleLabelModelCVCell.xib */; };
+		4D1F11871E1AF9560091D9FD /* SimpleTextFieldModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F117F1E1AF9560091D9FD /* SimpleTextFieldModelCVCell.xib */; };
+		4D1F11881E1AF9560091D9FD /* SimpleVerticalSpaceModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F11801E1AF9560091D9FD /* SimpleVerticalSpaceModelCVCell.xib */; };
+		4D1F11891E1AF9560091D9FD /* SimpleViewAnimationModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D1F11811E1AF9560091D9FD /* SimpleViewAnimationModelCVCell.xib */; };
 		4D279AD11DFDEEBE006EDC1E /* SimpleButtonModelCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279AC91DFDEEBE006EDC1E /* SimpleButtonModelCVCell.swift */; };
 		4D279AD21DFDEEBE006EDC1E /* SimpleCounterModelCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ACA1DFDEEBE006EDC1E /* SimpleCounterModelCVCell.swift */; };
 		4D279AD31DFDEEBE006EDC1E /* SimpleLabelModelCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ACB1DFDEEBE006EDC1E /* SimpleLabelModelCVCell.swift */; };
@@ -35,7 +43,6 @@
 		4D279AEA1DFE0BA6006EDC1E /* UIPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */; };
 		4D279AEB1DFE0BA7006EDC1E /* UIPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */; };
 		4D3C7A7A1D5BF79A0006C7AE /* SimpleButtonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF7181D379D7C00A4B1FC /* SimpleButtonModel.swift */; };
-		4D3C7A7B1D5BF8C90006C7AE /* SimpleButtonModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3C7A771D5BEDB10006C7AE /* SimpleButtonModelCVCell.xib */; };
 		4D3DEFFB1E06F1FB000D8B70 /* DemoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3DEFF01E06F1FB000D8B70 /* DemoCollectionViewController.xib */; };
 		4D3DEFFC1E06F1FB000D8B70 /* SimpleButtonModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3DEFF11E06F1FB000D8B70 /* SimpleButtonModelCVCell.xib */; };
 		4D3DEFFD1E06F1FB000D8B70 /* SimpleCounterModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D3DEFF21E06F1FB000D8B70 /* SimpleCounterModelCVCell.xib */; };
@@ -70,22 +77,16 @@
 		4D74B2F81D53F2AC00682A02 /* UIPBaseCellModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF6EF1D379D6C00A4B1FC /* UIPBaseCellModelProtocol.swift */; };
 		4D74B2F91D53F2AC00682A02 /* UIPBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF6F11D379D6C00A4B1FC /* UIPBaseCollectionViewCell.swift */; };
 		4DA5F88F1D57CEF80049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
-		4DA5F8901D57CF540049956B /* DemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88C1D57CEC50049956B /* DemoViewController.swift */; };
 		4DA5F8911D57CF5E0049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
 		4DA5F8921D57CF5E0049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
 		4DA5F8951D57D31B0049956B /* CustomViewControllerPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F8931D57D20F0049956B /* CustomViewControllerPresentationAnimator.swift */; };
-		4DA5F8A71D57D4B10049956B /* DemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F8A61D57D4B10049956B /* DemoViewController.xib */; };
 		4DA8FFA01DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
 		4DA8FFA11DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
 		4DA8FFA21DF47D4A00DC0B18 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */; };
-		4DAB68F11D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB68F01D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib */; };
 		4DAB68F21D5E6E3300BFF15A /* SimpleVerticalSpaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF71C1D379D7C00A4B1FC /* SimpleVerticalSpaceModel.swift */; };
-		4DAB68F51D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB68F41D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib */; };
 		4DAB68F61D5E77F600BFF15A /* SimpleTextFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF71A1D379D7C00A4B1FC /* SimpleTextFieldModel.swift */; };
-		4DAB68F91D5E835100BFF15A /* SimpleCounterModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DAB68F81D5E835100BFF15A /* SimpleCounterModelCVCell.xib */; };
 		4DAB68FA1D5E871D00BFF15A /* SimpleCounterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF7481D37DA6700A4B1FC /* SimpleCounterModel.swift */; };
 		4DBE5A7D1D626C92001ED6F5 /* SimpleViewAnimationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF71B1D379D7C00A4B1FC /* SimpleViewAnimationModel.swift */; };
-		4DBE5A7F1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */; };
 		4DC4A4691E195BF700FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
 		4DC4A46A1E195C0C00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
 		4DC4A46B1E195C0D00FEC973 /* SimpleButtonModelTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */; };
@@ -98,7 +99,6 @@
 		4DC567061D593B98005A3F70 /* DisplayState-Specific.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F89B1D57D4890049956B /* DisplayState-Specific.json */; };
 		4DC567071D593B98005A3F70 /* DisplayState-StartUp.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F89C1D57D4890049956B /* DisplayState-StartUp.json */; };
 		4DC567081D593B98005A3F70 /* DisplayState-Switching.json in Resources */ = {isa = PBXBuildFile; fileRef = 4DA5F89D1D57D4890049956B /* DisplayState-Switching.json */; };
-		4DC5670A1D593C15005A3F70 /* SimpleLabelModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DC567091D593C15005A3F70 /* SimpleLabelModelCVCell.xib */; };
 		4DD1C8C61E187CD000257178 /* DemoCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1C8B71E187CC300257178 /* DemoCollectionViewController.xib */; };
 		4DD1C8C71E187CD000257178 /* SimpleButtonModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1C8B81E187CC300257178 /* SimpleButtonModelCVCell.xib */; };
 		4DD1C8C81E187CD000257178 /* SimpleCounterModelCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DD1C8B91E187CC300257178 /* SimpleCounterModelCVCell.xib */; };
@@ -169,6 +169,15 @@
 
 /* Begin PBXFileReference section */
 		4D12966C1E01FDD1006CF73B /* UIPBaseTableViewCellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPBaseTableViewCellProtocol.swift; sourceTree = "<group>"; };
+		4D1F11761E1AF9470091D9FD /* DemoCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoCollectionViewController.swift; sourceTree = "<group>"; };
+		4D1F11771E1AF9470091D9FD /* DemoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoTableViewController.swift; sourceTree = "<group>"; };
+		4D1F117B1E1AF9560091D9FD /* DemoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewController.xib; sourceTree = "<group>"; };
+		4D1F117C1E1AF9560091D9FD /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
+		4D1F117D1E1AF9560091D9FD /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
+		4D1F117E1E1AF9560091D9FD /* SimpleLabelModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleLabelModelCVCell.xib; sourceTree = "<group>"; };
+		4D1F117F1E1AF9560091D9FD /* SimpleTextFieldModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTextFieldModelCVCell.xib; sourceTree = "<group>"; };
+		4D1F11801E1AF9560091D9FD /* SimpleVerticalSpaceModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVerticalSpaceModelCVCell.xib; sourceTree = "<group>"; };
+		4D1F11811E1AF9560091D9FD /* SimpleViewAnimationModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleViewAnimationModelCVCell.xib; sourceTree = "<group>"; };
 		4D279AC91DFDEEBE006EDC1E /* SimpleButtonModelCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonModelCVCell.swift; sourceTree = "<group>"; };
 		4D279ACA1DFDEEBE006EDC1E /* SimpleCounterModelCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCounterModelCVCell.swift; sourceTree = "<group>"; };
 		4D279ACB1DFDEEBE006EDC1E /* SimpleLabelModelCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLabelModelCVCell.swift; sourceTree = "<group>"; };
@@ -177,7 +186,6 @@
 		4D279ACE1DFDEEBE006EDC1E /* SimpleViewAnimationModelCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleViewAnimationModelCVCell.swift; sourceTree = "<group>"; };
 		4D279AD01DFDEEBE006EDC1E /* SimpleLabelModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleLabelModelTVCell.swift; sourceTree = "<group>"; };
 		4D279ADA1DFDF22A006EDC1E /* UIPBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPBaseTableViewCell.swift; sourceTree = "<group>"; };
-		4D3C7A771D5BEDB10006C7AE /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
 		4D3DEFF01E06F1FB000D8B70 /* DemoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewController.xib; sourceTree = "<group>"; };
 		4D3DEFF11E06F1FB000D8B70 /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
 		4D3DEFF21E06F1FB000D8B70 /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
@@ -202,7 +210,6 @@
 		4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D6FAE011D53E9B500A31C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D6FAE031D53E9B500A31C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4DA5F88C1D57CEC50049956B /* DemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoViewController.swift; sourceTree = "<group>"; };
 		4DA5F88E1D57CEF80049956B /* UIPMisc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPMisc.swift; sourceTree = "<group>"; };
 		4DA5F8931D57D20F0049956B /* CustomViewControllerPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewControllerPresentationAnimator.swift; sourceTree = "<group>"; };
 		4DA5F8971D57D4890049956B /* DisplayState-Animations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DisplayState-Animations.json"; sourceTree = "<group>"; };
@@ -212,16 +219,10 @@
 		4DA5F89B1D57D4890049956B /* DisplayState-Specific.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DisplayState-Specific.json"; sourceTree = "<group>"; };
 		4DA5F89C1D57D4890049956B /* DisplayState-StartUp.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DisplayState-StartUp.json"; sourceTree = "<group>"; };
 		4DA5F89D1D57D4890049956B /* DisplayState-Switching.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DisplayState-Switching.json"; sourceTree = "<group>"; };
-		4DA5F8A61D57D4B10049956B /* DemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoViewController.xib; sourceTree = "<group>"; };
 		4DA8FF9F1DF47D4A00DC0B18 /* DataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
-		4DAB68F01D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleVerticalSpaceModelCVCell.xib; sourceTree = "<group>"; };
-		4DAB68F41D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleTextFieldModelCVCell.xib; sourceTree = "<group>"; };
-		4DAB68F81D5E835100BFF15A /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
-		4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleViewAnimationModelCVCell.xib; sourceTree = "<group>"; };
 		4DC4A4671E195B3200FEC973 /* SimpleButtonModelTVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleButtonModelTVCell.swift; sourceTree = "<group>"; };
 		4DC4A46C1E1961E100FEC973 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
 		4DC4A46E1E1972EA00FEC973 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
-		4DC567091D593C15005A3F70 /* SimpleLabelModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleLabelModelCVCell.xib; sourceTree = "<group>"; };
 		4DD1C8B71E187CC300257178 /* DemoCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoCollectionViewController.xib; sourceTree = "<group>"; };
 		4DD1C8B81E187CC300257178 /* SimpleButtonModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelCVCell.xib; sourceTree = "<group>"; };
 		4DD1C8B91E187CC300257178 /* SimpleCounterModelCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleCounterModelCVCell.xib; sourceTree = "<group>"; };
@@ -301,6 +302,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D1F117A1E1AF9560091D9FD /* Collection View */ = {
+			isa = PBXGroup;
+			children = (
+				4D1F117B1E1AF9560091D9FD /* DemoCollectionViewController.xib */,
+				4D1F117C1E1AF9560091D9FD /* SimpleButtonModelCVCell.xib */,
+				4D1F117D1E1AF9560091D9FD /* SimpleCounterModelCVCell.xib */,
+				4D1F117E1E1AF9560091D9FD /* SimpleLabelModelCVCell.xib */,
+				4D1F117F1E1AF9560091D9FD /* SimpleTextFieldModelCVCell.xib */,
+				4D1F11801E1AF9560091D9FD /* SimpleVerticalSpaceModelCVCell.xib */,
+				4D1F11811E1AF9560091D9FD /* SimpleViewAnimationModelCVCell.xib */,
+			);
+			path = "Collection View";
+			sourceTree = "<group>";
+		};
+		4D1F11821E1AF9560091D9FD /* Table View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Table View";
+			sourceTree = "<group>";
+		};
 		4D279AC81DFDEEBE006EDC1E /* Collection View */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,7 +397,8 @@
 			children = (
 				4D6FADFA1D53E9B500A31C8F /* AppDelegate.swift */,
 				4D6FADFC1D53E9B500A31C8F /* ViewController.swift */,
-				4DA5F88C1D57CEC50049956B /* DemoViewController.swift */,
+				4D1F11761E1AF9470091D9FD /* DemoCollectionViewController.swift */,
+				4D1F11771E1AF9470091D9FD /* DemoTableViewController.swift */,
 				4DA5F8931D57D20F0049956B /* CustomViewControllerPresentationAnimator.swift */,
 				4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */,
 				4D6FAE001D53E9B500A31C8F /* Main.storyboard */,
@@ -403,13 +426,8 @@
 		4DA5F89E1D57D4890049956B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4DA5F8A61D57D4B10049956B /* DemoViewController.xib */,
-				4D3C7A771D5BEDB10006C7AE /* SimpleButtonModelCVCell.xib */,
-				4DAB68F81D5E835100BFF15A /* SimpleCounterModelCVCell.xib */,
-				4DC567091D593C15005A3F70 /* SimpleLabelModelCVCell.xib */,
-				4DAB68F41D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib */,
-				4DAB68F01D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib */,
-				4DBE5A7E1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib */,
+				4D1F117A1E1AF9560091D9FD /* Collection View */,
+				4D1F11821E1AF9560091D9FD /* Table View */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -752,22 +770,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D6FADFF1D53E9B500A31C8F /* Assets.xcassets in Resources */,
-				4DA5F8A71D57D4B10049956B /* DemoViewController.xib in Resources */,
+				4D1F11881E1AF9560091D9FD /* SimpleVerticalSpaceModelCVCell.xib in Resources */,
 				4DC567041D593B98005A3F70 /* DisplayState-Mixed.json in Resources */,
-				4DAB68F11D5E6D7600BFF15A /* SimpleVerticalSpaceModelCVCell.xib in Resources */,
+				4D1F11831E1AF9560091D9FD /* DemoCollectionViewController.xib in Resources */,
+				4D1F11891E1AF9560091D9FD /* SimpleViewAnimationModelCVCell.xib in Resources */,
 				4DC567081D593B98005A3F70 /* DisplayState-Switching.json in Resources */,
-				4D3C7A7B1D5BF8C90006C7AE /* SimpleButtonModelCVCell.xib in Resources */,
-				4DAB68F91D5E835100BFF15A /* SimpleCounterModelCVCell.xib in Resources */,
+				4D1F11841E1AF9560091D9FD /* SimpleButtonModelCVCell.xib in Resources */,
 				4DC567051D593B98005A3F70 /* DisplayState-Persistent.json in Resources */,
 				4DC567061D593B98005A3F70 /* DisplayState-Specific.json in Resources */,
+				4D1F11851E1AF9560091D9FD /* SimpleCounterModelCVCell.xib in Resources */,
 				4D6FAE021D53E9B500A31C8F /* Main.storyboard in Resources */,
-				4DBE5A7F1D6271FF001ED6F5 /* SimpleViewAnimationModelCVCell.xib in Resources */,
 				4DC567071D593B98005A3F70 /* DisplayState-StartUp.json in Resources */,
+				4D1F11861E1AF9560091D9FD /* SimpleLabelModelCVCell.xib in Resources */,
 				4DC567021D593B98005A3F70 /* DisplayState-Animations.json in Resources */,
-				4DC5670A1D593C15005A3F70 /* SimpleLabelModelCVCell.xib in Resources */,
+				4D1F11871E1AF9560091D9FD /* SimpleTextFieldModelCVCell.xib in Resources */,
 				4D3E212F1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig in Resources */,
 				4D3E212E1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig in Resources */,
-				4DAB68F51D5E763200BFF15A /* SimpleTextFieldModelCVCell.xib in Resources */,
 				4DC567031D593B98005A3F70 /* DisplayState-Appending.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -861,7 +879,6 @@
 				4D6FADFB1D53E9B500A31C8F /* AppDelegate.swift in Sources */,
 				4D279AD41DFDEEBE006EDC1E /* SimpleTextFieldModelCVCell.swift in Sources */,
 				4DA5F8921D57CF5E0049956B /* UIPMisc.swift in Sources */,
-				4DA5F8901D57CF540049956B /* DemoViewController.swift in Sources */,
 				4DD1C8DE1E188BFB00257178 /* SimpleUserProfileModel.swift in Sources */,
 				4D3C7A7A1D5BF79A0006C7AE /* SimpleButtonModel.swift in Sources */,
 				4D279AD61DFDEEBE006EDC1E /* SimpleViewAnimationModelCVCell.swift in Sources */,
@@ -876,6 +893,7 @@
 				4DD1C8DF1E188C0D00257178 /* SimpleUserProfileModelTVCell.swift in Sources */,
 				4DAB68F21D5E6E3300BFF15A /* SimpleVerticalSpaceModel.swift in Sources */,
 				4D74B2F61D53F2AC00682A02 /* UIPBaseCollectionViewCellProtocol.swift in Sources */,
+				4D1F11781E1AF9470091D9FD /* DemoCollectionViewController.swift in Sources */,
 				4D74B2F91D53F2AC00682A02 /* UIPBaseCollectionViewCell.swift in Sources */,
 				4DBE5A7D1D626C92001ED6F5 /* SimpleViewAnimationModel.swift in Sources */,
 				4D279AD31DFDEEBE006EDC1E /* SimpleLabelModelCVCell.swift in Sources */,

@@ -325,7 +325,7 @@ final class UIPheonix
                 return cellView
             }
         #elseif os(macOS)
-            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.makeItem(withIdentifier:reuseIdentifier, for:indexPath) as? UIPBaseTableViewCell
+            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.make(withIdentifier:reuseIdentifier, owner:indexPath) as? UIPBaseTableViewCell
             {
                 return cellView
             }
@@ -464,7 +464,7 @@ final class UIPheonix
                     }
                     else if (mUIPDelegateViewType == UIPDelegateViewType.table)
                     {
-                        mDelegateTableView!.register(nib, forCellReuseIdentifier:modelName)
+                        mDelegateTableView!.register(nib, forIdentifier:modelName)
                     }
                 #endif
             }

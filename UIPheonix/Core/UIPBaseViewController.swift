@@ -66,5 +66,29 @@ protocol UIPBaseViewControllerProtocol
 
 #elseif os(macOS)
 
+    class UIPBaseViewController:NSViewController
+    {
+        var mPreparedAttributes:Dictionary<String, Any> = Dictionary<String, Any>()
+
+
+        /*
+            Example code, copy & paste into your concrete class.
+
+            ///
+            /// Create a new instance of self with nib.
+            ///
+            static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
+            -> T
+            {
+                let vc:FooBarViewController = FooBarViewController.init(nibName:"\(self)", bundle:nil)
+
+                // init member
+                vc.mPreparedAttributes = attributes
+
+                return vc as! T
+            }
+        */
+    }
+
 #endif
 

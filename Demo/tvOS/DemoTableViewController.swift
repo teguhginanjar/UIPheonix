@@ -32,7 +32,8 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
                                     UITableViewDelegate, UITableViewDataSource
 {
     // MARK: Public IB Outlet
-    @IBOutlet weak var ibTableView:UITableView!
+    @IBOutlet fileprivate weak var ibTableView:UITableView!
+    @IBOutlet weak var ibTableView: NSTableView!
 
     // MARK: Private Members
     fileprivate var mUIPheonix:UIPheonix!

@@ -45,9 +45,9 @@ class ViewController:NSViewController
         {
             // start the UIPheonix macOS demo
             // create & present a new instance of the demo VC
-            let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:[DemoCollectionViewController.AttributeKeyName.appDisplayState:AppDisplayState.startUp])
+            //let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:[DemoCollectionViewController.AttributeKeyName.appDisplayState:AppDisplayState.startUp])
             // or //
-            //let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
+            let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
 
             // present using a custom view controller presentation animator
             self.presentViewController(demoViewController, animator:CustomViewControllerPresentationAnimator())

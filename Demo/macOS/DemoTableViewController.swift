@@ -25,14 +25,14 @@
 //  limitations under the License.
 //
 
-import UIKit
+import Cocoa
 
 
 final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                    UITableViewDelegate, UITableViewDataSource
+                                    NSTableViewDelegate, NSTableViewDataSource
 {
     // MARK: Public IB Outlet
-    @IBOutlet weak var ibTableView:UITableView!
+    @IBOutlet fileprivate weak var ibTableView:NSTableView!
 
     // MARK: Private Members
     fileprivate var mUIPheonix:UIPheonix!
@@ -47,7 +47,9 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     static func newInstance<T:UIPBaseViewControllerProtocol>(with attributes:Dictionary<String, Any>)
     -> T
     {
-        let vc:DemoTableViewController = DemoTableViewController.init(nibName:"\(self)", bundle:nil)
+        guard let vc:DemoTableViewController = DemoTableViewController.init(nibName:"\(self)", bundle:nil) else {
+            fatalError("DemoCollectionViewController newInstance: Could not create new instance of `DemoCollectionViewController` from nib!")
+        }
 
         // init member
         vc.mPreparedAttributes = attributes
@@ -69,19 +71,21 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    // MARK:- UITableViewDataSource
+    // MARK:- NSTableViewDataSource
 
 
-    func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int)
+    func numberOfRows(in tableView:NSTableView)
     -> Int
     {
         return mUIPheonix.count()
     }
 
 
-    func tableView(_ tableView:UITableView, cellForRowAt indexPath:IndexPath)
-    -> UITableViewCell
+    func tableView(_ tableView:NSTableView, objectValueFor tableColumn:NSTableColumn?, row:Int)
+    -> Any?
     {
+        let indexPath:IndexPath = IndexPath(item:row, section:0)
+
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
         let cellView:UIPBaseTableViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
@@ -91,20 +95,20 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    // MARK: UITableViewDelegate
+    // MARK: NSTableViewDelegate
 
 
-    func tableView(_ tableView:UITableView, heightForRowAt indexPath:IndexPath)
+    func tableView(_ tableView:NSTableView, heightOfRow row:Int)
     -> CGFloat
     {
-        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:row)!
         let cellView:UIPBaseTableViewCell = mUIPheonix.view(forReuseIdentifier:cellModel.nameOfClass)!
 
         return cellView.rowHeight
     }
 
 
-    func tableView(_ tableView:UITableView, estimatedHeightForRowAt indexPath:IndexPath)
+    func tableView(_ tableView:NSTableView, estimatedHeightForRowAt indexPath:IndexPath)
     -> CGFloat
     {
         let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
@@ -139,7 +143,7 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     {
         ibTableView.delegate = self
         ibTableView.dataSource = self
-        ibTableView.separatorColor = UIColor.darkGray
+        //ibTableView.separatorColor = NSColor.darkGray
 
         ///
         /// In our demo, we are using custom table view cell types.
@@ -148,11 +152,11 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
         // From Apple documentation:
         // You may set the row height for cells if the delegate doesn’t implement the tableView(_:heightForRowAt:) method.
-        // The default value of rowHeight is UITableViewAutomaticDimension.
+        // The default value of rowHeight is NSTableViewAutomaticDimension.
         // Note that if you create a self-sizing cell in Interface Builder, the default row height is changed to the value
         // set in Interface Builder. To get the expected self-sizing behavior for a cell that you create in Interface Builder,
-        // you must explicitly set rowHeight equal to UITableViewAutomaticDimension in your code.
-        ////ibTableView.rowHeight = UITableViewAutomaticDimension
+        // you must explicitly set rowHeight equal to NSTableViewAutomaticDimension in your code.
+        ////ibTableView.rowHeight = NSTableViewAutomaticDimension
 
         // From Apple documentation:
         // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
@@ -169,9 +173,9 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
     fileprivate func setupWithModels()
     {
-        mUIPheonix.setModelViewRelationships([SimpleButtonModel.nameOfClass:SimpleButtonModelTVCell.nameOfClass,
-                                              SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass,
-                                              SimpleUserProfileModel.nameOfClass:SimpleUserProfileModelTVCell.nameOfClass])
+        mUIPheonix.setModelViewRelationships([/*SimpleButtonModel.nameOfClass:SimpleButtonModelTVCell.nameOfClass,*/
+                                              SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass //,
+                                              /*SimpleUserProfileModel.nameOfClass:SimpleUserProfileModelTVCell.nameOfClass*/])
 
         var models:[UIPBaseCellModel] = [UIPBaseCellModel]()
 
@@ -181,16 +185,16 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
         /// and the default build-in cells work just fine with auto-layout.
         ///
 
-        models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Hello World!"))
+        //models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Hello World!", alignment:SimpleButtonModel.Alignment.center))
 
         models.append(SimpleLabelModel2(text:"Label #1", backgroundColorHue:0.2))
         models.append(SimpleLabelModel2(text:"Label #2", backgroundColorHue:0.4))
         
-        let simpleUserProfileModel1:SimpleUserProfileModel = SimpleUserProfileModel(title:"#1 The quick.", description:"Tilde coloring book health.")
+        /*let simpleUserProfileModel1:SimpleUserProfileModel = SimpleUserProfileModel(title:"#1 The quick.", description:"Tilde coloring book health.")
         models.append(simpleUserProfileModel1)
 
         let simpleUserProfileModel2:SimpleUserProfileModel = SimpleUserProfileModel(title:"#2 The quick, brown fox jumps over a lazy dog.", description:"Tilde coloring book health goth echo park, gentrify semiotics vinyl cardigan quinoa meh master cleanse cray four dollar toast scenester hammock. Butcher truffaut flannel, unicorn fanny pack skateboard pug four loko.")
-        models.append(simpleUserProfileModel2)
+        models.append(simpleUserProfileModel2)*/
 
         mUIPheonix.setDisplayModels(models)
     }

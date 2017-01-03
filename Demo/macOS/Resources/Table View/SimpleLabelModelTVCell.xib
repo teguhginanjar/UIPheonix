@@ -9,19 +9,13 @@
         <customObject id="-2" userLabel="File's Owner"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <collectionViewItem id="GT6-wh-gJB" customClass="SimpleLabelModelCVCell" customModule="UIPheonixDemo_macOS">
-            <connections>
-                <outlet property="ibLabel" destination="gmL-uK-Tii" id="l8p-xb-zRA"/>
-                <outlet property="view" destination="9wv-Ah-Yn2" id="Lli-1C-ajB"/>
-            </connections>
-        </collectionViewItem>
-        <customView wantsLayer="YES" id="9wv-Ah-Yn2">
+        <tableCellView focusRingType="none" id="iot-2z-T31" customClass="SimpleLabelModelTVCell" customModule="UIPheonixDemo_macOS">
             <rect key="frame" x="0.0" y="0.0" width="320" height="27"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gmL-uK-Tii">
+                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="edr-Ar-b0M">
                     <rect key="frame" x="0.0" y="5" width="320" height="17"/>
-                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" title="&lt;multiline label&gt;" id="0rb-sT-EDk">
+                    <textFieldCell key="cell" selectable="YES" allowsUndo="NO" sendsActionOnEndEditing="YES" focusRingType="none" alignment="left" title="&lt;multiline label&gt;" id="eYJ-RH-nhM">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -29,12 +23,15 @@
                 </textField>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="gmL-uK-Tii" secondAttribute="bottom" constant="5" id="4or-zw-bXK"/>
-                <constraint firstItem="gmL-uK-Tii" firstAttribute="leading" secondItem="9wv-Ah-Yn2" secondAttribute="leading" constant="2" id="J3a-fX-8mM"/>
-                <constraint firstItem="gmL-uK-Tii" firstAttribute="top" secondItem="9wv-Ah-Yn2" secondAttribute="top" constant="5" id="awL-oU-zRp"/>
-                <constraint firstAttribute="trailing" secondItem="gmL-uK-Tii" secondAttribute="trailing" constant="2" id="cQr-b3-ezK"/>
+                <constraint firstAttribute="trailing" secondItem="edr-Ar-b0M" secondAttribute="trailing" constant="2" id="MlA-HN-GCQ"/>
+                <constraint firstAttribute="bottom" secondItem="edr-Ar-b0M" secondAttribute="bottom" constant="5" id="N6T-S6-odb"/>
+                <constraint firstItem="edr-Ar-b0M" firstAttribute="leading" secondItem="iot-2z-T31" secondAttribute="leading" constant="2" id="w7g-yb-uMf"/>
+                <constraint firstItem="edr-Ar-b0M" firstAttribute="top" secondItem="iot-2z-T31" secondAttribute="top" constant="5" id="yaU-nc-Lti"/>
             </constraints>
-            <point key="canvasLocation" x="-15" y="-107"/>
-        </customView>
+            <connections>
+                <outlet property="textField" destination="edr-Ar-b0M" id="pRH-ru-sHP"/>
+            </connections>
+            <point key="canvasLocation" x="30" y="22"/>
+        </tableCellView>
     </objects>
 </document>

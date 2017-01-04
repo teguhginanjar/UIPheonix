@@ -159,7 +159,7 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
 
     fileprivate func setupWithModels()
     {
-        mUIPheonix.setModelViewRelationships([/*SimpleButtonModel.nameOfClass:SimpleButtonModelTVCell.nameOfClass,*/
+        mUIPheonix.setModelViewRelationships([SimpleButtonModel.nameOfClass:SimpleButtonModelTVCell.nameOfClass,
                                               SimpleLabelModel2.nameOfClass:SimpleLabelModelTVCell.nameOfClass //,
                                               /*SimpleUserProfileModel.nameOfClass:SimpleUserProfileModelTVCell.nameOfClass*/])
 
@@ -171,10 +171,12 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
         /// and the default build-in cells work just fine with auto-layout.
         ///
 
-        //models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Hello World!", alignment:SimpleButtonModel.Alignment.center))
+        models.append(SimpleButtonModel(id:ButtonId.helloWorld.rawValue, title:"Hello World!", alignment:SimpleButtonModel.Alignment.center))
 
         models.append(SimpleLabelModel2(text:"Label #1", backgroundColorHue:0.2))
         models.append(SimpleLabelModel2(text:"Label #2", backgroundColorHue:0.4))
+        models.append(SimpleLabelModel2(text:"Label #3", backgroundColorHue:0.6))
+        models.append(SimpleLabelModel2(text:"Label #4", backgroundColorHue:0.8))
         
         /*let simpleUserProfileModel1:SimpleUserProfileModel = SimpleUserProfileModel(title:"#1 The quick.", description:"Tilde coloring book health.")
         models.append(simpleUserProfileModel1)

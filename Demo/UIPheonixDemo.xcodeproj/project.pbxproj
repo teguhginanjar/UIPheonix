@@ -79,6 +79,7 @@
 		4D74B2F71D53F2AC00682A02 /* UIPDelegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF6EE1D379D6C00A4B1FC /* UIPDelegates.swift */; };
 		4D74B2F81D53F2AC00682A02 /* UIPBaseCellModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF6EF1D379D6C00A4B1FC /* UIPBaseCellModelProtocol.swift */; };
 		4D74B2F91D53F2AC00682A02 /* UIPBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66AAF6F11D379D6C00A4B1FC /* UIPBaseCollectionViewCell.swift */; };
+		4D81ABAC1E1C78AA008F46A5 /* SimpleButtonModelTVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D81ABAB1E1C78AA008F46A5 /* SimpleButtonModelTVCell.xib */; };
 		4DA5F88F1D57CEF80049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
 		4DA5F8911D57CF5E0049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
 		4DA5F8921D57CF5E0049956B /* UIPMisc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA5F88E1D57CEF80049956B /* UIPMisc.swift */; };
@@ -215,6 +216,7 @@
 		4D6FADFE1D53E9B500A31C8F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D6FAE011D53E9B500A31C8F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4D6FAE031D53E9B500A31C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4D81ABAB1E1C78AA008F46A5 /* SimpleButtonModelTVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SimpleButtonModelTVCell.xib; sourceTree = "<group>"; };
 		4DA5F88E1D57CEF80049956B /* UIPMisc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPMisc.swift; sourceTree = "<group>"; };
 		4DA5F8931D57D20F0049956B /* CustomViewControllerPresentationAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewControllerPresentationAnimator.swift; sourceTree = "<group>"; };
 		4DA5F8971D57D4890049956B /* DisplayState-Animations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "DisplayState-Animations.json"; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			children = (
 				4D1F118B1E1B21750091D9FD /* DemoTableViewController.xib */,
 				4D1F118D1E1B28FF0091D9FD /* SimpleLabelModelTVCell.xib */,
+				4D81ABAB1E1C78AA008F46A5 /* SimpleButtonModelTVCell.xib */,
 			);
 			path = "Table View";
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				4D1F118E1E1B28FF0091D9FD /* SimpleLabelModelTVCell.xib in Resources */,
 				4D3E212F1D6E3A91009F8E2B /* UIPheonix_DEBUG.xcconfig in Resources */,
 				4D3E212E1D6E3A91009F8E2B /* UIPheonix_RELEASE.xcconfig in Resources */,
+				4D81ABAC1E1C78AA008F46A5 /* SimpleButtonModelTVCell.xib in Resources */,
 				4DC567031D593B98005A3F70 /* DisplayState-Appending.json in Resources */,
 				4D1F118C1E1B21750091D9FD /* DemoTableViewController.xib in Resources */,
 			);

@@ -29,7 +29,7 @@ import Cocoa
 
 
 final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                    NSTableViewDelegate, NSTableViewDataSource
+                                    NSTableViewDataSource, NSTableViewDelegate
 {
     // MARK: Public IB Outlet
     @IBOutlet fileprivate weak var ibTableView:NSTableView!
@@ -65,9 +65,9 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     {
         super.viewDidLoad()
 
-        setupTableView()
         initUIPheonix()
-        updateView()
+        setupWithModels()
+        setupTableView()
     }
 
 
@@ -81,12 +81,15 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    func tableView(_ tableView:NSTableView, objectValueFor tableColumn:NSTableColumn?, row:Int)
-    -> Any?
+    // MARK: NSTableViewDelegate
+
+
+    func tableView(_ tableView:NSTableView, viewFor tableColumn:NSTableColumn?, row:Int)
+    -> NSView?
     {
         let indexPath:IndexPath = IndexPath(item:row, section:0)
 
-        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:indexPath.item)!
+        let cellModel:UIPBaseCellModel = mUIPheonix.model(at:row)!
         let cellView:UIPBaseTableViewCell = mUIPheonix.dequeueView(withReuseIdentifier:cellModel.nameOfClass, for:indexPath)!
 
         cellView.update(with:cellModel, delegate:self, for:indexPath)
@@ -95,7 +98,16 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    // MARK: NSTableViewDelegate
+    ///
+    /// Is a delegate function, even if it is a notification handler.
+    ///
+    func tableViewSelectionDidChange(_ notification:Notification)
+    {
+        if (ibTableView.numberOfSelectedRows > 0)
+        {
+            ibTableView.deselectRow(ibTableView.selectedRow)
+        }
+    }
 
 
     func tableView(_ tableView:NSTableView, heightOfRow row:Int)
@@ -139,32 +151,6 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     // MARK:- Private
 
 
-    fileprivate func setupTableView()
-    {
-        ibTableView.delegate = self
-        ibTableView.dataSource = self
-        //ibTableView.separatorColor = NSColor.darkGray
-
-        ///
-        /// In our demo, we are using custom table view cell types.
-        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 44 points.
-        ///
-
-        // From Apple documentation:
-        // You may set the row height for cells if the delegate doesn’t implement the tableView(_:heightForRowAt:) method.
-        // The default value of rowHeight is NSTableViewAutomaticDimension.
-        // Note that if you create a self-sizing cell in Interface Builder, the default row height is changed to the value
-        // set in Interface Builder. To get the expected self-sizing behavior for a cell that you create in Interface Builder,
-        // you must explicitly set rowHeight equal to NSTableViewAutomaticDimension in your code.
-        ////ibTableView.rowHeight = NSTableViewAutomaticDimension
-
-        // From Apple documentation:
-        // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
-        // in this case we set the default height set in IB
-        ////ibTableView.estimatedRowHeight = 117
-    }
-
-
     fileprivate func initUIPheonix()
     {
         mUIPheonix = UIPheonix(with:ibTableView)
@@ -200,12 +186,26 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    fileprivate func updateView()
+    fileprivate func setupTableView()
     {
-        setupWithModels()
+        ibTableView.delegate = self
+        ibTableView.dataSource = self
+        ibTableView.gridColor = NSColor.lightGray
 
-        // reload the table view
-        ibTableView.reloadData()
+        ///
+        /// In our demo, we are using custom table view cell types.
+        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 17 points.
+        ///
+
+        // From Apple documentation:
+        // The value must be greater than 0.
+        // Calling -setRowHeight: with a non-pixel aligning (fractional) value will be forced to a pixel aligning (integral) value.
+        // For variable row height tableViews (ones that have the delegate implement -tableView:heightOfRow:), -rowHeight will be
+        // used to draw alternating rows past the last row in the tableView.
+        // The actual -rectOfRow: is equal to the -rowHeight plus the intercellSpacing.height.
+        // The default value is 17.0 for applications linked on 10.5 and higher (the height acceptable for [NSFont systemFontSize]).
+        // The default value is 16.0 for 10.4 and lower.
+        //ibTableView.rowHeight = 17
     }
 }
 

@@ -29,7 +29,7 @@ import UIKit
 
 
 final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                         UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
+                                         UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 {
     // MARK: Public Inner Struct
     struct AttributeKeyName

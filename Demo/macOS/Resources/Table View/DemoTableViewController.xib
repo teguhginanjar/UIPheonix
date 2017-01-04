@@ -31,7 +31,7 @@
                                 <size key="intercellSpacing" width="3" height="2"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
-                                <color key="gridColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
                                     <tableColumn identifier="" width="180" minWidth="10" maxWidth="3.4028234663852886e+38" id="sQQ-IP-XGm">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
@@ -39,9 +39,9 @@
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </tableHeaderCell>
-                                        <textFieldCell key="dataCell" selectable="YES" editable="YES" borderStyle="bezel" alignment="left" title="Text Cell" id="A9O-m4-8CF">
+                                        <textFieldCell key="dataCell" selectable="YES" editable="YES" allowsUndo="NO" borderStyle="bezel" alignment="left" title="Text Cell" id="A9O-m4-8CF">
                                             <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="backgroundColor" white="1" alpha="0.0" colorSpace="deviceWhite"/>
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
@@ -50,13 +50,13 @@
                                                 <rect key="frame" x="1" y="1" width="180" height="17"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>
-                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-JW-Ik8">
+                                                    <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bsa-JW-Ik8">
                                                         <rect key="frame" x="0.0" y="0.0" width="213" height="17"/>
                                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="383-Kn-khl">
+                                                        <textFieldCell key="cell" allowsUndo="NO" sendsActionOnEndEditing="YES" focusRingType="none" title="Table View Cell" id="383-Kn-khl">
                                                             <font key="font" metaFont="system"/>
-                                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="deviceRGB"/>
                                                         </textFieldCell>
                                                     </textField>
                                                 </subviews>
@@ -69,6 +69,7 @@
                                 </tableColumns>
                             </tableView>
                         </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="deviceRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" focusRingType="none" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="An3-yL-UlK">
                         <rect key="frame" x="0.0" y="9" width="0.0" height="14"/>

@@ -85,8 +85,8 @@ class UIPBaseTableViewCell:UIPPlatformTableViewCell, UIPBaseTableViewCellProtoco
         var rowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
         var estimatedRowHeight:CGFloat { get { return UITableViewAutomaticDimension } }
     #elseif os(macOS)
-        var rowHeight:CGFloat { get { return 0 } }
-        var estimatedRowHeight:CGFloat { get { return 0 } }
+        var rowHeight:CGFloat { get { return -1 } }             // macOS does not have any "Automatic Dimension" yet, -1 will crash and needs therefor to be overridden
+        var estimatedRowHeight:CGFloat { get { return -1 } }    // macOS does not have any "Automatic Dimension" yet, -1 will crash and needs therefor to be overridden
     #endif
 
 

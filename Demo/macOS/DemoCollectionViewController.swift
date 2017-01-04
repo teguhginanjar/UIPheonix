@@ -29,7 +29,7 @@ import Cocoa
 
 
 final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                         NSCollectionViewDelegateFlowLayout, NSCollectionViewDataSource
+                                         NSCollectionViewDataSource, NSCollectionViewDelegateFlowLayout
 
 {
     // MARK: Public Inner Struct

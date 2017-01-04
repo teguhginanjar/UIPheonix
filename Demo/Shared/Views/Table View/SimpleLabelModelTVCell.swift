@@ -48,8 +48,8 @@ final class SimpleLabelModelTVCell:UIPBaseTableViewCell
         override var rowHeight:CGFloat { get { return 66 } }    // return default build-in row height
         override var estimatedRowHeight:CGFloat { get { return 66 } }
     #elseif os(macOS)
-        override var rowHeight:CGFloat { get { return -1 } }    // return default build-in row height
-        override var estimatedRowHeight:CGFloat { get { return -1 } }
+        override var rowHeight:CGFloat { get { return 17 } }    // return default build-in row height
+        override var estimatedRowHeight:CGFloat { get { return 17 } }
     #endif
 
 

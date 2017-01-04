@@ -312,6 +312,8 @@ final class UIPheonix
     ///
     /// Dequeue reusable cell view.
     ///
+    /// • macOS does not use `indexPath`.
+    ///
     func dequeueView(withReuseIdentifier reuseIdentifier:String, for indexPath:IndexPath)
     -> UIPBaseTableViewCell?
     {
@@ -325,7 +327,7 @@ final class UIPheonix
                 return cellView
             }
         #elseif os(macOS)
-            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.make(withIdentifier:reuseIdentifier, owner:indexPath) as? UIPBaseTableViewCell
+            if let cellView:UIPBaseTableViewCell = mDelegateTableView!.make(withIdentifier:reuseIdentifier, owner:nil) as? UIPBaseTableViewCell
             {
                 return cellView
             }

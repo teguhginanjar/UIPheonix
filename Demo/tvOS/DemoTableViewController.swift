@@ -29,7 +29,7 @@ import UIKit
 
 
 final class DemoTableViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                    UITableViewDelegate, UITableViewDataSource
+                                    UITableViewDataSource, UITableViewDelegate
 {
     // MARK: Public IB Outlet
     @IBOutlet fileprivate weak var ibTableView:UITableView!
@@ -64,9 +64,9 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     {
         super.viewDidLoad()
 
-        setupTableView()
         initUIPheonix()
-        updateView()
+        setupWithModels()
+        setupTableView()
     }
 
 
@@ -136,31 +136,6 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     // MARK:- Private
 
 
-    fileprivate func setupTableView()
-    {
-        ibTableView.delegate = self
-        ibTableView.dataSource = self
-
-        ///
-        /// In our demo, we are using custom table view cell types.
-        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 66 points.
-        ///
-
-        // From Apple documentation:
-        // You may set the row height for cells if the delegate doesn’t implement the tableView(_:heightForRowAt:) method.
-        // The default value of rowHeight is UITableViewAutomaticDimension.
-        // Note that if you create a self-sizing cell in Interface Builder, the default row height is changed to the value
-        // set in Interface Builder. To get the expected self-sizing behavior for a cell that you create in Interface Builder,
-        // you must explicitly set rowHeight equal to UITableViewAutomaticDimension in your code.
-        ////ibTableView.rowHeight = UITableViewAutomaticDimension
-
-        // From Apple documentation:
-        // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
-        // in this case we set the default height set in IB
-        ////ibTableView.estimatedRowHeight = 216
-    }
-
-
     fileprivate func initUIPheonix()
     {
         mUIPheonix = UIPheonix(with:ibTableView)
@@ -198,12 +173,28 @@ final class DemoTableViewController:UIPBaseViewController, UIPBaseViewController
     }
 
 
-    fileprivate func updateView()
+    fileprivate func setupTableView()
     {
-        setupWithModels()
+        ibTableView.delegate = self
+        ibTableView.dataSource = self
 
-        // reload the table view
-        ibTableView.reloadData()
+        ///
+        /// In our demo, we are using custom table view cell types.
+        /// But if we were only using the built-in table cell types – this would be enough, because they all have a fixed height of 66 points.
+        ///
+
+        // From Apple documentation:
+        // You may set the row height for cells if the delegate doesn’t implement the tableView(_:heightForRowAt:) method.
+        // The default value of rowHeight is UITableViewAutomaticDimension.
+        // Note that if you create a self-sizing cell in Interface Builder, the default row height is changed to the value
+        // set in Interface Builder. To get the expected self-sizing behavior for a cell that you create in Interface Builder,
+        // you must explicitly set rowHeight equal to UITableViewAutomaticDimension in your code.
+        ////ibTableView.rowHeight = UITableViewAutomaticDimension
+
+        // From Apple documentation:
+        // When you create a self-sizing table view cell, you need to set this property and use constraints to define the cell’s size.
+        // in this case we set the default height set in IB
+        ////ibTableView.estimatedRowHeight = 216
     }
 }
 

@@ -16,16 +16,16 @@
                 <outlet property="view" destination="9wv-Ah-Yn2" id="Lli-1C-ajB"/>
             </connections>
         </collectionViewItem>
-        <customView wantsLayer="YES" id="9wv-Ah-Yn2">
+        <customView wantsLayer="YES" focusRingType="none" id="9wv-Ah-Yn2">
             <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-Ff-PMH">
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fVB-Ff-PMH">
                     <rect key="frame" x="120" y="7" width="80" height="25"/>
                     <constraints>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="qG8-zI-env"/>
                     </constraints>
-                    <buttonCell key="cell" type="roundTextured" title="&lt;title&gt;" bezelStyle="texturedRounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="C1i-cX-QMj">
+                    <buttonCell key="cell" type="roundTextured" title="&lt;title&gt;" bezelStyle="texturedRounded" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="C1i-cX-QMj">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

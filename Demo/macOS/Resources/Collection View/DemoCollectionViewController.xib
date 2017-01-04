@@ -21,19 +21,20 @@
                 <scrollView wantsLayer="YES" focusRingType="none" fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qd6-sD-0nx">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <clipView key="contentView" wantsLayer="YES" focusRingType="none" ambiguous="YES" drawsBackground="NO" id="bVe-bp-qXq">
+                    <clipView key="contentView" wantsLayer="YES" focusRingType="none" ambiguous="YES" id="bVe-bp-qXq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView wantsLayer="YES" ambiguous="YES" selectable="YES" id="Afx-yU-W0Z">
+                            <collectionView wantsLayer="YES" focusRingType="none" ambiguous="YES" selectable="YES" id="Afx-yU-W0Z">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="500"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" id="2Fs-13-NUJ">
                                     <size key="itemSize" width="320" height="100"/>
                                 </collectionViewFlowLayout>
-                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="primaryBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="deviceRGB"/>
                             </collectionView>
                         </subviews>
+                        <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                     </clipView>
                     <scroller key="horizontalScroller" hidden="YES" focusRingType="none" verticalHuggingPriority="750" controlSize="mini" horizontal="YES" id="hRU-q2-oMA">
                         <rect key="frame" x="-100" y="-100" width="233" height="11"/>

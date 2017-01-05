@@ -37,7 +37,7 @@ final class ViewController:UIViewController
         // start the UIPheonix iOS demo
         // create & present a new instance of the demo VC
         let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:[DemoCollectionViewController.AttributeKeyName.appDisplayState:AppDisplayState.startUp])
-        // or //
+        // or:
         //let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
 
         // use custom view transition
@@ -47,7 +47,7 @@ final class ViewController:UIViewController
         self.navigationController!.view.layer.add(transition, forKey:nil)
 
         self.navigationController!.setViewControllers([demoViewController], animated:false)
-        // or //
+        // or:
         //self.navigationController!.pushViewController(demoViewController, animated:false)
     }
 }

@@ -36,9 +36,9 @@ class ViewController:UIViewController
 
         // start the UIPheonix tvOS demo
         // create & present a new instance of the demo VC
-        //let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:[DemoCollectionViewController.AttributeKeyName.appDisplayState:AppDisplayState.startUp])
-        // or //
-        let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
+        let demoViewController:DemoCollectionViewController = DemoCollectionViewController.newInstance(with:[DemoCollectionViewController.AttributeKeyName.appDisplayState:AppDisplayState.startUp])
+        // or:
+        //let demoViewController:DemoTableViewController = DemoTableViewController.newInstance(with:[:])
 
         // use custom view transition
         let transition:CATransition = CATransition()
@@ -47,7 +47,7 @@ class ViewController:UIViewController
         self.navigationController!.view.layer.add(transition, forKey:nil)
 
         self.navigationController!.setViewControllers([demoViewController], animated:false)
-        // or //
+        // or:
         //self.navigationController!.pushViewController(demoViewController, animated:false)
     }
 }

@@ -49,12 +49,12 @@ final class DataProvider
             }
             catch let error
             {
-                print("DataProvider failed with: \(error.localizedDescription)")
+                print("DataProvider loadJSON: Failed with error: \(error.localizedDescription)")
             }
         }
         else
         {
-            print("DataProvider failed with: filename/path not found at \(filePath)")
+            print("DataProvider loadJSON: Failed with filename/path not found at: \(filePath)")
         }
 
         return nil

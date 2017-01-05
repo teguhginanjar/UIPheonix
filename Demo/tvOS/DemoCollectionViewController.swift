@@ -29,7 +29,7 @@ import UIKit
 
 
 final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                         UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
+                                         UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout
 {
     // MARK: Public Inner Struct
     struct AttributeKeyName
@@ -126,6 +126,16 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
         }
 
         return cellView
+    }
+
+
+    // MARK:- UICollectionViewDataSourcePrefetching
+
+
+    @available(iOS 10.0, *)
+    func collectionView(_ collectionView:UICollectionView, prefetchItemsAt indexPaths:[IndexPath])
+    {
+        // empty for now
     }
 
 
@@ -253,6 +263,14 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
     {
         ibCollectionView.delegate = self
         ibCollectionView.dataSource = self
+
+        if #available(tvOS 10.0, *)
+        {
+            ibCollectionView.prefetchDataSource = self
+            // ibCollectionView.isPrefetchingEnabled, true by default
+        } else {
+            // fallback on earlier versions
+        }
     }
 
 

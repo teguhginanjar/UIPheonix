@@ -75,8 +75,8 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
         // init member
         mAppDisplayStateType = (mPreparedAttributes[AttributeKeyName.appDisplayState] as! AppDisplayState).typeValue
 
-        setupCollectionView()
         initUIPheonix()
+        setupCollectionView()
         updateView()
     }
 

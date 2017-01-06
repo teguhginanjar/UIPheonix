@@ -29,7 +29,7 @@ import UIKit
 
 
 final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewControllerProtocol, UIPButtonDelegate,
-                                         UICollectionViewDataSource, UICollectionViewDataSourcePrefetching, UICollectionViewDelegateFlowLayout
+                                         UICollectionViewDataSource, /*UICollectionViewDataSourcePrefetching,*/ UICollectionViewDelegateFlowLayout
 {
     // MARK: Public Inner Struct
     struct AttributeKeyName
@@ -132,11 +132,14 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
     // MARK:- UICollectionViewDataSourcePrefetching
 
 
-    @available(iOS 10.0, *)
+    ///
+    /// Not used in this example.
+    ///
+    /*@available(iOS 10.0, *)
     func collectionView(_ collectionView:UICollectionView, prefetchItemsAt indexPaths:[IndexPath])
     {
         // empty for now
-    }
+    }*/
 
 
     // MARK:- UICollectionViewDelegate
@@ -259,24 +262,42 @@ final class DemoCollectionViewController:UIPBaseViewController, UIPBaseViewContr
     // MARK:- Private
 
 
-    fileprivate func setupCollectionView()
-    {
-        ibCollectionView.delegate = self
-        ibCollectionView.dataSource = self
-
-        if #available(tvOS 10.0, *)
-        {
-            ibCollectionView.prefetchDataSource = self
-            // ibCollectionView.isPrefetchingEnabled, true by default
-        } else {
-            // fallback on earlier versions
-        }
-    }
-
-
     fileprivate func initUIPheonix()
     {
         mUIPheonix = UIPheonix(with:ibCollectionView)
+    }
+
+
+    fileprivate func setupCollectionView()
+    {
+        ///
+        /// Does not seem to work, bug reported to Apple.
+        ///
+        /*if #available(tvOS 10.0, *)
+        {
+            (ibCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = UICollectionViewFlowLayoutAutomaticSize
+            //(ibCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width:ibCollectionView.bounds.width, height:50)
+        }
+        else
+        {
+            // fallback on earlier versions
+            (ibCollectionView.collectionViewLayout as! UICollectionViewFlowLayout).estimatedItemSize = CGSize(width:ibCollectionView.bounds.width, height:50)
+        }*/
+
+        ibCollectionView.delegate = self
+        ibCollectionView.dataSource = self
+
+        ///
+        /// Not used in this example.
+        ///
+        /*if #available(tvOS 10.0, *)
+        {
+            ibCollectionView.prefetchDataSource = self
+            // ibCollectionView.isPrefetchingEnabled, true by default
+        }
+        else {
+            // fallback on earlier versions
+        }*/
     }
 
 

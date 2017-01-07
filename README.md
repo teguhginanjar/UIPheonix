@@ -76,7 +76,7 @@ Notes
 
    http://www.khanofsweden.com
 
-   Copyright 2016 Mohsan Khan
+   Copyright 2016/2017 Mohsan Khan
 
    Licensed under the Apache License, Version 2.0.
 

@@ -7,30 +7,36 @@
 [![Platform](https://img.shields.io/badge/Platforms-macOS + iOS + tvOS-blue.svg)](https://github.com/MKGitHub/UIPheonix)
 [![Swift](https://img.shields.io/badge/Swift Version-3.0.1-blue.svg)](https://github.com/MKGitHub/UIPheonix)
 
-[![RUIC Implementation Version](https://img.shields.io/badge/RUIC Implementation Version-2-blue.svg)](https://github.com/MKGitHub/UIPheonix)
+[![RUIC Implementation Version](https://img.shields.io/badge/RUIC Implementation Version-2.0.0-blue.svg)](https://github.com/MKGitHub/UIPheonix)
 
 
 ![UIPheonix Logo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/Banner.png)
 
+Inspired by game development UIPheonix is a super easy, flexible, dynamic and highly scalable UI framework + concept for building reusable component/control-driven apps for macOS, iOS and tvOS. The same API apply for cross platform development! Think of it as using Lego blocks, you can use similar ones and move them around easy as pie.
+
+Does this seem familiar to you?
+
+![ConstraintErrors](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/ConstraintErrors.png)
+
+Well not any more…
+
 * Forget static layouts, constraint issues and warning explosions in the console.
-* Forget all the glue code, all the boilerplate code and all the very common overly engineered unnecessary pile of garbage code in your app.
-* UIPheonix is super easy, flexible, dynamic and highly scalable.
-* Make changes to your UI quickly in a snap.
+* Forget all the glue code, all the boilerplate code and all the very common overly engineered unnecessary pile of garbage code in your apps.
+* Build and make changes to your UI quickly in a snap.
 * Make your UI reusable.
 * Focus on creating your app, not fighting layout issues.
+* Minimal setup, minimal impact on your app, no dependencies, no pain but so much gain!
+* Builds on top of collection views & table views, so you can easily mix and match, or revert at any time.
+* Demo apps provided for macOS, iOS and tvOS (Kung Fu!)
 
-Inspired by game development UIPheonix is a simple framework + concept for building apps where you create reusable UI controls. The same API apply for cross platform development! Think of it as using Lego blocks, you can use similar ones and move them around easy as pie.
+![OSScreenshots](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/OSScreenshots.png)
 
-![macOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/macOS.gif)
-![iOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/iOS.png)
-![tvOS Demo](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/tvOS.png)
-
-* Reusable UI Control (from here on mentioned as a "RUIC") – Is basically just a model+view.
-You can configure a RUIC in any way you want, in the demo apps I'm using both JSON files and simple code to setup the models.
+* Reusable UI Component/Control (from here on mentioned as a "RUIC") – Is basically just a model+view.
+You can configure a RUIC in any way you want, in the demo apps I'm using both JSON files and manual code setup for the models.
 
 ![RUIC Diagram](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/RUIC.png)
 
-* Display Models (list) – An array of [model, model, model…], etc., this is how UIPheonix knows what to display.
+* Display Models (list) – An array of [model, model, model…] etc. this is how UIPheonix knows what to display.
 
 ![States](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/States.png)
 
@@ -39,15 +45,20 @@ You may find alternative solutions, and your milage may vary :-)
 
 * Model-View Relationships (dictionary) – A dictionary defining the relationship between model+view.
 
-UIPheonix and the demo apps are all cross-platform (macOS, iOS and tvOS), that’s how I Kung Fu!
-
 
 Example RUICs
 ------
-Making a RUIC is pretty simple as making a model and a view.
+Making a RUIC is pretty simple as making a model+view.
 
 ![ExampleRUIC1](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/Example1.png)
 ![ExampleRUIC1](https://raw.githubusercontent.com/MKGitHub/UIPheonix/master/Images/Example2.png)
+
+
+How to Install
+------
+* CocoaPods: pod 'UIPheonix', '~> 2.0.0'
+* Carthage: 
+* Manual: Copy the UIPheonix folder (contains sub-folders: Core, Models, Protocols, Views) to your Xcode project.
 
 
 Whats Next?
@@ -58,6 +69,8 @@ Whats Next?
 
 Used In Apps
 ------
+UIPheonix is used in production in the following apps/games (known to me), these apps are together used by many millions of users every day. Please let me know if you use UIPheonix.
+
 * Hoppa
 * McDonald's Sweden
 * McDonald's Switzerland

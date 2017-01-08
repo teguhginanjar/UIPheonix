@@ -1,6 +1,6 @@
 Template
 ------
-Please use any of the provided example model/view/json source files from the project as a starting point for creating your own RUIC.
+Please use any of the provided example model/view/json source files from the project as a starting point for creating your own RUIC (reusable UI Component/Control).
 
 Add your RUIC info below as per written template and send me a pull request.
 Please keep it clean & simple :-)
@@ -11,7 +11,7 @@ Please keep it clean & simple :-)
     URL: https://github.com/JohnAppleseedweed/CoolUIPheonixRUIC
     Platforms: macOS, iOS, tvOS
     RUIC Implementation Version: 3 @ UIPheonix 2.0.0
-    Short Description: A reusable UI Control to do cool stuff.
+    Short Description: A reusable UI Component/Control to do cool stuff.
 
 
 3rd Party RUICs List

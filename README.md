@@ -57,7 +57,7 @@ Making a RUIC is pretty simple as making a model+view.
 How to Install
 ------
 * CocoaPods: pod 'UIPheonix', '~> 2.0.0'
-* Carthage: 
+* Carthage: github "MKGitHub/UIPheonix" >= 2.0.0
 * Manual: Copy the UIPheonix folder (contains sub-folders: Core, Models, Protocols, Views) to your Xcode project.
 
 
